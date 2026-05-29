@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>CAMORA Pro v12 | حاسبة المراقبة الذكية 2026</title>
+<title>CAMORA Pro v13 | حاسبة المراقبة الذكية 2026</title>
 <!-- ══ META PIXEL (Ready — replace YOUR_PIXEL_ID) ══ -->
 <script>
 !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -536,7 +536,7 @@ input[type=number]::-webkit-outer-spin-button{-webkit-appearance:none;margin:0}
 
 <!-- ══ HEADER ══ -->
 <header class="fu">
-  <div class="l-badge"><span class="l-brand">CAMORA PRO</span>&nbsp;·&nbsp;v12 · نظام مقايسات التيار الخفيف 2026</div>
+  <div class="l-badge"><span class="l-brand">CAMORA PRO</span>&nbsp;·&nbsp;v13 · نظام مقايسات التيار الخفيف 2026</div>
   <h1>حاسبة كاميرات المراقبة الذكية</h1>
   <p class="subtitle">احسب التخزين · الطاقة · السويتشات · الفايبر · BOQ كامل بمعايير ONVIF والشروط الحكومية للخليج ومصر</p>
   <div class="lock-ind" id="lockInd">🔒 ميزة PDF &amp; الأرشيف محمية — الباقة المجانية (2 مشاريع)</div>
@@ -1019,7 +1019,7 @@ input[type=number]::-webkit-outer-spin-button{-webkit-appearance:none;margin:0}
 </div><!-- /wrap -->
 
 <footer class="fu">
-  <p>© 2026 <em>CAMORA PRO</em> v12 — نظام مقايسات التيار الخفيف الذكي · مصمم للسوق العربي</p>
+  <p>© 2026 <em>CAMORA PRO</em> v13 — نظام مقايسات التيار الخفيف الذكي · مصمم للسوق العربي</p>
   <p style="margin-top:.28rem;opacity:.45">الأرقام تقديرية وتعتمد على معايير ONVIF الدولية ولا تُعدّ وثيقة قانونية ملزمة بدون توقيع رسمي</p>
 </footer>
 
@@ -1764,7 +1764,7 @@ function tafqeet(n,symStr){
   return 'فقط وقدره '+parts.join(' و')+' '+symStr+' لا غير';
 }
 
-function fmtN(n){var v=parseFloat(n);if(isNaN(v))return'0.00';return v.toLocaleString('ar-EG',{minimumFractionDigits:2,maximumFractionDigits:2});}
+function fmtN(n){var v=parseFloat(n);if(isNaN(v)||!isFinite(v))v=0;return v.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});}
 
 /* ═══════════════════════════════
    BOQ BUILDER
@@ -1889,7 +1889,7 @@ function buildBOQ(camCount,hddCount,totalTB,monSpec,rackSpec,camSystem,envSpec){
   if(camG.bullet > 0) instRows.push({name:isAr?'تركيب وتشبيك كاميرات Bullet الخارجية وضبط الزوايا':'Install & tune Outdoor Bullet cameras', qty:camG.bullet, unit:isAr?'كاميرا':'cam', up:instBullet});
   if(camG.ptz > 0)    instRows.push({name:isAr?'تركيب وضبط كاميرات PTZ Speed Dome والتتبع':'Install & configure PTZ Speed Dome', qty:camG.ptz, unit:isAr?'كاميرا':'cam', up:instPtz});
   if(camG.total === 0) instRows.push({name:isAr?'تركيب وتشبيك الكاميرات':'Camera installation', qty:1, unit:isAr?'كاميرا':'cam', up:instDome});
-  instRows.push({name:isAr?'تركيب جهاز التسجيل وتهيئة الشبكة':'NVR installation & network setup', qty:nvrCount, unit:isAr?'جهاز':'unit', up:600});
+  instRows.push({name:isAr?'تركيب جهاز التسجيل NVR وتهيئة الشبكة':'NVR installation & network setup', qty:nvrCount, unit:isAr?'جهاز':'unit', up:300});
   if(cableTray!=='none') instRows.push({name:isAr?'تركيب مسارات الكابلات والمصنعية':'Cable tray installation & labor', qty:totalCableM, unit:isAr?'متر':'m', up:3});
   swRows.forEach(function(r){ instRows.push({name:(isAr?'تركيب وتهيئة سويتش — ':'Switch config — ')+r.label, qty:r.count, unit:isAr?'جهاز':'unit', up:r.instUp}); });
   fiberCalc.instRows.forEach(function(r){instRows.push(r);});
@@ -1939,12 +1939,12 @@ function buildBOQ(camCount,hddCount,totalTB,monSpec,rackSpec,camSystem,envSpec){
     supplyRows.push({name:monSpec.name, qty:1, unit:isAr?'قطعة':'pcs', up:monSpec.price});
     supplyRows.push({name:isAr?'حامل شاشة معدني حائطي مستورد عالي الجودة':'Premium Metal Wall-Mount Monitor Bracket', qty:1, unit:isAr?'قطعة':'pcs', up:150});
   }
-  if(monSpec.instP>0) instRows.push({name:(isAr?'تركيب وضبط ':'Install & setup ')+monSpec.name, qty:1, unit:isAr?'مجموعة':'set', up:monSpec.instP});
+  if(monSpec.price>0) instRows.push({name:(isAr?'تركيب وضبط شاشة العرض ':'Install & setup monitor ')+monSpec.name, qty:1, unit:isAr?'مجموعة':'set', up:(monSpec.instP||200)});
 
   /* ── RACK ── */
   var swCountForRack = calcSwitches(camCount).reduce(function(s,r){return s+r.count;},0);
   if(rackSpec.price>0) supplyRows.push({name:rackSpec.name, qty:swCountForRack, unit:isAr?'قطعة':'pcs', up:rackSpec.price});
-  if(rackSpec.instP>0) instRows.push({name:(isAr?'تركيب وتثبيت ':'Install & mount ')+rackSpec.name, qty:swCountForRack, unit:isAr?'قطعة':'pcs', up:rackSpec.instP});
+  if(rackSpec.price>0) instRows.push({name:(isAr?'تركيب وتثبيت كابينة ':'Install & mount rack ')+rackSpec.name, qty:Math.max(1,swCountForRack), unit:isAr?'قطعة':'pcs', up:(rackSpec.instP||300)});
 
   /* ── UPS BACKUP POWER ── */
   var upsCalc = calcUPS(
@@ -1956,17 +1956,40 @@ function buildBOQ(camCount,hddCount,totalTB,monSpec,rackSpec,camSystem,envSpec){
   upsCalc.rows.forEach(function(r){ supplyRows.push(r); });
   upsCalc.instRows.forEach(function(r){ instRows.push(r); });
 
-  /* ── COMBINED MODE ── */
+  /* ── COMBINED MODE (non-destructive) ──
+     Distributes install cost into supply unit prices for display,
+     but keeps a single summary install line so the Installation
+     section is NEVER empty and bqInstTot is always a real number. */
   if(priceMode==='combined'){
-    var iT=instRows.reduce(function(s,r){return s+r.qty*r.up;},0);
-    var dist=iT/supplyRows.length;
-    supplyRows=supplyRows.map(function(r){return{name:r.name,qty:r.qty,unit:r.unit,up:r.up+dist/r.qty};});
-    instRows=instRows.map(function(r){return{name:r.name,qty:r.qty,unit:r.unit,up:0};});
+    var iT=instRows.reduce(function(s,r){return s+(r.qty*r.up);},0);
+    var supCount=Math.max(1,supplyRows.length);
+    var dist=iT/supCount;
+    supplyRows=supplyRows.map(function(r){
+      var q=Math.max(1,r.qty);
+      return {name:r.name,qty:r.qty,unit:r.unit,up:(r.up||0)+dist/q};
+    });
+    /* Single consolidated install line carrying the full labour value */
+    instRows=[{
+      name:isAr?'إجمالي مصنعيات التركيب والتشغيل (مدمجة شاملة)':'Consolidated Installation & Commissioning (all-inclusive)',
+      qty:1, unit:isAr?'مجموعة':'set', up:iT
+    }];
   }
 
-  /* ── FILTER ZEROS ── */
-  supplyRows=supplyRows.filter(function(r){return r.qty*r.up>0;});
-  instRows=instRows.filter(function(r){return r.qty*r.up>0;});
+  /* ── FILTER ZEROS (supply only — install section ALWAYS kept) ── */
+  /* Enforce fallback unit prices — NEVER allow empty/NaN/zero where a real item exists */
+  function sanitizeRows(rows){
+    return rows.map(function(r){
+      var q = parseFloat(r.qty); if(isNaN(q)||q<0) q=0;
+      var u = parseFloat(r.up);  if(isNaN(u)||u<0) u=0;
+      return {name:(r.name||'بند'), qty:q, unit:(r.unit||'—'), up:u};
+    });
+  }
+  supplyRows = sanitizeRows(supplyRows).filter(function(r){return r.qty*r.up>0;});
+  instRows   = sanitizeRows(instRows).filter(function(r){return r.qty*r.up>0;});
+  /* Guarantee at least one install line so the section & bqInstTot never vanish */
+  if(instRows.length===0){
+    instRows.push({name:isAr?'مصنعية التركيب والتشغيل':'Installation & Commissioning', qty:1, unit:isAr?'مجموعة':'set', up:Math.max(200, Math.round((supplyRows.reduce(function(s,r){return s+r.qty*r.up;},0))*0.10))});
+  }
 
   /* ── TOTALS ── */
   var supTotal  = supplyRows.reduce(function(s,r){return s+r.qty*r.up;},0);
@@ -2458,9 +2481,17 @@ function generatePDF(){
   }).join('');
 
   function rowsHtml(rows){
-    return rows.filter(function(r){return r.qty*r.up>0;}).map(function(r){
-      var tot=r.qty*r.up;
-      return'<tr><td>'+r.name+'</td><td style="text-align:center">'+r.qty+'</td><td style="text-align:center">'+r.unit+'</td><td style="text-align:left;direction:ltr">'+fmtN(r.up)+'</td><td style="text-align:left;direction:ltr;font-weight:600">'+fmtN(tot)+' '+sym+'</td></tr>';
+    return rows.filter(function(r){
+      var q=parseFloat(r.qty)||0, u=parseFloat(r.up)||0;
+      return q*u>0;
+    }).map(function(r){
+      var q=parseFloat(r.qty)||0, u=parseFloat(r.up)||0, tot=q*u;
+      var nm=r.name||'بند', un=r.unit||'—';
+      return'<tr><td>'+nm+'</td>'+
+        '<td style="text-align:center">'+q+'</td>'+
+        '<td style="text-align:center">'+un+'</td>'+
+        '<td style="text-align:left;direction:ltr">'+fmtN(u)+'</td>'+
+        '<td style="text-align:left;direction:ltr;font-weight:600">'+fmtN(tot)+' '+sym+'</td></tr>';
     }).join('');
   }
 
