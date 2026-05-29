@@ -1,0 +1,2497 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>CAMORA Pro v11 | حاسبة المراقبة الذكية 2026</title>
+<!-- ══ META PIXEL (Ready — replace YOUR_PIXEL_ID) ══ -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','YOUR_PIXEL_ID');fbq('track','PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=YOUR_PIXEL_ID&ev=PageView&noscript=1"/></noscript>
+<!-- ══ GOOGLE TAG MANAGER (Ready — replace GTM-XXXXXXX) ══ -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-XXXXXXX');</script>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet"/>
+<style>
+/* ═══════════════════════════════════════════════════
+   CAMORA PRO v8 — EMERALD × CHARCOAL HIGH-CONTRAST
+═══════════════════════════════════════════════════ */
+:root{
+  --bg:#07100A; --bg-mid:#0C1810; --bg-card:#111E16; --bg-card2:#142219;
+  --em:#10B981; --em-b:#4EEAAA; --em-d:#065F46; --em-g:rgba(16,185,129,.25);
+  --eb:#3B82F6; --eb-b:#7CB9FF;
+  --gold:#F59E0B; --gold-b:#FFD95A; --gold-g:rgba(245,158,11,.32);
+  --red:#EF4444;
+  --tx:#F0FAF4; --tx-m:#C8EDD9; --tx-d:#7EC89A;
+  --bd:rgba(16,185,129,.18); --bd-m:rgba(16,185,129,.32);
+  --inp-bg:#0E1A11; --inp-bd:#1F3A28; --inp-bd-focus:#10B981;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Cairo','Tajawal',sans-serif;background:var(--bg);color:var(--tx);min-height:100vh;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+.bg-grid{position:fixed;inset:0;z-index:0;pointer-events:none;
+  background-image:linear-gradient(rgba(16,185,129,.04)1px,transparent 1px),linear-gradient(90deg,rgba(16,185,129,.04)1px,transparent 1px);
+  background-size:52px 52px}
+.orb{position:fixed;border-radius:50%;filter:blur(120px);pointer-events:none;z-index:0}
+.o1{width:560px;height:560px;background:radial-gradient(circle,#065F46,transparent 70%);top:-200px;right:-180px;opacity:.48;animation:br 9s ease-in-out infinite}
+.o2{width:420px;height:420px;background:radial-gradient(circle,#1a3350,transparent 70%);bottom:-150px;left:-150px;opacity:.42;animation:br 12s ease-in-out infinite reverse}
+.o3{width:280px;height:280px;background:radial-gradient(circle,#065F46,transparent 70%);top:42%;left:46%;opacity:.13;animation:br 15s ease-in-out infinite}
+@keyframes br{0%,100%{transform:scale(1)}50%{transform:scale(1.11)}}
+.wrap{position:relative;z-index:1;max-width:1160px;margin:0 auto;padding:0 1.2rem}
+
+/* ── PREMIUM BANNER ── */
+#pBanner{display:none;background:linear-gradient(135deg,#054035,#073D28);border-bottom:1px solid var(--em);
+  padding:.7rem 1.2rem;text-align:center;font-size:.88rem;font-weight:700;color:var(--em-b);
+  position:relative;z-index:20;animation:sld .5s ease forwards}
+@keyframes sld{from{opacity:0;transform:translateY(-100%)}to{opacity:1;transform:translateY(0)}}
+
+/* ══ LEAD CAPTURE MODAL ══ */
+#leadOverlay{position:fixed;inset:0;z-index:500;background:rgba(0,0,0,.94);backdrop-filter:blur(12px);
+  display:flex;align-items:center;justify-content:center;padding:1rem}
+.lead-box{background:#111E16;border:1px solid #267347;border-radius:1.5rem;
+  padding:2.2rem 2rem;max-width:460px;width:100%;
+  box-shadow:0 32px 80px rgba(0,0,0,.8),0 0 0 1px rgba(16,185,129,.1)}
+.lead-logo{text-align:center;font-size:1.5rem;font-weight:900;color:var(--em-b);
+  letter-spacing:.08em;margin-bottom:.3rem}
+.lead-tag{text-align:center;font-size:.75rem;color:var(--tx-d);margin-bottom:1.5rem}
+.lead-title{font-size:1.25rem;font-weight:900;color:var(--tx);text-align:center;margin-bottom:.5rem}
+.lead-sub{font-size:.86rem;color:var(--tx-m);text-align:center;line-height:1.6;margin-bottom:1.4rem}
+.lead-field{margin-bottom:1rem}
+.lead-field label{display:block;font-size:.82rem;font-weight:700;color:var(--tx-m);margin-bottom:.38rem}
+.lead-field input{width:100%;padding:.72rem 1rem;background:var(--inp-bg);
+  border:1px solid var(--inp-bd);border-radius:.68rem;color:var(--tx);
+  font-family:inherit;font-size:.93rem;outline:none;transition:border .2s,box-shadow .2s}
+.lead-field input:focus{border-color:var(--em);box-shadow:0 0 0 3px var(--em-g)}
+.lead-field input::placeholder{color:var(--tx-d);opacity:.8}
+.btn-lead{width:100%;padding:1rem;
+  background:linear-gradient(135deg,#047857,var(--em),#34D399);
+  border:none;border-radius:.85rem;font-family:inherit;
+  font-size:1rem;font-weight:800;color:#fff;cursor:pointer;transition:all .25s;
+  box-shadow:0 6px 24px rgba(16,185,129,.4);position:relative;overflow:hidden}
+.btn-lead::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.12),transparent);pointer-events:none}
+.btn-lead:hover{transform:translateY(-2px);box-shadow:0 10px 32px rgba(16,185,129,.55)}
+.lead-note{font-size:.72rem;color:var(--tx-d);text-align:center;margin-top:.7rem}
+#leadErr{font-size:.78rem;color:#f87171;text-align:center;margin-top:.45rem;min-height:1rem}
+
+/* ══ ARCHIVE DASHBOARD ══ */
+#archiveBar{position:relative;z-index:10;padding:.6rem 0 0}
+.arch-hdr{display:flex;align-items:center;justify-content:space-between;
+  padding:.75rem 1.2rem;background:#0C1A10;
+  border:1px solid #1C3526;border-radius:.85rem;cursor:pointer;
+  font-size:.88rem;font-weight:700;color:var(--em-b);transition:all .2s;user-select:none}
+.arch-hdr:hover{background:#0E2014}
+.arch-body{overflow:hidden;max-height:0;transition:max-height .38s cubic-bezier(.4,0,.2,1)}
+.arch-body.open{max-height:600px}
+.arch-inner{background:#111E16;border:1px solid #1C3526;border-top:none;border-radius:0 0 .85rem .85rem;padding:1rem}
+.arch-empty{text-align:center;padding:1.5rem;color:var(--tx-d);font-size:.84rem}
+table.arch-tbl{width:100%;border-collapse:collapse;font-size:.82rem}
+table.arch-tbl th{background:#0A2218;color:#4EEAAA;padding:.5rem .75rem;text-align:right;font-weight:800;white-space:nowrap}
+table.arch-tbl td{padding:.48rem .75rem;border-bottom:1px solid #1C3526;color:#C8EDD9;vertical-align:middle}
+table.arch-tbl tr:hover td{background:rgba(16,185,129,.03)}
+.arch-wrap{overflow-x:auto}
+.btn-arch-open{padding:.3rem .75rem;border-radius:.45rem;background:rgba(16,185,129,.12);
+  border:1px solid rgba(16,185,129,.28);font-family:inherit;font-size:.76rem;font-weight:700;color:var(--em-b);cursor:pointer;transition:all .18s}
+.btn-arch-open:hover{background:rgba(16,185,129,.22)}
+.btn-arch-del{padding:.3rem .65rem;border-radius:.45rem;background:rgba(239,68,68,.1);
+  border:1px solid rgba(239,68,68,.28);font-family:inherit;font-size:.76rem;font-weight:700;color:#fca5a5;cursor:pointer;transition:all .18s}
+.btn-arch-del:hover{background:rgba(239,68,68,.2)}
+
+/* ── HEADER ── */
+header{padding:2.4rem 1.2rem 1.4rem;text-align:center;position:relative;z-index:1}
+.l-badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(16,185,129,.1);
+  border:1px solid var(--bd-m);border-radius:999px;padding:.36rem 1.1rem;
+  font-size:.76rem;font-weight:700;color:var(--em-b);letter-spacing:.05em;text-transform:uppercase;
+  margin-bottom:1rem;backdrop-filter:blur(10px)}
+.l-brand{font-size:1rem;font-weight:900;color:var(--em);letter-spacing:.07em}
+h1{font-size:clamp(1.7rem,5vw,2.9rem);font-weight:900;line-height:1.2;
+  background:linear-gradient(135deg,#E4F2EB 20%,var(--em-b) 60%,var(--gold));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:.5rem}
+.subtitle{color:#B8DFC8;font-size:.95rem;max-width:580px;margin:0 auto;line-height:1.7}
+.lock-ind{display:inline-flex;align-items:center;gap:.42rem;margin-top:.8rem;
+  background:#1A1200;border:1px solid #5A3800;
+  border-radius:999px;padding:.28rem .95rem;font-size:.76rem;font-weight:700;color:var(--gold)}
+.lock-ind.ok{background:#0A2218;border-color:#267347;color:var(--em-b)}
+
+/* ── CARD ── */
+.card{background:#111E16;border:1px solid #1C3526;border-radius:1.25rem;
+  padding:1.75rem;position:relative;overflow:hidden;transition:transform .28s,box-shadow .28s;
+  box-shadow:0 4px 24px rgba(0,0,0,.55)}
+.card::before{content:'';position:absolute;inset:0;border-radius:inherit;
+  background:linear-gradient(135deg,rgba(16,185,129,.04)0%,transparent 60%);pointer-events:none}
+.card:hover{transform:translateY(-2px);box-shadow:0 20px 52px rgba(0,0,0,.7)}
+.s-title{font-size:.98rem;font-weight:800;color:#6EFFC0;margin-bottom:1.3rem;display:flex;align-items:center;gap:.5rem}
+.s-title::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,var(--em-d),transparent)}
+
+/* ── FORM ELEMENTS ── */
+.fg{margin-bottom:1.2rem}
+label{display:block;font-size:.84rem;font-weight:700;color:#C8EDD9;margin-bottom:.4rem;letter-spacing:.01em}
+.iw{position:relative}
+.ii{position:absolute;top:50%;transform:translateY(-50%);right:12px;color:var(--tx-d);pointer-events:none;font-size:.98rem}
+input[type=text],input[type=number],select{
+  width:100%;padding:.68rem 2.4rem .68rem .95rem;background:var(--inp-bg);
+  border:1px solid var(--inp-bd);border-radius:.68rem;color:var(--tx);
+  font-family:inherit;font-size:.91rem;outline:none;
+  transition:border .2s,box-shadow .2s,background .2s;-webkit-appearance:none;appearance:none}
+input:focus,select:focus{border-color:var(--inp-bd-focus);box-shadow:0 0 0 3px var(--em-g);background:#0D2018}
+input::placeholder{color:var(--tx-d);opacity:1}
+select option{background:#0C1810;color:var(--tx)}
+.sw::after{content:'▾';position:absolute;top:50%;left:12px;transform:translateY(-50%);color:var(--tx-d);pointer-events:none}
+.chips{display:flex;gap:.45rem;flex-wrap:wrap;margin-bottom:.5rem}
+.chip{padding:.33rem .82rem;border-radius:999px;font-size:.78rem;font-weight:700;
+  border:1px solid #1C3526;background:#0C1A10;cursor:pointer;transition:all .17s;color:#9DBDAA}
+.chip:hover{background:rgba(16,185,129,.17);border-color:var(--em);color:#fff}
+.chip.on{background:#064E3B;border-color:var(--em);color:#6EFFC0;box-shadow:0 0 12px rgba(16,185,129,.28)}
+.trow{display:flex;align-items:center;gap:.68rem}
+.tog{width:44px;height:24px;background:#1C3526;border-radius:999px;cursor:pointer;
+  position:relative;border:1px solid #267347;transition:background .24s;flex-shrink:0}
+.tog.on{background:var(--em);border-color:var(--em)}
+.tknob{width:18px;height:18px;background:#fff;border-radius:50%;position:absolute;top:2px;right:3px;
+  transition:transform .24s;box-shadow:0 2px 5px rgba(0,0,0,.3)}
+.tog.on .tknob{transform:translateX(-20px)}
+.tlbl{font-size:.84rem;color:#C8EDD9;font-weight:600}
+.cbrow{display:flex;align-items:center;gap:.55rem;margin-bottom:.55rem}
+.cbrow input[type=checkbox]{width:16px;height:16px;accent-color:var(--em);cursor:pointer;flex-shrink:0}
+.cbrow label{font-size:.84rem;color:#C8EDD9;font-weight:600;cursor:pointer;margin:0}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:.85rem}
+@media(max-width:560px){.two-col{grid-template-columns:1fr}}
+
+/* ── ACCORDION ── */
+.acc-hdr{display:flex;align-items:center;justify-content:space-between;
+  padding:.85rem 1.1rem;background:#0C1A10;
+  border:1px solid #1C3526;border-radius:.85rem;cursor:pointer;
+  font-size:.88rem;font-weight:700;color:#6EFFC0;transition:all .2s;user-select:none}
+.acc-hdr:hover{background:#0E2014}
+.acc-arrow{font-size:.88rem;transition:transform .28s;color:#7EC89A}
+.acc-hdr.open .acc-arrow{transform:rotate(180deg)}
+.acc-body{overflow:hidden;max-height:0;transition:max-height .45s cubic-bezier(.4,0,.2,1)}
+.acc-body.open{max-height:4000px}
+.acc-inner{padding:1.2rem;background:#0C1A10;border:1px solid #1C3526;border-top:none;border-radius:0 0 .85rem .85rem}
+
+/* ── UPLOADS ── */
+.upload-box{border:2px dashed #267347;border-radius:.75rem;padding:1rem;
+  text-align:center;cursor:pointer;transition:all .2s;background:#0C1A10}
+.upload-box:hover{border-color:var(--em);background:#0D2018}
+.upload-box input{display:none}
+.upload-preview{width:80px;height:40px;object-fit:contain;border-radius:.4rem;display:none;margin:.5rem auto 0}
+
+/* ── THEME PILLS ── */
+.theme-pills{display:flex;gap:.45rem;flex-wrap:wrap;margin-top:.5rem}
+.tpill{padding:.32rem .78rem;border-radius:999px;font-size:.76rem;font-weight:700;
+  border:1px solid #1C3526;background:#0C1A10;cursor:pointer;transition:all .17s;color:#7EC89A}
+.tpill:hover{border-color:var(--em);color:var(--em-b)}
+.tpill.on{background:#064E3B;border-color:var(--em);color:var(--em-b)}
+
+/* ── FIBER FIELDS ── */
+#fiberFields{display:none;margin-top:.7rem;padding:.9rem;
+  background:#0A2016;border:1px solid #1C3526;border-radius:.75rem}
+
+/* ── ANALOG HINT ── */
+.analog-note{background:#1A0A1A;border:1px solid #5A2080;border-radius:.65rem;
+  padding:.55rem .85rem;font-size:.78rem;color:#D4A0FF;margin-top:.5rem;display:none}
+.env-badge{display:inline-block;padding:.22rem .7rem;border-radius:999px;font-size:.72rem;font-weight:700;margin-bottom:.5rem}
+.env-indoor{background:#0A2218;color:#4EEAAA;border:1px solid #267347}
+.env-outdoor{background:#1A1500;color:#FFD95A;border:1px solid #5A3800}
+.env-industrial{background:#1A0A00;color:#FF9966;border:1px solid #7A3800}
+
+/* ── AI PASTE TEXTAREA ── */
+.ai-paste-area{width:100%;min-height:90px;padding:.75rem .95rem;
+  background:var(--inp-bg);border:1px solid var(--inp-bd);border-radius:.68rem;
+  color:var(--tx);font-family:inherit;font-size:.85rem;line-height:1.6;
+  outline:none;resize:vertical;transition:border .2s,box-shadow .2s}
+.ai-paste-area:focus{border-color:var(--em);box-shadow:0 0 0 3px var(--em-g)}
+.ai-paste-area::placeholder{color:var(--tx-d);opacity:.8}
+.btn-extract{padding:.6rem 1.1rem;border-radius:.62rem;
+  background:var(--em-d);border:1px solid var(--em);
+  font-family:inherit;font-size:.84rem;font-weight:800;color:var(--em-b);
+  cursor:pointer;transition:all .22s;white-space:nowrap}
+.btn-extract:hover{background:var(--em);color:#fff}
+
+/* ── RESULTS ── */
+.rg{display:grid;grid-template-columns:repeat(auto-fit,minmax(182px,1fr));gap:.85rem}
+.rc{background:#0E1E14;border:1px solid #1C3A26;border-radius:1rem;padding:1.3rem 1rem;
+  text-align:center;position:relative;overflow:hidden;transition:transform .24s,box-shadow .24s}
+.rc:hover{transform:translateY(-3px);box-shadow:0 12px 30px rgba(0,0,0,.4)}
+.rc.gc{background:#1A1500;border-color:#3A2800}
+.ri{font-size:1.75rem;margin-bottom:.38rem;display:block}
+.rv{font-size:2.1rem;font-weight:900;line-height:1;
+  background:linear-gradient(135deg,#fff,var(--em-b));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  margin-bottom:.25rem;transition:all .3s;text-shadow:0 0 18px rgba(78,234,170,.25)}
+.gc .rv{background:linear-gradient(135deg,var(--gold),var(--gold-b));-webkit-background-clip:text;background-clip:text}
+.ru{font-size:.75rem;color:#4EEAAA;font-weight:700;margin-bottom:.3rem}
+.gc .ru{color:var(--gold)}
+.rl{font-size:.76rem;color:#7EC89A;font-weight:600}
+.hdd-strip{background:#0C1A10;border:1px solid #1C3526;border-radius:.72rem;padding:.85rem 1rem;font-size:.85rem;line-height:1.8}
+.hbadge{display:inline-flex;align-items:center;gap:.28rem;background:rgba(16,185,129,.14);
+  border:1px solid rgba(16,185,129,.28);border-radius:999px;padding:.18rem .65rem;
+  font-size:.75rem;font-weight:700;color:var(--em-b);margin:.18rem .12rem}
+.bwrap{margin-top:.9rem}
+.blbls{display:flex;justify-content:space-between;font-size:.75rem;color:var(--tx-d);margin-bottom:.32rem}
+.bbg{height:6px;background:rgba(255,255,255,.06);border-radius:999px;overflow:hidden}
+.bfill{height:100%;border-radius:999px;background:linear-gradient(90deg,var(--em-d),var(--em),var(--em-b));transition:width .65s cubic-bezier(.4,0,.2,1)}
+.sbox{background:#0C1A10;border:1px dashed #1F3A28;border-radius:.72rem;padding:.85rem 1rem;font-size:.81rem;color:#C8EDD9;line-height:1.95}
+.sbox strong{color:var(--tx)}
+.divider{height:1px;background:linear-gradient(90deg,transparent,#1C3526,transparent);margin:1.2rem 0}
+
+/* ── BOQ TABLE ── */
+.boq-wrap{overflow-x:auto;margin-top:.9rem}
+table.boq{width:100%;border-collapse:collapse;font-size:.82rem}
+table.boq th{background:#064E3B;color:#6EFFC0;padding:.6rem .75rem;text-align:right;font-weight:800;white-space:nowrap;border-bottom:2px solid #10B981}
+table.boq td{padding:.52rem .75rem;border-bottom:1px solid #1C3526;color:#D0EDD8;vertical-align:middle}
+table.boq tr:hover td{background:#0D2018}
+table.boq .tot-row td{background:#0D2A1A;font-weight:800;color:#F0FAF4;border-top:1px solid #10B981}
+table.boq .grand-row td{background:#1E1500;font-weight:900;color:#FFD95A;font-size:.9rem;border-top:2px solid #F59E0B}
+table.boq td[contenteditable=true]{background:#0A2016;border:1px dashed #267347;border-radius:.32rem;outline:none;cursor:text;padding:.42rem .68rem;min-width:58px;transition:background .2s,border .2s;color:#F0FAF4}
+table.boq td[contenteditable=true]:focus{background:#0D2A1C;border-color:var(--em);color:#fff}
+.tafqeet-box{font-size:.8rem;color:#FFD95A;font-style:italic;font-weight:600;margin-top:.5rem;text-align:center;
+  padding:.45rem;border:1px dashed rgba(245,158,11,.25);border-radius:.5rem;background:rgba(245,158,11,.04)}
+
+/* ── ADD CUSTOM ROW BUTTON ── */
+.btn-add-row{display:flex;align-items:center;justify-content:center;gap:.5rem;
+  width:100%;padding:.75rem;margin-top:.8rem;
+  background:#0A2016;border:1px dashed #267347;border-radius:.72rem;
+  font-family:inherit;font-size:.86rem;font-weight:700;color:var(--em-b);
+  cursor:pointer;transition:all .22s}
+.btn-add-row:hover{background:#0D2A1C;border-color:var(--em)}
+
+/* ── PAYMENT SCHEDULE ── */
+.sched-display{margin-top:1rem}
+.sched-display .s-title{font-size:.88rem}
+table.sched-tbl{width:100%;border-collapse:collapse;font-size:.82rem;margin-top:.5rem}
+table.sched-tbl th{background:#0A2218;color:#4EEAAA;padding:.5rem .7rem;text-align:right;font-weight:800}
+table.sched-tbl td{padding:.45rem .7rem;border-bottom:1px solid #1C3526;color:#C8EDD9}
+table.sched-tbl .amt-cell{color:#FFD95A;font-weight:800}
+table.sched-tbl .tafq-cell{color:#9DBDAA;font-size:.73rem}
+
+/* ── BUTTONS ── */
+.btn-pdf{display:flex;align-items:center;justify-content:center;gap:.6rem;width:100%;
+  padding:1rem 1.4rem;background:linear-gradient(135deg,#c97a06,var(--gold),#e89010);
+  border:none;border-radius:.85rem;font-family:inherit;font-size:.95rem;font-weight:800;color:#1a0900;
+  cursor:pointer;transition:all .27s;box-shadow:0 6px 26px var(--gold-g);position:relative;overflow:hidden}
+.btn-pdf::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.14),transparent);pointer-events:none;border-radius:inherit}
+.btn-pdf:hover{transform:translateY(-2px);box-shadow:0 12px 34px rgba(245,158,11,.52)}
+.btn-sec{display:flex;align-items:center;justify-content:center;gap:.5rem;width:100%;
+  padding:.85rem 1.4rem;background:#0C1A10;border:1px solid #1C3526;
+  border-radius:.85rem;font-family:inherit;font-size:.9rem;font-weight:700;color:#C8EDD9;cursor:pointer;transition:all .22s}
+.btn-sec:hover{background:#0E2014;border-color:#267347}
+.btn-save{display:flex;align-items:center;justify-content:center;gap:.5rem;width:100%;
+  padding:.85rem 1.4rem;background:#0A2218;border:1px solid #267347;
+  border-radius:.85rem;font-family:inherit;font-size:.9rem;font-weight:700;color:#4EEAAA;cursor:pointer;transition:all .22s}
+.btn-save:hover{background:#0D2A1C;border-color:var(--em)}
+
+/* ── WHATSAPP FLOATING BUTTON ── */
+#wabtn{position:fixed;bottom:1.5rem;left:1.5rem;z-index:400;
+  width:56px;height:56px;border-radius:50%;
+  background:linear-gradient(135deg,#128C7E,#25D366);
+  border:none;cursor:pointer;
+  box-shadow:0 6px 22px rgba(37,211,102,.5);
+  display:flex;align-items:center;justify-content:center;
+  transition:transform .22s,box-shadow .22s;
+  animation:waPulse 2.5s ease-in-out infinite}
+#wabtn:hover{transform:scale(1.12);box-shadow:0 10px 30px rgba(37,211,102,.65)}
+#wabtn svg{width:28px;height:28px;fill:#fff}
+@keyframes waPulse{0%,100%{box-shadow:0 6px 22px rgba(37,211,102,.5)}50%{box-shadow:0 6px 32px rgba(37,211,102,.8)}}
+.wa-tooltip{position:absolute;bottom:64px;left:0;white-space:nowrap;
+  background:#111E16;border:1px solid #267347;border-radius:.55rem;
+  padding:.35rem .75rem;font-size:.72rem;font-weight:700;color:var(--em-b);
+  opacity:0;pointer-events:none;transition:opacity .2s}
+#wabtn:hover .wa-tooltip{opacity:1}
+
+/* ── ANIMATIONS ── */
+@keyframes fu{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:translateY(0)}}
+.fu{animation:fu .54s ease forwards}
+.d1{animation-delay:.07s;opacity:0}.d2{animation-delay:.16s;opacity:0}
+.d3{animation-delay:.25s;opacity:0}.d4{animation-delay:.34s;opacity:0}
+@keyframes pp{from{opacity:0;transform:scale(.64)}to{opacity:1;transform:scale(1)}}
+.pa{animation:pp .37s cubic-bezier(.34,1.56,.64,1) forwards}
+
+/* ── MODAL (PAYWALL) ── */
+.mover{position:fixed;inset:0;z-index:300;background:rgba(0,0,0,.84);backdrop-filter:blur(9px);
+  display:flex;align-items:center;justify-content:center;padding:1rem;
+  opacity:0;pointer-events:none;transition:opacity .3s}
+.mover.open{opacity:1;pointer-events:all}
+.modal{background:#142219;border:1px solid #267347;border-radius:1.4rem;
+  padding:1.9rem 1.7rem;max-width:520px;width:100%;position:relative;
+  transform:scale(.88) translateY(20px);transition:transform .36s cubic-bezier(.34,1.56,.64,1);
+  box-shadow:0 32px 80px rgba(0,0,0,.72);max-height:90vh;overflow-y:auto}
+.mover.open .modal{transform:scale(1) translateY(0)}
+.mcls{position:absolute;top:.9rem;left:.9rem;width:32px;height:32px;
+  background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:50%;
+  cursor:pointer;font-size:.95rem;color:var(--tx-d);display:flex;align-items:center;justify-content:center;
+  transition:all .2s;font-family:inherit}
+.mcls:hover{background:rgba(255,255,255,.13);color:#fff}
+.micn{font-size:2.8rem;text-align:center;display:block;margin-bottom:.8rem}
+.modal h2{font-size:1.28rem;font-weight:900;text-align:center;line-height:1.4;margin-bottom:.55rem;color:var(--tx)}
+.msub{color:#C8EDD9;text-align:center;font-size:.86rem;line-height:1.7;margin-bottom:1.2rem}
+.price-tag{text-align:center;margin-bottom:1.1rem}
+.price-tag .amt{font-size:2rem;font-weight:900;color:var(--gold);line-height:1}
+.price-tag .per{font-size:.78rem;color:var(--tx-d);margin-top:.2rem}
+.mfeats{list-style:none;margin-bottom:1.3rem}
+.mfeats li{display:flex;align-items:center;gap:.58rem;font-size:.84rem;color:var(--tx);padding:.35rem 0;border-bottom:1px solid var(--bd)}
+.mfeats li:last-child{border-bottom:none}
+.mfi{color:var(--em-b);font-size:.92rem;flex-shrink:0}
+.pay-div{display:flex;align-items:center;gap:.7rem;font-size:.76rem;color:var(--tx-d);margin:1rem 0}
+.pay-div::before,.pay-div::after{content:'';flex:1;height:1px;background:var(--bd)}
+.btn-stripe{display:flex;align-items:center;justify-content:center;gap:.55rem;width:100%;
+  padding:.9rem;background:linear-gradient(135deg,#1a52d0,var(--eb));border:none;border-radius:.78rem;
+  font-family:inherit;font-size:.92rem;font-weight:800;color:#fff;cursor:pointer;transition:all .22s;
+  box-shadow:0 5px 20px rgba(59,130,246,.36);text-decoration:none;margin-bottom:.65rem;text-align:center}
+.btn-stripe:hover{transform:translateY(-2px);box-shadow:0 9px 28px rgba(59,130,246,.52)}
+.btn-paymob{display:flex;align-items:center;justify-content:center;gap:.55rem;width:100%;
+  padding:.9rem;background:linear-gradient(135deg,#a85500,var(--gold));border:none;border-radius:.78rem;
+  font-family:inherit;font-size:.92rem;font-weight:800;color:#1a0800;cursor:pointer;transition:all .22s;
+  box-shadow:0 5px 20px var(--gold-g);text-decoration:none;text-align:center}
+.btn-paymob:hover{transform:translateY(-2px);box-shadow:0 9px 28px rgba(245,158,11,.48)}
+.act-wrap{margin-top:1.1rem;background:rgba(255,255,255,.028);border:1px dashed rgba(16,185,129,.19);border-radius:.85rem;padding:.95rem}
+.act-wrap label{font-size:.78rem;font-weight:700;color:var(--em-b);margin-bottom:.45rem;display:block}
+.act-row{display:flex;gap:.45rem}
+.act-row input{flex:1;padding:.6rem .85rem;font-size:.86rem;background:var(--inp-bg);
+  border:1px solid var(--inp-bd);border-radius:.58rem;color:var(--tx);font-family:inherit;outline:none;
+  transition:border .2s,box-shadow .2s;letter-spacing:.07em;text-align:center;direction:ltr}
+.act-row input:focus{border-color:var(--em);box-shadow:0 0 0 3px var(--em-g)}
+.btn-act{padding:.6rem 1rem;border-radius:.58rem;background:var(--em-d);border:1px solid var(--em);
+  font-family:inherit;font-size:.83rem;font-weight:800;color:var(--em-b);cursor:pointer;transition:all .2s;white-space:nowrap}
+.btn-act:hover{background:var(--em);color:#fff}
+#actMsg{font-size:.76rem;margin-top:.42rem;min-height:.95rem}
+.ok{color:var(--em-b)}.err{color:#f87171}
+.mfootn{font-size:.7rem;text-align:center;color:var(--tx-d);margin-top:.85rem}
+
+/* ── MICRO-LABELS / TOOLTIPS ── */
+.field-tip{display:block;font-size:.72rem;color:#5A8A6A;margin-top:.28rem;
+  line-height:1.45;font-style:italic;padding-right:.2rem}
+
+/* ── UPS RESULT CARD ── */
+.rc.uc{background:#100A1A;border-color:#5A2080}
+.rc.uc .rv{background:linear-gradient(135deg,#CE93D8,#9C27B0);
+  -webkit-background-clip:text;background-clip:text}
+.rc.uc .ru{color:#CE93D8}
+
+/* ── SCROLLBAR ── */
+::-webkit-scrollbar{width:5px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--em-d);border-radius:3px}
+
+/* ── FOOTER ── */
+footer{text-align:center;padding:2rem 1rem;color:var(--tx-d);font-size:.76rem;position:relative;z-index:1}
+footer em{color:var(--em);font-style:normal}
+
+/* ── RESPONSIVE ── */
+@media(max-width:760px){
+  #mGrid,#ctaRow{grid-template-columns:1fr!important}
+  .rg{grid-template-columns:1fr 1fr}.card{padding:1.2rem}}
+@media(max-width:400px){.rg{grid-template-columns:1fr}}
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button{-webkit-appearance:none;margin:0}
+
+/* ── PRICING TIER BUTTONS ── */
+.tier-btns{display:flex;gap:.6rem;flex-wrap:wrap;margin-bottom:1rem}
+.btn-tier{flex:1;min-width:80px;padding:.6rem .5rem;border-radius:.72rem;
+  font-family:inherit;font-size:.8rem;font-weight:800;cursor:pointer;
+  transition:all .22s;border:2px solid transparent;text-align:center}
+.btn-tier.premium{background:#1A0F00;border-color:#B8860B;color:#FFD700}
+.btn-tier.premium:hover,.btn-tier.premium.active{background:#3A2000;border-color:#FFD700;box-shadow:0 0 14px rgba(255,215,0,.35)}
+.btn-tier.professional{background:#0A2018;border-color:var(--em);color:var(--em-b)}
+.btn-tier.professional:hover,.btn-tier.professional.active{background:#0D2A1C;border-color:var(--em-b);box-shadow:0 0 14px var(--em-g)}
+.btn-tier.economic{background:#100A1A;border-color:#7C4DFF;color:#CE93D8}
+.btn-tier.economic:hover,.btn-tier.economic.active{background:#1A0F2E;border-color:#CE93D8;box-shadow:0 0 14px rgba(206,147,216,.3)}
+
+/* ── MARKUP / MARGIN FIELD ── */
+.markup-wrap{background:#0A1E10;border:1px dashed #267347;border-radius:.75rem;padding:.9rem 1rem;margin-bottom:1rem}
+.markup-wrap label{color:#4EEAAA;font-weight:800;font-size:.83rem}
+.markup-profit{margin-top:.55rem;padding:.55rem .85rem;border-radius:.6rem;
+  background:#0D2A1C;border:1px solid #10B981;
+  font-size:.82rem;font-weight:700;color:#FFD95A;line-height:1.6}
+/* markup input ltr */
+#markupPct{direction:ltr;text-align:center;letter-spacing:.05em}
+
+/* ── COMPLIANCE BADGE ── */
+.compliance-ok{margin-top:.6rem;padding:.45rem .75rem;border-radius:.6rem;
+  background:#0A2016;border:1px solid #10B981;
+  font-size:.8rem;font-weight:700;color:#4EEAAA;display:none}
+.compliance-warn{margin-top:.6rem;padding:.45rem .75rem;border-radius:.6rem;
+  background:#1A0A0A;border:1px solid #5A1A1A;
+  font-size:.8rem;color:#FCA5A5;display:none}
+
+/* ── SPEC COPY BUTTON ── */
+.btn-spec-copy{display:flex;align-items:center;justify-content:center;gap:.5rem;
+  width:100%;padding:.75rem;margin-top:.6rem;
+  background:#0A1E30;border:1px dashed #3B82F6;border-radius:.72rem;
+  font-family:inherit;font-size:.86rem;font-weight:700;color:#7CB9FF;
+  cursor:pointer;transition:all .22s}
+.btn-spec-copy:hover{background:#0D2540;border-color:#60A5FA}
+</style>
+</head>
+<body>
+<!-- GTM noscript -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-XXXXXXX" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<div class="bg-grid"></div>
+<div class="orb o1"></div><div class="orb o2"></div><div class="orb o3"></div>
+
+<!-- ══════════════════════════════════════
+  LEAD CAPTURE MODAL (shown first visit)
+══════════════════════════════════════ -->
+<div id="leadOverlay">
+  <div class="lead-box">
+    <div class="lead-logo">CAMORA PRO</div>
+    <div class="lead-tag">نظام مقايسات التيار الخفيف الذكي 2026</div>
+    <div class="lead-title">🚀 ابدأ التسعير المجاني الآن</div>
+    <p class="lead-sub">أدخل بياناتك لفتح منظومة حساب المقايسات الاحترافية الكاملة<br/>مجاناً — لا يوجد بطاقة ائتمان مطلوبة</p>
+    <div class="lead-field">
+      <label>👤 الاسم التعاوني / اسم الشركة</label>
+      <input type="text" id="ldName" placeholder="مثال: مهندس أحمد / شركة الأمان للتقنيات"/>
+    </div>
+    <div class="lead-field">
+      <label>📱 رقم الواتساب (مع كود الدولة)</label>
+      <input type="text" id="ldPhone" placeholder="مثال: 00201012345678" dir="ltr"/>
+    </div>
+    <div class="lead-field">
+      <label>📧 البريد الإلكتروني</label>
+      <input type="email" id="ldEmail" placeholder="example@company.com" dir="ltr"/>
+    </div>
+    <div id="leadErr"></div>
+    <button class="btn-lead" id="btnLead">ابدأ التسعير المجاني ← مجاناً 100%</button>
+    <p class="lead-note">🔒 بياناتك محمية · لن يتم مشاركتها · نستخدمها فقط للتواصل الفني معك</p>
+  </div>
+</div>
+
+<div id="pBanner">🎉 تم تفعيل الباقة المميزة بنجاح! يمكنك الآن تحميل وطباعة المقايسات وحفظ المشاريع بلا حدود</div>
+
+<!-- ══ ARCHIVE DASHBOARD ══ -->
+<div id="archiveBar" class="wrap">
+  <div class="arch-hdr" onclick="toggleArch()">
+    <span>📂 مقايساتي ومشاريعي المحفوظة</span>
+    <div style="display:flex;align-items:center;gap:.7rem">
+      <span id="archCountBadge" style="font-size:.75rem;color:var(--tx-d)"></span>
+      <span id="archArr" style="font-size:.85rem;transition:transform .28s;color:var(--tx-d)">▼</span>
+    </div>
+  </div>
+  <div class="arch-body" id="archBody">
+    <div class="arch-inner">
+      <div id="archContent"><div class="arch-empty">📋 لا توجد مقايسات محفوظة بعد. أنشئ مقايسة واضغط "💾 حفظ في الأرشيف"</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ HEADER ══ -->
+<header class="fu">
+  <div class="l-badge"><span class="l-brand">CAMORA PRO</span>&nbsp;·&nbsp;v11 · نظام مقايسات التيار الخفيف 2026</div>
+  <h1>حاسبة كاميرات المراقبة الذكية</h1>
+  <p class="subtitle">احسب التخزين · الطاقة · السويتشات · الفايبر · BOQ كامل بمعايير ONVIF والشروط الحكومية للخليج ومصر</p>
+  <div class="lock-ind" id="lockInd">🔒 ميزة PDF &amp; الأرشيف محمية — الباقة المجانية (2 مشاريع)</div>
+</header>
+
+<!-- ══ MAIN GRID ══ -->
+<div class="wrap" style="padding-bottom:3rem">
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.35rem" id="mGrid">
+
+    <!-- INPUTS COL -->
+    <div class="fu d1">
+      <div class="card">
+        <div class="s-title">⚙️ بيانات المشروع الأساسية</div>
+        <div class="fg">
+          <label>🏗️ اسم المشروع / الموقع</label>
+          <div class="iw"><input type="text" id="projName" placeholder="مثال: مجمع برج النيل — القاهرة"/><span class="ii">✏️</span></div>
+        </div>
+        <div class="fg">
+          <label>🏢 اسم الشركة / المقاول</label>
+          <div class="iw"><input type="text" id="coName" placeholder="شركة الأمان للتقنيات الأمنية"/><span class="ii">🏢</span></div>
+        </div>
+        <div class="fg">
+          <label>📡 نظام الكاميرات</label>
+          <div class="iw sw"><select id="camSystem" onchange="calculate()">
+            <option value="ip">IP Network (PoE) — الافتراضي</option>
+            <option value="analog">Analog / HD-TVI / HD-CVI</option>
+          </select><span class="ii">📡</span></div>
+        </div>
+        <div class="fg">
+          <label>🏗️ بيئة وموقع التركيب</label>
+          <div class="iw sw"><select id="installEnv" onchange="calculate()">
+            <option value="indoor">داخلي — إداري ومكاتب</option>
+            <option value="outdoor">خارجي — أسوار ومساحات مفتوحة</option>
+            <option value="industrial">صناعي — هناجر وارتفاعات</option>
+          </select><span class="ii">🏗️</span></div>
+          <span class="field-tip">📌 يحسب الأعمدة والعلب المقاومة للماء IP66 للخارجي، ويرفع مصنعيات الصناعي 25% تلقائياً</span>
+        </div>
+        <div class="two-col">
+          <div class="fg">
+            <label>📷 عدد الكاميرات</label>
+            <div class="iw"><input type="number" id="camCount" value="16" min="1" max="9999"/><span class="ii">🎥</span></div>
+          </div>
+          <div class="fg">
+            <label>🕐 ساعات التسجيل/يوم</label>
+            <div class="iw"><input type="number" id="hpd" value="24" min="1" max="24"/><span class="ii">⏱️</span></div>
+          </div>
+        </div>
+        <div class="fg">
+          <label>🖥️ دقة الكاميرا</label>
+          <div class="iw sw"><select id="res">
+            <option value="2">2MP — Full HD 1080p</option>
+            <option value="5" selected>5MP — Super HD</option>
+            <option value="8">8MP — 4K Ultra HD</option>
+          </select><span class="ii">🔍</span></div>
+          <span class="field-tip">🔍 تؤثر مباشرة على سعة التخزين والضغط المطلوب — 5MP هي الحد الأدنى لاشتراطات الأمن العام 2026</span>
+        </div>
+        <div class="fg">
+          <label>🗜️ ضغط الفيديو</label>
+          <div class="iw sw"><select id="comp">
+            <option value="h264">H.264 — القياسي</option>
+            <option value="h265" selected>H.265+ — الذكي (توفير 50%)</option>
+          </select><span class="ii">⚡</span></div>
+        </div>
+        <div class="fg">
+          <label>📅 مدة الاحتفاظ بالتسجيلات</label>
+          <div class="chips">
+            <span class="chip" data-d="7">7 أيام</span>
+            <span class="chip on" data-d="31">31 يوم</span>
+            <span class="chip" data-d="60">60 يوم</span>
+            <span class="chip" data-d="90">90 يوم</span>
+          </div>
+          <div class="iw"><input type="number" id="days" value="31" min="1" max="365"/><span class="ii">📆</span></div>
+        </div>
+        <div class="fg">
+          <label>💰 عملة المقايسة</label>
+          <div class="iw sw"><select id="currency">
+            <option value="EGP">جنيه مصري — EGP</option>
+            <option value="SAR">ريال سعودي — SAR</option>
+            <option value="AED">درهم إماراتي — AED</option>
+            <option value="KWD">دينار كويتي — KWD</option>
+            <option value="USD">دولار أمريكي — USD</option>
+          </select><span class="ii">💱</span></div>
+        </div>
+        <div class="fg">
+          <label>🔄 نوع الكاميرات</label>
+          <div class="trow">
+            <div class="tog" id="ptzT" onclick="togglePTZ()" role="switch" aria-checked="false"><div class="tknob"></div></div>
+            <span class="tlbl" id="ptzL">كاميرات ثابتة Fixed (7W)</span>
+          </div>
+        </div>
+        <div id="analogHint" class="analog-note">
+          ⚠️ نظام أنالوج: يتم استبدال بنود الـ Patch Panel والـ Patch Cords بأطراف BNC + DC تلقائياً.
+        </div>
+
+        <!-- ADVANCED ACCORDION -->
+        <div style="margin-top:1rem">
+          <div class="acc-hdr" id="accHdr" onclick="toggleAcc()">
+            <span>⚙️ خيارات المقاولات والتسعير المتقدمة (اختياري)</span>
+            <span class="acc-arrow" id="accArr">▼</span>
+          </div>
+          <div class="acc-body" id="accBody">
+            <div class="acc-inner">
+
+              <!-- LOGO + STAMP -->
+              <div class="two-col" style="margin-bottom:1rem">
+                <div class="fg" style="margin:0">
+                  <label>🖼️ شعار الشركة (Logo)</label>
+                  <div class="upload-box" onclick="document.getElementById('logoFile').click()">
+                    <div style="font-size:.78rem;color:var(--tx-d)">انقر لرفع الشعار</div>
+                    <div style="font-size:.7rem;color:var(--tx-d);margin-top:.18rem">PNG/JPG/SVG</div>
+                    <img id="logoPrev" class="upload-preview" alt="logo"/>
+                    <input type="file" id="logoFile" accept="image/*" onchange="handleUpload('logo',this)"/>
+                  </div>
+                </div>
+                <div class="fg" style="margin:0">
+                  <label>🔏 الختم / التوقيع الرقمي</label>
+                  <div class="upload-box" onclick="document.getElementById('stampFile').click()">
+                    <div style="font-size:.78rem;color:var(--tx-d)">انقر لرفع الختم</div>
+                    <div style="font-size:.7rem;color:var(--tx-d);margin-top:.18rem">PNG شفاف مفضل</div>
+                    <img id="stampPrev" class="upload-preview" alt="stamp"/>
+                    <input type="file" id="stampFile" accept="image/*" onchange="handleUpload('stamp',this)"/>
+                  </div>
+                </div>
+              </div>
+
+              <!-- PDF THEME + LANG -->
+              <div class="two-col">
+                <div class="fg">
+                  <label>🎨 ثيم التقرير المطبوع</label>
+                  <div class="theme-pills">
+                    <span class="tpill on" data-t="classic" onclick="selectTheme(this)">⬛ رسمي</span>
+                    <span class="tpill" data-t="navy" onclick="selectTheme(this)">🔷 كحلي</span>
+                    <span class="tpill" data-t="emerald" onclick="selectTheme(this)">💚 زمردي</span>
+                  </div>
+                </div>
+                <div class="fg">
+                  <label>🌐 لغة التقرير</label>
+                  <div class="iw sw"><select id="pdfLang">
+                    <option value="ar">العربية</option>
+                    <option value="en">English</option>
+                  </select><span class="ii">🌍</span></div>
+                </div>
+              </div>
+
+              <!-- PRICING + TRAY -->
+              <div class="two-col">
+                <div class="fg">
+                  <label>📋 طريقة عرض السعر</label>
+                  <div class="iw sw"><select id="priceMode" onchange="calculate()">
+                    <option value="split">منفصل — توريد وتركيب</option>
+                    <option value="combined">مدمج شامل</option>
+                  </select><span class="ii">📊</span></div>
+                </div>
+                <div class="fg">
+                  <label>🔌 مسارات الكابلات</label>
+                  <div class="iw sw"><select id="cableTray" onchange="calculate()">
+                    <option value="none">بدون مسارات</option>
+                    <option value="pvc" selected>مواسير PVC صلبة</option>
+                    <option value="flex">مواسير مرنة Flexible</option>
+                  </select><span class="ii">🔧</span></div>
+                </div>
+              </div>
+              <div class="fg">
+                <label>📏 متوسط طول الكابل لكل كاميرا (متر)</label>
+                <div class="iw"><input type="number" id="cableLen" value="30" min="5" max="500"/><span class="ii">📐</span></div>
+              </div>
+
+              <!-- SWITCH BRAND -->
+              <div class="fg">
+                <label>🔀 براند السويتشات الشبكية</label>
+                <div class="iw sw"><select id="swBrand" onchange="calculate()">
+                  <option value="Hikvision">Hikvision</option>
+                  <option value="Dahua">Dahua</option>
+                  <option value="TP-Link" selected>TP-Link</option>
+                  <option value="Cisco">Cisco</option>
+                </select><span class="ii">🌐</span></div>
+              </div>
+
+              <!-- FIBER OPTIC -->
+              <div class="cbrow">
+                <input type="checkbox" id="fiberCheck" onchange="toggleFiber()"/>
+                <label for="fiberCheck">تفعيل ربط شبكة الفايبر (Fiber Optic Link)</label>
+              </div>
+              <div id="fiberFields">
+                <div class="two-col">
+                  <div class="fg" style="margin:0">
+                    <label>📡 إجمالي مسافة الفايبر (متر)</label>
+                    <div class="iw"><input type="number" id="fiberLen" value="200" min="10"/><span class="ii">📏</span></div>
+                  </div>
+                  <div class="fg" style="margin:0">
+                    <label>💰 سعر المتر (كابل فايبر)</label>
+                    <div class="iw"><input type="number" id="fiberPrice" value="15" min="1"/><span class="ii">💵</span></div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- TAX -->
+              <div class="fg" style="margin-top:.5rem">
+                <label>🧾 المنظومة الضريبية</label>
+                <div class="iw sw"><select id="taxMode" onchange="calculate()">
+                  <option value="vat_unified">ضريبة موحدة VAT (حسب العملة)</option>
+                  <option value="egypt_adv">نظام مقاولات مصر (14% توريد + 5% تركيبات)</option>
+                  <option value="none">بدون ضرائب — Net Price (إجمالي صافي)</option>
+                </select><span class="ii">🏛️</span></div>
+              </div>
+              <span class="field-tip">🧾 مصر: 14% ضريبة قيمة مضافة على التوريد + 5% ضريبة جدول على التركيب · الخليج: VAT موحد · Net Price: بدون ضرائب</span>
+              <div class="cbrow">
+                <input type="checkbox" id="insCheck" onchange="calculate()"/>
+                <label for="insCheck">تأمينات اجتماعية للموقع (3% من بند التركيبات)</label>
+              </div>
+
+              <!-- SLA -->
+              <div class="fg">
+                <label>🛡️ الضمان وعقد الصيانة (SLA)</label>
+                <div class="iw sw"><select id="slaMode" onchange="calculate()">
+                  <option value="standard">ضمان قياسي — سنة واحدة مجاناً</option>
+                  <option value="extended">ضمان ممتد — عامان مع زيارات دورية (+7% من المواد)</option>
+                  <option value="gold">باقة ذهبية SLA — استجابة 4 ساعات (+15% من المشروع)</option>
+                </select><span class="ii">🏅</span></div>
+              </div>
+
+              <!-- PAYMENT SCHEDULE -->
+              <div class="fg">
+                <label>💳 جدول الدفعات المالية</label>
+                <div class="iw sw"><select id="paySchedule" onchange="calculate()">
+                  <option value="std">قياسي 50% / 40% / 10%</option>
+                  <option value="corp">شركات 30% / 40% / 20% / 10%</option>
+                </select><span class="ii">📅</span></div>
+              </div>
+
+              <!-- SCREENS & RACKS -->
+              <div class="fg">
+                <label>📺 منظومة وشاشات العرض</label>
+                <div class="iw sw"><select id="monitorSel" onchange="calculate()">
+                  <option value="none">بدون شاشة (0)</option>
+                  <option value="mon32">شاشة 32" LED Surveillance Monitor — 1200 · 40W (+حامل 150)</option>
+                  <option value="mon43">شاشة 43" Pro 4K Monitor 7×24h (البند 8) — 2800 · 75W (+حامل 150)</option>
+                  <option value="mon55">شاشة 55" Surveillance LED Monitor — 4500 · 120W (+حامل 150)</option>
+                  <option value="vwall">منظومة فيديو وول Video Wall 2×2 (55") — 18000 · 400W</option>
+                </select><span class="ii">🖥️</span></div>
+              </div>
+              <div class="fg">
+                <label>🗄️ كابينة التجميع والـ Rack</label>
+                <div class="iw sw"><select id="rackSel" onchange="calculate()">
+                  <option value="none">بدون كابينة (0)</option>
+                  <option value="r6u">كابينة حائط 6U Wallmount — 900</option>
+                  <option value="r9u">كابينة حائط 9U — 1Fan, 1Shelf, PDU 6 Outlet (البند 2) — 1500</option>
+                  <option value="r12u">كابينة حائط 12U Wallmount — 2200</option>
+                  <option value="r24u">دولاب أرضي 24U Floorstanding Rack — 4500</option>
+                  <option value="r42u">دولاب أرضي 42U Server Rack (مواصفات ألمانية) — 8500</option>
+                </select><span class="ii">🗄️</span></div>
+              </div>
+
+              <!-- BRAND MANUAL INPUT -->
+              <div class="fg">
+                <label>🏷️ ماركة الأجهزة المقترحة (Manual Override)</label>
+                <div class="iw"><input type="text" id="brandManual" placeholder="مثال: Hikvision" oninput="this.dataset.manualSet=this.value?'1':'';calculate()"/><span class="ii">🏷️</span></div>
+                <span class="field-tip">🏷️ تُملأ تلقائياً حسب الباقة (Premium=Bosch, Professional=Hikvision, Economic=Dahua) — ويمكنك تعديلها يدوياً لتظهر في الـ PDF</span>
+              </div>
+
+              <!-- UPS BACKUP POWER -->
+              <div class="fg">
+                <label>🔋 نظام طوارئ واحتياطي الطاقة (UPS)</label>
+                <div class="iw sw"><select id="upsSel" onchange="calculate()">
+                  <option value="none">بدون UPS</option>
+                  <option value="15min">UPS احتياطي 15 دقيقة</option>
+                  <option value="30min">UPS احتياطي 30 دقيقة</option>
+                </select><span class="ii">🔋</span></div>
+                <span class="field-tip">🔋 يحسب السعة التلقائية (VA) من إجمالي الواط ÷ 0.7 ويختار الحجم التجاري الأنسب تلقائياً</span>
+              </div>
+
+              <!-- UNIT PRICES -->
+              <div class="s-title" style="margin-top:.8rem;font-size:.86rem">💰 أسعار وحدات المواد</div>
+              <div class="two-col">
+                <div class="fg"><label>سعر الكاميرا (وحدة)</label>
+                  <div class="iw"><input type="number" id="pCam" value="850" min="0"/><span class="ii">💵</span></div>
+                </div>
+                <div class="fg"><label>سعر الـ NVR / DVR</label>
+                  <div class="iw"><input type="number" id="pNvr" value="3200" min="0"/><span class="ii">🖥️</span></div>
+                </div>
+                <div class="fg"><label>سعر الهارد ديسك (وحدة)</label>
+                  <div class="iw"><input type="number" id="pHdd" value="1200" min="0"/><span class="ii">💾</span></div>
+                </div>
+                <div class="fg"><label>سعر تركيب الكاميرا</label>
+                  <div class="iw"><input type="number" id="pInst" value="200" min="0"/><span class="ii">🔩</span></div>
+                </div>
+              </div>
+
+              <!-- MARKUP / MARGIN -->
+              <div class="markup-wrap" id="markupWrap">
+                <label>💰 هامش الربح المستهدف % (للمقاول فقط)</label>
+                <span class="field-tip">💰 يحسب أرباحك الصافية ويرحلها لأسعار التوريد في الـ PDF دون علم العميل — لا يظهر في المطبوع أبداً</span>
+                <div class="iw" style="margin-top:.45rem">
+                  <input type="number" id="markupPct" value="0" min="0" max="200" placeholder="0" oninput="calculate()"/>
+                  <span class="ii">%</span>
+                </div>
+                <div class="markup-profit" id="markupProfit" style="display:none"></div>
+              </div>
+
+              <!-- AI SMART PASTE -->
+              <div class="s-title" style="margin-top:.8rem;font-size:.86rem">📋 اللصق السريع للمقايسات (AI Smart Paste)</div>
+              <div class="fg" style="margin-bottom:.6rem">
+                <label>الصق نص أي مقايسة أو ملخص فني لاستخراج البيانات تلقائياً</label>
+                <span class="field-tip">🤖 يستخرج: عدد الكاميرات، الأيام، اسم المشروع، الدقة، البيئة — ويملأ الحقول في ثانية</span>
+                <textarea class="ai-paste-area" id="aiPasteArea" placeholder="مثال: مشروع فيلا الأستاذ أحمد — 8 كاميرات 5MP خارجية — 30 يوم تخزين&#10;أو أي نص يحتوي على الكاميرات والأيام واسم المشروع..."></textarea>
+              </div>
+              <button class="btn-extract" onclick="smartPaste()">🤖 استخراج البيانات تلقائياً</button>
+
+            </div>
+          </div>
+        </div><!-- /accordion -->
+      </div>
+    </div><!-- /inputs col -->
+
+    <!-- RESULTS COL -->
+    <div class="fu d2">
+      <div class="card" style="height:100%">
+        <div class="s-title">📊 النتائج الفورية</div>
+        <div class="rg">
+          <div class="rc"><span class="ri">💾</span><div class="rv" id="vTB">0</div><div class="ru">تيرابايت (TB)</div><div class="rl">سعة التخزين</div></div>
+          <div class="rc gc"><span class="ri">🗄️</span><div class="rv" id="vHDD">0</div><div class="ru">هارد ديسك</div><div class="rl">عدد الهارد</div></div>
+          <div class="rc"><span class="ri">⚡</span><div class="rv" id="vW">0</div><div class="ru">واط (W)</div><div class="rl">استهلاك الطاقة</div></div>
+          <div class="rc"><span class="ri">🔀</span><div class="rv" id="vSW">0</div><div class="ru">سويتش PoE</div><div class="rl">عدد السويتشات</div></div>
+          <div class="rc uc"><span class="ri">🔋</span><div class="rv" id="vUPS">—</div><div class="ru">UPS (VA)</div><div class="rl">حجم الاحتياطي</div></div>
+        </div>
+        <div class="divider"></div>
+        <div class="hdd-strip">
+          <strong style="color:var(--em-b);display:block;margin-bottom:.38rem">💡 توصية الهارد والسويتشات:</strong>
+          <span id="hddTip">أدخل البيانات لعرض التوصية...</span>
+        </div>
+        <div class="bwrap">
+          <div class="blbls"><span>استخدام التخزين</span><span id="bPct">0 TB</span></div>
+          <div class="bbg"><div class="bfill" id="bFill" style="width:0%"></div></div>
+        </div>
+        <div class="divider"></div>
+        <div class="sbox" id="sumBox"><strong>ملخص المشروع:</strong><br/>أدخل البيانات لعرض الملخص التقني.</div>
+        <!-- COMPLIANCE BADGE -->
+        <div class="compliance-ok" id="complianceOk">🛡️ النظام ممتثل بنسبة 100% لاشتراطات الأمن العام والدفاع المدني والمواصفات الحكومية لعام 2026</div>
+        <div class="compliance-warn" id="complianceWarn">⚠️ لاستيفاء اشتراطات الأمن العام: يُوصى بدقة 5MP أو أعلى ومدة تخزين 31 يوم فأكثر</div>
+
+        <div class="sched-display" id="schedDisplay" style="display:none">
+          <div class="divider"></div>
+          <div class="s-title" style="font-size:.88rem">💳 جدول الدفعات المحسوبة</div>
+          <table class="sched-tbl" id="schedTable"></table>
+        </div>
+      </div>
+    </div>
+  </div><!-- /mGrid -->
+
+  <!-- BOQ TABLE -->
+  <div class="fu d3" style="margin-top:1.35rem">
+    <div class="card">
+      <div class="s-title">📋 جدول الكميات والأسعار (BOQ) — قابل للتعديل المباشر</div>
+
+      <!-- PRICING TIER BUTTONS -->
+      <div class="tier-btns">
+        <button class="btn-tier premium" onclick="applyTier('premium')">💎 باقة Premium</button>
+        <button class="btn-tier professional active" onclick="applyTier('professional')">🛠️ باقة Professional</button>
+        <button class="btn-tier economic" onclick="applyTier('economic')">🪙 باقة Economic</button>
+      </div>
+      <div style="font-size:.76rem;color:var(--tx-d);margin-bottom:.7rem">💡 انقر على أي خلية خضراء للتعديل — يُعاد الحساب فوراً · البنود الصفرية تُخفى تلقائياً في الـ PDF</div>
+      <div class="boq-wrap">
+        <table class="boq" id="boqTable">
+          <thead><tr>
+            <th>#</th><th>البند</th><th>الكمية</th><th>الوحدة</th><th>سعر الوحدة</th><th>الإجمالي</th>
+          </tr></thead>
+          <tbody id="boqBody"></tbody>
+        </table>
+      </div>
+      <div class="tafqeet-box" id="tafqeetTxt"></div>
+      <button class="btn-add-row" onclick="addCustomRow()">➕ إضافة بند مخصص للمقايسة يدوياً</button>
+      <button class="btn-spec-copy" onclick="copySpecSheet()">📋 نسخ المواصفات الفنية التفصيلية للمناقصة</button>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="fu d4" style="margin-top:1.35rem">
+    <div class="card">
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:.9rem" id="ctaRow">
+        <button class="btn-pdf" id="pdfBtn" onclick="handlePdf(); trackEvent('pdf_download')">
+          <span id="ldot">🔒</span><span>تحميل المقايسة الرسمية (PDF)</span><span>📄</span>
+        </button>
+        <button class="btn-save" onclick="handleSave()">
+          <span>💾</span><span>حفظ المقايسة في الأرشيف</span>
+        </button>
+        <button class="btn-sec" onclick="shareRes()">
+          <span>🔗</span><span>مشاركة النتائج</span>
+        </button>
+      </div>
+      <div style="margin-top:.8rem;display:flex;align-items:center;gap:.45rem;flex-wrap:wrap">
+        <span style="font-size:.71rem;color:var(--tx-d)">✅ معايير ONVIF 2025</span>
+        <span style="color:var(--tx-d);opacity:.4">·</span>
+        <span style="font-size:.71rem;color:var(--tx-d)">🔒 بياناتك محلية 100%</span>
+        <span style="color:var(--tx-d);opacity:.4">·</span>
+        <span style="font-size:.71rem;color:var(--tx-d)">⚡ حساب فوري</span>
+      </div>
+    </div>
+  </div>
+</div><!-- /wrap -->
+
+<footer class="fu">
+  <p>© 2026 <em>CAMORA PRO</em> v11 — نظام مقايسات التيار الخفيف الذكي · مصمم للسوق العربي</p>
+  <p style="margin-top:.28rem;opacity:.45">الأرقام تقديرية وتعتمد على معايير ONVIF الدولية ولا تُعدّ وثيقة قانونية ملزمة بدون توقيع رسمي</p>
+</footer>
+
+<!-- PAYWALL MODAL -->
+<div class="mover" id="mover" onclick="closeOvr(event)">
+  <div class="modal">
+    <button class="mcls" onclick="closeM()">✕</button>
+    <span class="micn">🚀</span>
+    <h2>CAMORA PRO — الباقة المميزة</h2>
+    <p class="msub">احصل على مقايسة رسمية كاملة بشعار شركتك وأرشفة مشاريع بلا حدود.</p>
+    <div class="price-tag">
+      <div class="amt">$15 <span style="font-size:1rem;color:var(--tx-d)">/ مشروع</span></div>
+      <div class="per">أو اشتراك شهري · ضمان استرداد 7 أيام</div>
+    </div>
+    <ul class="mfeats">
+      <li><span class="mfi">✅</span><span>PDF رسمي A4 بشعار وختم شركتك</span></li>
+      <li><span class="mfi">✅</span><span>أرشيف مشاريع بلا حدود (الباقة المجانية: 2 فقط)</span></li>
+      <li><span class="mfi">✅</span><span>BOQ كامل: سويتشات + فايبر + ضمانات SLA + أعمدة</span></li>
+      <li><span class="mfi">✅</span><span>جدول دفعات بالمبالغ الفعلية والتفقيط</span></li>
+      <li><span class="mfi">✅</span><span>نظام ضرائب مصر والخليج + وضع Net Price</span></li>
+      <li><span class="mfi">✅</span><span>3 ثيمات PDF + دعم White-Label</span></li>
+      <li><span class="mfi">✅</span><span>دعم فني مباشر واتساب</span></li>
+    </ul>
+    <div class="pay-div">اختر طريقة الدفع</div>
+    <a href="https://checkout.stripe.com/preview" target="_blank" rel="noopener" class="btn-stripe"
+       onclick="trackEvent('stripe_click')">
+      💳 الدفع بالفيزا / ماستركارد (الخليج والدولي)
+    </a>
+    <a href="https://egypt.paymob.com/preview" target="_blank" rel="noopener" class="btn-paymob"
+       onclick="trackEvent('paymob_click')">
+      🇪🇬 فودافون كاش / ميزة / كروت محلية (مصر)
+    </a>
+    <div class="act-wrap">
+      <label>🔑 كود التفعيل:</label>
+      <div class="act-row">
+        <input type="text" id="actInp" placeholder="XXXX0000" maxlength="20" autocomplete="off" spellcheck="false"/>
+        <button class="btn-act" onclick="doActivate()">تفعيل</button>
+      </div>
+      <div id="actMsg"></div>
+    </div>
+    <p class="mfootn">دفع آمن 100% · بلا عقود · ضمان الاسترداد خلال 7 أيام</p>
+  </div>
+</div>
+
+<!-- WHATSAPP FLOATING BUTTON -->
+<a id="wabtn" href="https://wa.me/447853501734" target="_blank" rel="noopener" title="تواصل مع الدعم الفني">
+  <div class="wa-tooltip">💬 تواصل مع الدعم الفني للمنصة</div>
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+  </svg>
+</a>
+<!-- ══════════════════════════════════════════════
+     CAMORA PRO v9 — JAVASCRIPT ENGINE
+══════════════════════════════════════════════ -->
+<script>
+/* ═══════════════════════════════
+   CONSTANTS & STATE
+═══════════════════════════════ */
+var ACT_CODE   = 'Camora2026';
+var LS_KEY     = 'camora_prem_v4';
+var ARCH_KEY   = 'camora_archive_v4';
+var LEAD_KEY   = 'camora_lead_v1';
+var FREE_LIMIT = 2;
+
+/* ── Webhook URL — replace with your Make / n8n endpoint ── */
+var webhookURL = 'https://script.google.com/macros/s/AKfycby3TulDwhE75rMyH7i88h2ehvZ6aSV4SLgjfWOJfliE-EU8kHD3pp39aaIXlLJ8TVXG/exec';
+
+var BR     = {2:{h264:4,h265:2}, 5:{h264:8,h265:4}, 8:{h264:16,h265:8}};
+var HDD_SZ = [1,2,4,6,8,10,12,14,16,18,20];
+var VAT    = {EGP:0.14, SAR:0.15, AED:0.05, KWD:0.0, USD:0.0};
+var CSYM   = {EGP:'ج.م', SAR:'ر.س', AED:'د.إ', KWD:'د.ك', USD:'$'};
+
+/* ══════════════════════════════════════════════════════════
+   MODULAR PRICING CONFIG — add new brands/tiers here only
+   Each tier: {mult: price_multiplier, brand: switch_brand,
+               label: display_name, camBrand: camera_brand}
+══════════════════════════════════════════════════════════ */
+var TIERS = {
+  premium:      {mult:1.30, brand:'Cisco',      camBrand:'Bosch',     label:'💎 Premium'},
+  professional: {mult:1.00, brand:'TP-Link',    camBrand:'Hikvision', label:'🛠️ Professional'},
+  economic:     {mult:0.80, brand:'TP-Link',    camBrand:'Dahua',     label:'🪙 Economic'}
+};
+var activeTier = 'professional'; /* default */
+
+/* ── BASE PRICES (never modified by tier/markup — source of truth) ── */
+var BASE_PRICES = {pCam:850, pNvr:3200, pHdd:1200, pInst:200};
+
+/* ── UPS COMMERCIAL SIZES (VA) ── */
+var UPS_SIZES = [650, 1000, 1500, 2000, 3000, 5000, 10000];
+
+/* ── UPS PRICE TABLE (VA → price per unit) ── */
+var UPS_PRICE = {650:900, 1000:1400, 1500:2100, 2000:2900, 3000:4500, 5000:7500, 10000:14000};
+
+/* ── UPS AUTONOMY (backup minutes → load factor) ── */
+var UPS_RUNTIME = {none:0, '15min':0.25, '30min':0.50}; /* load-hours */
+
+/* ══════════════════════════════════════════════════════════
+   TECHNICAL SPECIFICATION TEMPLATES
+   Add new system specs here (fire alarm, access control…)
+══════════════════════════════════════════════════════════ */
+var SPEC_TEMPLATES = {
+  camera_ip: function(res,comp,brand){
+    return 'كاميرا مراقبة IP '+brand+' بدقة '+res+'MP — ضغط '+comp.toUpperCase()+
+      ' — شكل Dome/Bullet معتمد — حساسية ≤0.01 Lux — IR مدى لا يقل عن 30م — IP67 — معتمدة CE/FCC';
+  },
+  nvr: function(brand){
+    return 'جهاز تسجيل NVR '+brand+' — بروتوكول ONVIF Profile S/G — دعم H.265+/H.264 — معالج مزدوج — RAID دعم — واجهة HDMI 4K — يدعم القراءة والكتابة المتزامنة — مزود بـ PoE مدمج — يدعم 16 كاميرا كحد أدنى للوحدة الواحدة';
+  },
+  hdd: function(tb){
+    return 'هارد ديسك للمراقبة بسعة '+tb+'TB — معتمد للتشغيل المستمر 7×24h — معدل MTBF لا يقل عن 1,000,000 ساعة — مخصص للمراقبة (Surveillance Grade) — مضمون لمدة 3 سنوات';
+  },
+  switch_poe: function(ports,brand){
+    return 'سويتش شبكي '+brand+' — '+ports+' منفذ PoE+ IEEE802.3af/at — منفذا Uplink Gigabit — إدارة SNMP — حماية من البرق 6KV — IEEE802.3az — معتمد CE/FCC — جهد تشغيل 100-240V AC';
+  },
+  rack: function(u,name){
+    return 'كابينة توزيع '+u+'U '+name+' — هيكل فولاذي بسماكة 1.5mm — طلاء بودرة كوت مقاوم للصدأ — تهوية طبيعية وميكانيكية — مزودة بـ PDU وحلقات تثبيت الكابلات — قفل مفتاح أمان — مواصفة IEC 60297';
+  },
+  fiber: function(len){
+    return 'كابل ألياف بصرية Singlemode OS2 9/125μm بطول '+len+'م — حماية LSZH — مواصفة ITU-T G.652D — معامل انعكاس أقل من -55dB — حماية ميكانيكية G.657 — صنع وفق مواصفات IEC 60793';
+  },
+  cable_utp: function(len){
+    return 'كابل UTP Cat6 نحاس خالص 23AWG بطول '+len+'م — معتمد ANSI/TIA-568-C.2 — ناجح في اختبار NEXT/FEXT/RL — عازل LSZH مقاوم للحريق — مقاوم للتأريض CMX';
+  },
+  pole: function(count){
+    return 'عمود حديدي مجلفن بارتفاع 4م×∅80mm بكمية '+count+' قطعة — مطلي بودرة حرارية — مقاوم للعوامل الجوية والأشعة فوق البنفسجية — مزود بقاعدة خرسانية مدمجة 50×50×80cm C25 — يتحمل حمولة رأسية لا تقل عن 50kg';
+  }
+};
+
+/* ── MONITOR SPECS ── */
+var MONITORS = {
+  none:  {name:'',                                                    price:0,    watt:0,   instP:0},
+  mon32: {name:'شاشة مراقبة 32" LED Surveillance Monitor',           price:1200, watt:40,  instP:150},
+  mon43: {name:'شاشة Pro 4K Monitor 43" 7×24h (البند 8)',           price:2800, watt:75,  instP:200},
+  mon55: {name:'شاشة مراقبة 55" Surveillance LED Monitor',           price:4500, watt:120, instP:250},
+  vwall: {name:'منظومة فيديو وول Video Wall 2×2 (55")',              price:18000,watt:400, instP:1200}
+};
+
+/* ── RACK SPECS ── */
+var RACKS = {
+  none:  {name:'',                                                                  price:0,   instP:0},
+  r6u:   {name:'كابينة حائط 6U Wallmount Cabinet',                                 price:900,  instP:200},
+  r9u:   {name:'كابينة حائط 9U Wallmount — 1Fan, 1Shelf, PDU 6 Outlet (البند 2)', price:1500, instP:250},
+  r12u:  {name:'كابينة حائط 12U Wallmount Cabinet',                                price:2200, instP:300},
+  r24u:  {name:'دولاب أرضي 24U Floorstanding Rack',                                price:4500, instP:400},
+  r42u:  {name:'دولاب أرضي 42U Server Rack (مواصفات ألمانية)',                     price:8500, instP:600}
+};
+
+/* ── INSTALL ENVIRONMENT SPECS ── */
+var ENV_SPECS = {
+  indoor:     {label:'داخلي',    instMult:1.00, jboxIP66:false, flexConduit:false},
+  outdoor:    {label:'خارجي',    instMult:1.00, jboxIP66:true,  flexConduit:false},
+  industrial: {label:'صناعي',    instMult:1.25, jboxIP66:false, flexConduit:true}
+};
+
+var isPTZ    = false;
+var isPrem   = false;
+var pdfTheme = 'classic';
+var boqData  = {};
+var logoB64  = localStorage.getItem('camora_logo')  || '';
+var stampB64 = localStorage.getItem('camora_stamp') || '';
+
+/* restore previews */
+(function(){
+  if(logoB64){var p=document.getElementById('logoPrev');if(p){p.src=logoB64;p.style.display='block';}}
+  if(stampB64){var p=document.getElementById('stampPrev');if(p){p.src=stampB64;p.style.display='block';}}
+})();
+
+/* ═══════════════════════════════
+   TRACKING ENGINE
+═══════════════════════════════ */
+function trackEvent(name, params){
+  try{
+    /* Meta Pixel */
+    if(typeof fbq === 'function'){
+      fbq('track', name, params||{});
+    }
+    /* Google dataLayer */
+    if(window.dataLayer){
+      window.dataLayer.push({event: 'camora_'+name});
+    }
+  }catch(e){}
+}
+
+/* ═══════════════════════════════
+   LEAD CAPTURE
+═══════════════════════════════ */
+function checkLead(){
+  var lead = localStorage.getItem(LEAD_KEY);
+  if(lead){
+    /* Already submitted — hide overlay */
+    var ov = document.getElementById('leadOverlay');
+    if(ov) ov.style.display = 'none';
+    return;
+  }
+  /* Show overlay (it's visible by default) */
+}
+
+function submitLead(){
+  var name  = (document.getElementById('ldName').value  || '').trim();
+  var phone = (document.getElementById('ldPhone').value || '').trim();
+  var email = (document.getElementById('ldEmail').value || '').trim();
+  var errEl = document.getElementById('leadErr');
+
+  if(!name || !phone){
+    errEl.textContent = '⚠️ يرجى إدخال الاسم ورقم الواتساب على الأقل';
+    return;
+  }
+  errEl.textContent = '';
+
+  var payload = {
+    name:      name,
+    whatsapp:  phone,
+    email:     email,
+    source:    'CAMORA_PRO',
+    timestamp: new Date().toISOString(),
+    userAgent: navigator.userAgent
+  };
+
+  /* Save locally */
+  localStorage.setItem(LEAD_KEY, JSON.stringify(payload));
+
+  /* Fire to Webhook (non-blocking) */
+  try{
+    fetch(webhookURL, {
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body: JSON.stringify(payload),
+      mode: 'no-cors'
+    }).catch(function(){});
+  }catch(e){}
+
+  /* Tracking */
+  trackEvent('lead_submit', {name:name});
+
+  /* Dismiss overlay */
+  var ov = document.getElementById('leadOverlay');
+  if(ov){ ov.style.opacity = '0'; ov.style.transition = 'opacity .4s'; setTimeout(function(){ ov.style.display='none'; }, 400); }
+}
+
+/* ═══════════════════════════════
+   PRICING TIER ENGINE
+═══════════════════════════════ */
+function applyTier(tier){
+  activeTier = tier;
+  var cfg = TIERS[tier] || TIERS.professional;
+
+  /* Update button states */
+  document.querySelectorAll('.btn-tier').forEach(function(b){
+    b.classList.toggle('active', b.classList.contains(tier));
+  });
+
+  /* Apply brand to switch selector */
+  var swEl = document.getElementById('swBrand');
+  if(swEl) swEl.value = cfg.brand;
+
+  /* DO NOT write scaled prices to inputs — double-pricing bug prevention.
+     buildBOQ reads BASE_PRICES and applies tier mult + markup mult once. */
+  /* Sync brand field to tier default (only if not manually overridden) */
+  var bEl = document.getElementById('brandManual');
+  if(bEl && !bEl.dataset.manualSet){
+    bEl.value = cfg.camBrand;
+  }
+  calculate();
+}
+
+/* ═══════════════════════════════
+   PAYWALL
+═══════════════════════════════ */
+function checkPrem(){
+  var p = new URLSearchParams(window.location.search);
+  if(p.get('paid')==='true' || p.get('status')==='success'){
+    localStorage.setItem(LS_KEY,'true');
+    window.history.replaceState({},'',window.location.pathname);
+    setPremUI(true); return;
+  }
+  if(localStorage.getItem(LS_KEY)==='true'){setPremUI(false); return;}
+  setFreeUI();
+}
+function setPremUI(banner){
+  isPrem=true;
+  if(banner) document.getElementById('pBanner').style.display='block';
+  var ind = document.getElementById('lockInd');
+  ind.textContent='✅ الباقة المميزة مفعّلة — PDF وأرشيف بلا حدود';
+  ind.classList.add('ok');
+  var btn = document.getElementById('pdfBtn');
+  document.getElementById('ldot').textContent='✅';
+  btn.style.background='linear-gradient(135deg,#047857,#10B981,#34D399)';
+  btn.style.color='#fff';
+  btn.style.boxShadow='0 6px 26px rgba(16,185,129,.42)';
+}
+function setFreeUI(){
+  isPrem=false;
+  document.getElementById('lockInd').textContent='🔒 ميزة PDF & الأرشيف محمية — الباقة المجانية (2 مشاريع)';
+  document.getElementById('lockInd').classList.remove('ok');
+  document.getElementById('ldot').textContent='🔒';
+}
+function handlePdf(){ isPrem ? generatePDF() : openM(); }
+
+/* ═══════════════════════════════
+   ARCHIVE / DASHBOARD
+═══════════════════════════════ */
+function getArchive(){ try{return JSON.parse(localStorage.getItem(ARCH_KEY))||[];}catch(e){return[];} }
+function saveArchive(a){ localStorage.setItem(ARCH_KEY,JSON.stringify(a)); }
+
+function toggleArch(){
+  var b=document.getElementById('archBody'), a=document.getElementById('archArr');
+  var open=b.classList.toggle('open');
+  a.style.transform=open?'rotate(180deg)':'rotate(0deg)';
+  renderArchive();
+}
+
+function renderArchive(){
+  var arch=getArchive();
+  document.getElementById('archCountBadge').textContent='('+arch.length+' مشروع محفوظ)';
+  var cont=document.getElementById('archContent');
+  if(!arch.length){
+    cont.innerHTML='<div class="arch-empty">📋 لا توجد مقايسات محفوظة. أنشئ مقايسة واضغط "💾 حفظ في الأرشيف"</div>';
+    return;
+  }
+  var html='<div class="arch-wrap"><table class="arch-tbl"><thead><tr>'+
+    '<th>#</th><th>اسم المشروع</th><th>التاريخ</th><th>الإجمالي الشامل</th><th>إجراءات</th>'+
+    '</tr></thead><tbody>';
+  arch.forEach(function(item,i){
+    html+='<tr><td>'+(i+1)+'</td>'+
+      '<td><strong style="color:var(--tx)">'+escH(item.projName||'—')+'</strong></td>'+
+      '<td>'+escH(item.date||'—')+'</td>'+
+      '<td style="color:var(--gold-b);font-weight:700;direction:ltr;text-align:left">'+
+        (item.grand?fmtN(item.grand)+' '+(item.sym||''):'—')+'</td>'+
+      '<td style="display:flex;gap:.4rem;flex-wrap:wrap">'+
+        '<button class="btn-arch-open" onclick="loadFromArchive('+i+')">⚙️ فتح وتعديل</button>'+
+        '<button class="btn-arch-del" onclick="deleteFromArchive('+i+')">❌ حذف</button>'+
+      '</td></tr>';
+  });
+  html+='</tbody></table></div>';
+  cont.innerHTML=html;
+}
+
+function handleSave(){
+  var arch=getArchive();
+  if(!isPrem && arch.length>=FREE_LIMIT){ openM(); return; }
+  if(!boqData||!boqData.grand){alert('يرجى إجراء الحساب أولاً قبل الحفظ'); return;}
+  var now=new Date();
+  var dateStr=now.toLocaleDateString('ar-EG',{year:'numeric',month:'short',day:'numeric'})+
+    ' '+now.toLocaleTimeString('ar-EG',{hour:'2-digit',minute:'2-digit'});
+  var g=function(id,def){var e=document.getElementById(id);return e?e.value:def;};
+  var gc=function(id){var e=document.getElementById(id);return e?e.checked:false;};
+  var snap={
+    projName:g('projName',''),coName:g('coName',''),date:dateStr,
+    grand:boqData.grand,sym:boqData.sym,cur:boqData.cur,
+    camCount:g('camCount',16),hpd:g('hpd',24),res:g('res',5),comp:g('comp','h265'),
+    days:g('days',31),currency:g('currency','EGP'),ptzState:isPTZ,
+    pCam:g('pCam',850),pNvr:g('pNvr',3200),pHdd:g('pHdd',1200),pInst:g('pInst',200),
+    taxMode:g('taxMode','vat_unified'),priceMode:g('priceMode','split'),
+    cableTray:g('cableTray','pvc'),cableLen:g('cableLen',30),
+    slaMode:g('slaMode','standard'),paySchedule:g('paySchedule','std'),
+    insCheck:gc('insCheck'),fiberCheck:gc('fiberCheck'),
+    fiberLen:g('fiberLen',200),fiberPrice:g('fiberPrice',15),
+    swBrand:g('swBrand','TP-Link'),
+    monitorSel:g('monitorSel','none'),rackSel:g('rackSel','none'),
+    upsSel:g('upsSel','none'),
+    brandManual:g('brandManual',''),
+    camSystem:g('camSystem','ip'),installEnv:g('installEnv','indoor'),
+    boqRows:captureBoqRows()
+  };
+  arch.push(snap); saveArchive(arch);
+  var b=document.getElementById('archBody'), a=document.getElementById('archArr');
+  if(!b.classList.contains('open')){b.classList.add('open');a.style.transform='rotate(180deg)';}
+  renderArchive();
+  var btn=document.querySelector('.btn-save'), orig=btn.innerHTML;
+  btn.innerHTML='<span>✅</span><span>تم الحفظ بنجاح!</span>';
+  btn.style.background='rgba(16,185,129,.25)';
+  setTimeout(function(){btn.innerHTML=orig;btn.style.background='';},2000);
+}
+
+function captureBoqRows(){
+  var rows=[];
+  document.querySelectorAll('#boqBody tr').forEach(function(tr){
+    var nc=tr.querySelector('[data-col=name]'), qc=tr.querySelector('[data-col=qty]'), uc=tr.querySelector('[data-col=up]');
+    if(nc&&qc&&uc) rows.push({name:nc.innerText,qty:parseFloat(qc.innerText)||0,up:parseFloat(uc.innerText)||0});
+  });
+  return rows;
+}
+
+function loadFromArchive(idx){
+  var arch=getArchive(); var s=arch[idx]; if(!s) return;
+  var sv=function(id,v){var e=document.getElementById(id);if(e)e.value=v;};
+  sv('projName',s.projName||''); sv('coName',s.coName||'');
+  sv('camCount',s.camCount||16); sv('hpd',s.hpd||24);
+  sv('res',s.res||5); sv('comp',s.comp||'h265');
+  sv('days',s.days||31); sv('currency',s.currency||'EGP');
+  sv('pCam',s.pCam||850); sv('pNvr',s.pNvr||3200);
+  sv('pHdd',s.pHdd||1200); sv('pInst',s.pInst||200);
+  sv('taxMode',s.taxMode||'vat_unified'); sv('priceMode',s.priceMode||'split');
+  sv('cableTray',s.cableTray||'pvc'); sv('cableLen',s.cableLen||30);
+  sv('slaMode',s.slaMode||'standard'); sv('paySchedule',s.paySchedule||'std');
+  sv('swBrand',s.swBrand||'TP-Link');
+  sv('monitorSel',s.monitorSel||'none'); sv('rackSel',s.rackSel||'none');
+  sv('camSystem',s.camSystem||'ip'); sv('installEnv',s.installEnv||'indoor');
+  sv('upsSel', s.upsSel||'none');
+  var bEl2=document.getElementById('brandManual');
+  if(bEl2&&s.brandManual){bEl2.value=s.brandManual;bEl2.dataset.manualSet=s.brandManual?'1':'';}
+  var e_ins=document.getElementById('insCheck'); if(e_ins) e_ins.checked=s.insCheck||false;
+  var fc=document.getElementById('fiberCheck'); if(fc){fc.checked=s.fiberCheck||false;toggleFiber();}
+  sv('fiberLen',s.fiberLen||200); sv('fiberPrice',s.fiberPrice||15);
+  isPTZ=s.ptzState||false;
+  var t=document.getElementById('ptzT');
+  if(t){t.classList.toggle('on',isPTZ);t.setAttribute('aria-checked',isPTZ);}
+  document.getElementById('ptzL').textContent=isPTZ?'كاميرات PTZ متحركة (15W)':'كاميرات ثابتة Fixed (7W)';
+  document.querySelectorAll('.chip').forEach(function(c){c.classList.toggle('on',parseInt(c.dataset.d)===parseInt(s.days));});
+  calculate();
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function deleteFromArchive(idx){
+  if(!confirm('هل تريد حذف هذه المقايسة المحفوظة؟')) return;
+  var arch=getArchive(); arch.splice(idx,1); saveArchive(arch); renderArchive();
+}
+
+function escH(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+
+/* ═══════════════════════════════
+   AI SMART PASTE
+═══════════════════════════════ */
+function smartPaste(){
+  var txt = (document.getElementById('aiPasteArea').value || '').trim();
+  if(!txt){ alert('يرجى لصق النص أولاً'); return; }
+
+  /* Extract camera count */
+  var camMatch = txt.match(/(\d+)\s*(كاميرا|camera|cam)/i);
+  if(camMatch){
+    document.getElementById('camCount').value = parseInt(camMatch[1]);
+  }
+
+  /* Extract retention days */
+  var daysMatch = txt.match(/(\d+)\s*(يوم|day)/i);
+  if(daysMatch){
+    var d = parseInt(daysMatch[1]);
+    document.getElementById('days').value = d;
+    document.querySelectorAll('.chip').forEach(function(c){c.classList.toggle('on',parseInt(c.dataset.d)===d);});
+  }
+
+  /* Extract project name — first line or text before dash */
+  var lines = txt.split(/\n/);
+  var firstLine = (lines[0]||'').trim();
+  if(firstLine.length > 3 && firstLine.length < 100){
+    document.getElementById('projName').value = firstLine;
+  }
+
+  /* Extract resolution */
+  if(/4k|8mp/i.test(txt)){document.getElementById('res').value='8';}
+  else if(/5mp/i.test(txt)){document.getElementById('res').value='5';}
+  else if(/2mp|1080/i.test(txt)){document.getElementById('res').value='2';}
+
+  /* Detect outdoor */
+  if(/خارج|outdoor|سور|fence/i.test(txt)){
+    document.getElementById('installEnv').value='outdoor';
+  } else if(/صناعي|industrial|هنجر|hangar/i.test(txt)){
+    document.getElementById('installEnv').value='industrial';
+  }
+
+  /* Detect analog */
+  if(/analog|أنالوج|hd-tvi|hd-cvi|ahd/i.test(txt)){
+    document.getElementById('camSystem').value='analog';
+  }
+
+  /* Recalculate */
+  calculate();
+
+  /* Feedback */
+  var btn = document.querySelector('.btn-extract');
+  var orig = btn.textContent;
+  btn.textContent = '✅ تم استخراج البيانات!';
+  btn.style.background = '#047857';
+  btn.style.color = '#fff';
+  setTimeout(function(){btn.textContent=orig;btn.style.background='';btn.style.color='';},2500);
+}
+
+/* ═══════════════════════════════
+   ADD CUSTOM BOQ ROW
+═══════════════════════════════ */
+function addCustomRow(){
+  var tbody = document.getElementById('boqBody');
+  var isAr  = (document.getElementById('pdfLang').value === 'ar');
+  var sym   = boqData.sym || CSYM[document.getElementById('currency').value] || '';
+
+  /* Find the grand row and insert custom row BEFORE it */
+  var grandRow = null;
+  var rows = tbody.querySelectorAll('tr');
+  rows.forEach(function(tr){
+    if(tr.className === 'grand-row') grandRow = tr;
+  });
+
+  /* Build new editable row */
+  var tr = document.createElement('tr');
+  tr.dataset.custom = '1';
+  tr.innerHTML = '<td>—</td>'+
+    '<td contenteditable="true" data-col="name">'+(isAr?'بند مخصص إضافي':'Custom Item')+'</td>'+
+    '<td contenteditable="true" data-col="qty" data-num="1">1</td>'+
+    '<td>'+(isAr?'مجموعة':'set')+'</td>'+
+    '<td contenteditable="true" data-col="up" data-num="1">0</td>'+
+    '<td class="tot-cell">0.00 '+sym+'</td>';
+
+  /* Section: insert into supply section */
+  var supTotRow = document.getElementById('bqSupTot');
+  if(supTotRow){
+    tbody.insertBefore(tr, supTotRow.parentNode);
+  } else if(grandRow){
+    tbody.insertBefore(tr, grandRow);
+  } else {
+    tbody.appendChild(tr);
+  }
+
+  /* Attach listeners to new row */
+  tr.querySelectorAll('td[contenteditable=true]').forEach(function(cell){
+    cell.addEventListener('input', function(){
+      if(this.dataset.num){
+        var raw = this.innerText.replace(/[^0-9.]/g,'');
+        var di  = raw.indexOf('.');
+        if(di !== -1) raw = raw.slice(0,di+1) + raw.slice(di+1).replace(/\./g,'');
+        if(this.innerText !== raw){ this.innerText = raw; placeCaretEnd(this); }
+      }
+      recalcBOQ();
+    });
+    cell.addEventListener('paste', function(e){
+      e.preventDefault();
+      var txt2 = (e.clipboardData||window.clipboardData).getData('text/plain');
+      if(this.dataset.num) txt2 = txt2.replace(/[^0-9.]/g,'');
+      document.execCommand('insertText',false,txt2);
+    });
+  });
+
+  /* Focus the name cell */
+  tr.querySelector('[data-col=name]').focus();
+  recalcBOQ();
+}
+
+/* ═══════════════════════════════
+   NVR CAPACITY LABEL
+═══════════════════════════════ */
+function nvrCapacityLabel(camCount, isAr) {
+  var ch = camCount <= 16 ? 16 : camCount <= 32 ? 32 : camCount <= 64 ? 64 : 128;
+  return isAr
+    ? 'جهاز تسجيل شبكي NVR سعة ' + ch + ' قناة'
+    : 'NVR ' + ch + '-Channel Network Video Recorder';
+}
+
+/* ═══════════════════════════════
+   BRAND RESOLVER
+═══════════════════════════════ */
+function getActiveBrand() {
+  var manualEl = document.getElementById('brandManual');
+  var manual = manualEl ? (manualEl.value || '').trim() : '';
+  if(manual) return manual;
+  return (TIERS[activeTier] || TIERS.professional).camBrand;
+}
+
+function syncBrandField() {
+  var el = document.getElementById('brandManual');
+  if(!el || el.value.trim()) return; /* don't overwrite manual entry */
+  el.value = (TIERS[activeTier] || TIERS.professional).camBrand;
+}
+
+/* ═══════════════════════════════
+   UPS CALCULATOR
+═══════════════════════════════ */
+function calcUPS(totalWatt, supMult) {
+  var sel = document.getElementById('upsSel');
+  var mode = sel ? sel.value : 'none';
+  if(mode === 'none') return {rows:[], instRows:[], vaStr:'—', vaNum:0};
+
+  /* Required VA = totalWatt / PF(0.7) × runtime factor */
+  var runtimeH = UPS_RUNTIME[mode] || 0;
+  var requiredVA = Math.ceil(totalWatt / 0.7);
+  /* Bump up for runtime > 15min */
+  if(mode === '30min') requiredVA = Math.ceil(requiredVA * 1.5);
+
+  /* Find nearest commercial size */
+  var chosenVA = UPS_SIZES[UPS_SIZES.length - 1];
+  for(var i=0; i<UPS_SIZES.length; i++){
+    if(UPS_SIZES[i] >= requiredVA){ chosenVA = UPS_SIZES[i]; break; }
+  }
+
+  var unitPrice = (UPS_PRICE[chosenVA] || 4500) * (supMult || 1);
+  var instPrice = Math.round(unitPrice * 0.15);
+  var modeLabel = mode === '15min' ? '15 دقيقة' : '30 دقيقة';
+
+  return {
+    vaStr: chosenVA + ' VA',
+    vaNum: chosenVA,
+    rows: [{
+      name: 'جهاز UPS احتياطي طاقة ' + chosenVA + 'VA / ' + Math.round(chosenVA*0.8) + 'W (' + modeLabel + ' احتياطي)',
+      qty: 1, unit: 'جهاز', up: unitPrice
+    }],
+    instRows: [{
+      name: 'تركيب وتأريض UPS وتوصيل لوحة الطوارئ',
+      qty: 1, unit: 'مجموعة', up: instPrice
+    }]
+  };
+}
+
+/* ═══════════════════════════════
+   SWITCH CALCULATOR
+═══════════════════════════════ */
+function calcSwitches(cams){
+  var brand = document.getElementById('swBrand').value||'TP-Link';
+  var sw = [];
+  if(cams<=6){
+    sw.push({label:brand+' 8-Port PoE+',count:1,up:450,instUp:150});
+  } else if(cams<=20){
+    sw.push({label:brand+' 24-Port PoE+',count:1,up:1800,instUp:300});
+  } else {
+    sw.push({label:brand+' 24-Port PoE+',count:Math.ceil(cams/24),up:1800,instUp:300});
+  }
+  if(sw[0].count > 1){
+    sw.push({label:brand+' Core Gigabit Switch (Uplink)',count:1,up:2400,instUp:400});
+  }
+  return sw;
+}
+
+/* ═══════════════════════════════
+   FIBER OPTIC CALCULATOR
+═══════════════════════════════ */
+function calcFiber(cams){
+  if(!document.getElementById('fiberCheck').checked) return {supplyRows:[],instRows:[]};
+  var fLen   = parseFloat(document.getElementById('fiberLen').value)||200;
+  var fPrice = parseFloat(document.getElementById('fiberPrice').value)||15;
+  var subSW  = cams<=6?1:(cams<=20?1:Math.ceil(cams/24));
+  return {
+    supplyRows:[
+      {name:'كابل فايبر بصري Singlemode OS2',qty:fLen,unit:'متر',up:fPrice},
+      {name:'وحدات SFP Modules (Gigabit Fiber)',qty:subSW*2,unit:'قطعة',up:350},
+      {name:'صناديق ODF Patch Panel',qty:subSW*2,unit:'قطعة',up:600}
+    ],
+    instRows:[
+      {name:'مصنعية لحام وتوجيه الفايبر (Fiber Splicing)',qty:subSW*4,unit:'كور',up:100}
+    ]
+  };
+}
+
+/* ═══════════════════════════════
+   SLA / WARRANTY ADDER
+═══════════════════════════════ */
+function calcSLA(supTotal,grandBeforeSLA){
+  var mode = document.getElementById('slaMode').value;
+  var isAr = (document.getElementById('pdfLang').value==='ar');
+  if(mode==='standard') return {rows:[],cost:0};
+  var cost=0, label='';
+  if(mode==='extended'){
+    cost=supTotal*0.07;
+    label=isAr?'ضمان ممتد عامان مع زيارات دورية (7% من المواد)':'Extended 2-Year Warranty (7% of Supply)';
+  } else {
+    cost=grandBeforeSLA*0.15;
+    label=isAr?'باقة الدعم الذهبي SLA — استجابة 4 ساعات (15% من المشروع)':'Gold SLA Support — 4hr Response (15% of Project)';
+  }
+  return {rows:[{name:label,qty:1,unit:isAr?'باقة':'pkg',up:cost}],cost:cost};
+}
+
+/* ═══════════════════════════════
+   TAFQEET
+═══════════════════════════════ */
+var ONES_AR=['','واحد','اثنان','ثلاثة','أربعة','خمسة','ستة','سبعة','ثمانية','تسعة',
+  'عشرة','أحد عشر','اثنا عشر','ثلاثة عشر','أربعة عشر','خمسة عشر',
+  'ستة عشر','سبعة عشر','ثمانية عشر','تسعة عشر'];
+var TENS_AR=['','عشرة','عشرون','ثلاثون','أربعون','خمسون','ستون','سبعون','ثمانون','تسعون'];
+
+function tafqeet(n,symStr){
+  /* ── FALLBACK: guard against undefined/null/empty symStr ── */
+  if(typeof symStr==='undefined'||symStr===null||symStr==='') symStr='ج.م';
+  n = Math.round(Math.abs(parseFloat(n)||0));
+  if(n===0) return 'صفر ' + symStr;
+  var parts=[];
+  function chunk(x,scale){
+    if(x===0)return;
+    var h=Math.floor(x/100),rem=x%100,s='';
+    if(h===1)s='مئة'; else if(h===2)s='مئتان'; else if(h>2)s=ONES_AR[h]+' مئة';
+    if(rem>0){
+      var w=rem<20?ONES_AR[rem]:(function(){var t=Math.floor(rem/10),o=rem%10;return(o>0?ONES_AR[o]+' و':'')+TENS_AR[t];})();
+      s=s?(s+' و'+w):w;
+    }
+    if(scale==='مليار')s+=' مليار'; else if(scale==='مليون')s+=' مليون';
+    else if(scale==='ألف')s+=(x===1?' ألف':x===2?' ألفان':' ألف');
+    if(s)parts.push(s);
+  }
+  chunk(Math.floor(n/1e9),'مليار'); chunk(Math.floor((n%1e9)/1e6),'مليون');
+  chunk(Math.floor((n%1e6)/1e3),'ألف');
+  var rem=n%1e3;
+  if(rem>0){var w=rem<20?ONES_AR[rem]:(function(){var t=Math.floor(rem/10),o=rem%10;return(o>0?ONES_AR[o]+' و':'')+TENS_AR[t];})();parts.push(w);}
+  return 'فقط وقدره '+parts.join(' و')+' '+symStr+' لا غير';
+}
+
+function fmtN(n){var v=parseFloat(n);if(isNaN(v))return'0.00';return v.toLocaleString('ar-EG',{minimumFractionDigits:2,maximumFractionDigits:2});}
+
+/* ═══════════════════════════════
+   BOQ BUILDER
+═══════════════════════════════ */
+function buildBOQ(camCount,hddCount,totalTB,monSpec,rackSpec,camSystem,envSpec){
+  monSpec  = monSpec  || MONITORS.none;
+  rackSpec = rackSpec || RACKS.none;
+  camSystem= camSystem|| 'ip';
+  envSpec  = envSpec  || ENV_SPECS.indoor;
+
+  var cur      = document.getElementById('currency').value;
+  var sym      = CSYM[cur];
+  var markupEl  = document.getElementById('markupPct');
+  var markupPct = markupEl ? (parseFloat(markupEl.value)||0) : 0;
+  var tierCfg   = TIERS[activeTier] || TIERS.professional;
+  /* ── SINGLE-PASS multiplier: base × tier × markup — applied once only ── */
+  var supMult   = tierCfg.mult * (1 + markupPct/100);
+  var mMult     = supMult; /* kept for profit display compatibility */
+  /* Read base prices from user inputs OR BASE_PRICES fallback — then multiply ONCE */
+  var rawCam    = parseFloat(document.getElementById('pCam').value);
+  var rawNvr    = parseFloat(document.getElementById('pNvr').value);
+  var rawHdd    = parseFloat(document.getElementById('pHdd').value);
+  var rawInst   = parseFloat(document.getElementById('pInst').value);
+  var pCam      = (isNaN(rawCam)  ? BASE_PRICES.pCam  : rawCam)  * supMult;
+  var pNvr      = (isNaN(rawNvr)  ? BASE_PRICES.pNvr  : rawNvr)  * supMult;
+  var pHdd      = (isNaN(rawHdd)  ? BASE_PRICES.pHdd  : rawHdd)  * supMult;
+  var pInst     = (isNaN(rawInst) ? BASE_PRICES.pInst : rawInst); /* labour: no markup */
+  var cableTray= document.getElementById('cableTray').value;
+  var cableLen = parseFloat(document.getElementById('cableLen').value)||30;
+  var priceMode= document.getElementById('priceMode').value;
+  var taxMode  = document.getElementById('taxMode').value;
+  var insCheck = document.getElementById('insCheck').checked;
+  var lang     = document.getElementById('pdfLang').value;
+  var isAr     = (lang==='ar');
+  var nvrCount = Math.ceil(camCount/16);
+  var trayUP   = cableTray==='pvc'?8:(cableTray==='flex'?12:0);
+  var totalCableM = camCount*cableLen;
+
+  /* ── BRAND + NVR CAPACITY ── */
+  var activeBrand   = getActiveBrand();
+  var nvrCapLabel   = nvrCapacityLabel(camCount, isAr);
+  var nvrFullName   = activeBrand + ' ' + nvrCapLabel + ' مع جميع الملحقات والبرمجيات';
+  var nvrEnName     = activeBrand + ' ' + nvrCapacityLabel(camCount, false) + ' with All Accessories';
+
+  /* ── PTZ SPLIT LOGIC ── */
+  var ptzEnabled  = isPTZ;
+  var ptzCount    = ptzEnabled ? 2 : 0;               /* always 2 PTZ if enabled */
+  var fixedCount  = Math.max(0, camCount - ptzCount);
+  var envKey      = (document.getElementById('installEnv') || {value:'indoor'}).value;
+
+  /* Fixed camera sub-split by environment */
+  var domeCams, bulletCams, industrialCams;
+  if(envKey === 'outdoor'){
+    bulletCams     = Math.round(fixedCount * 0.80);
+    domeCams       = fixedCount - bulletCams;
+    industrialCams = 0;
+  } else if(envKey === 'industrial'){
+    industrialCams = fixedCount;
+    domeCams = bulletCams = 0;
+  } else {
+    domeCams = fixedCount; bulletCams = industrialCams = 0;
+  }
+
+  /* ── SUPPLY ── */
+  var supplyRows=[];
+  var resText = document.getElementById('res').options[document.getElementById('res').selectedIndex].text;
+
+  /* PTZ cameras */
+  if(ptzCount > 0){
+    supplyRows.push({
+      name:(isAr ? 'كاميرا PTZ Speed Dome بمحرك زووم وتتبع تلقائي — '+activeBrand+' '+resText
+                 : 'PTZ Speed Dome Camera Auto-Tracking — '+activeBrand+' '+resText),
+      qty:ptzCount, unit:isAr?'قطعة':'pcs', up:pCam*2.5
+    });
+  }
+
+  /* Fixed cameras */
+  if(domeCams > 0){
+    supplyRows.push({
+      name:(isAr ? 'كاميرا مراقبة Dome داخلية IP — '+activeBrand+' '+resText
+                 : 'Indoor Dome IP Camera — '+activeBrand+' '+resText),
+      qty:domeCams, unit:isAr?'قطعة':'pcs', up:pCam
+    });
+  }
+  if(bulletCams > 0){
+    supplyRows.push({
+      name:(isAr ? 'كاميرا مراقبة Bullet خارجية IP67 — '+activeBrand+' '+resText
+                 : 'Outdoor Bullet IP67 Camera — '+activeBrand+' '+resText),
+      qty:bulletCams, unit:isAr?'قطعة':'pcs', up:pCam*1.05
+    });
+  }
+  if(industrialCams > 0){
+    supplyRows.push({
+      name:(isAr ? 'كاميرا صناعية IP ثقيلة مقاومة للرطوبة والحرارة — '+activeBrand+' '+resText
+                 : 'Heavy Industrial IP Camera Weatherproof — '+activeBrand+' '+resText),
+      qty:industrialCams, unit:isAr?'قطعة':'pcs', up:pCam*1.2
+    });
+  }
+
+  /* If no split happened (edge case), add full count as regular */
+  if(!ptzCount && !domeCams && !bulletCams && !industrialCams){
+    supplyRows.push({name:(isAr?'كاميرا مراقبة IP — ':'IP Camera — ')+activeBrand+' '+resText, qty:camCount, unit:isAr?'قطعة':'pcs', up:pCam});
+  }
+
+  /* NVR with capacity label */
+  supplyRows.push({name:isAr? nvrFullName : nvrEnName, qty:nvrCount, unit:isAr?'قطعة':'pcs', up:pNvr});
+  supplyRows.push({name:isAr?'هارد ديسك للتسجيل ('+Math.ceil(totalTB/hddCount)+' TB)':'Storage HDD ('+Math.ceil(totalTB/hddCount)+' TB)', qty:hddCount, unit:isAr?'قطعة':'pcs', up:pHdd});
+  /* Cable UTP — price includes accessories amortised inside unit price */
+  var cableUnitPrice = 4 * 1.15; /* base 4 + 15% accessories cost merged in */
+  supplyRows.push({
+    name: isAr
+      ? 'كابل UTP Cat6 نحاس خالص شاملة كافة إكسسوارات التثبيت والربط الهندسي (مقفيز حديد صلب + علب اتصال مرنة + أكواع زوايا + لواكور معزولة) لضمان التقفيل النظيف'
+      : 'UTP Cat6 Pure Copper Cable incl. all fixing accessories (steel clips, flex junction boxes, corner elbows, insulated cable ties) — professional finish',
+    qty: totalCableM, unit: isAr?'متر':'m', up: cableUnitPrice
+  });
+  if(cableTray!=='none'){
+    /* Tray — price includes accessories amortised */
+    var trayFullPrice = trayUP * 1.12;
+    var trayTypeName = cableTray==='pvc'
+      ? (isAr?'مواسير PVC صلبة مع إكسسوارات التركيب (أكواع + مشابك + قواطع + وحدات ربط معتمدة)':'Rigid PVC Conduit incl. fittings (elbows, clips, couplers)')
+      : (isAr?'مواسير مرنة Flexible مع إكسسوارات التثبيت الكاملة (كولرات + مثبتات + وحدات عزل)':'Flexible Conduit incl. full fixing accessories');
+    supplyRows.push({name: trayTypeName, qty: totalCableM, unit: isAr?'متر':'m', up: trayFullPrice});
+  }
+  supplyRows.push({name:isAr?'لوحة توزيع كهرباء ووحدة التحكم':'Power distribution & control panel', qty:1, unit:isAr?'مجموعة':'set', up:1200});
+
+  /* Switches */
+  var swRows=calcSwitches(camCount);
+  swRows.forEach(function(r){ supplyRows.push({name:(isAr?'سويتش شبكي PoE — ':'PoE Network Switch — ')+r.label, qty:r.count, unit:isAr?'قطعة':'pcs', up:r.up}); });
+
+  /* Fiber */
+  var fiberCalc=calcFiber(camCount);
+  fiberCalc.supplyRows.forEach(function(r){supplyRows.push(r);});
+
+  /* ── INSTALL ── */
+  var instRows=[];
+  instRows.push({name:isAr?'تركيب وتشبيك الكاميرات وضبط الزوايا':'Camera installation, cabling & tuning', qty:camCount, unit:isAr?'كاميرا':'cam', up:pInst});
+  instRows.push({name:isAr?'تركيب جهاز التسجيل وتهيئة الشبكة':'NVR installation & network setup', qty:nvrCount, unit:isAr?'جهاز':'unit', up:600});
+  if(cableTray!=='none') instRows.push({name:isAr?'تركيب مسارات الكابلات والمصنعية':'Cable tray installation & labor', qty:totalCableM, unit:isAr?'متر':'m', up:3});
+  swRows.forEach(function(r){ instRows.push({name:(isAr?'تركيب وتهيئة سويتش — ':'Switch config — ')+r.label, qty:r.count, unit:isAr?'جهاز':'unit', up:r.instUp}); });
+  fiberCalc.instRows.forEach(function(r){instRows.push(r);});
+  instRows.push({name:isAr?'أعمال الاختبار والتشغيل والتسليم':'Testing, commissioning & handover', qty:1, unit:isAr?'مجموعة':'set', up:800});
+
+  /* ── ENVIRONMENT: OUTDOOR — IP66 + Poles ── */
+  if(envSpec.jboxIP66){
+    supplyRows.push({name:isAr?'علب تجميع مقاومة للماء IP66 (خارجي)':'IP66 Waterproof Junction Boxes (Outdoor)', qty:camCount, unit:isAr?'قطعة':'pcs', up:40});
+    var poleCount = Math.ceil(camCount/2);
+    supplyRows.push({name:isAr?'عمود حديدي مدهون مقاوم للعوامل الجوية H=4م مع صامولة تثبيت':'Galvanized Steel CCTV Pole H=4m with Mounting Flange', qty:poleCount, unit:isAr?'عمود':'pcs', up:2500});
+    instRows.push({name:isAr?'أعمال حفر وصب القواعد الخرسانية وتثبيت الأعمدة بالموقع':'Excavation, Concrete Base & Pole Erection (On-Site)', qty:poleCount, unit:isAr?'عمود':'pcs', up:800});
+    /* Override tray description for outdoor */
+    supplyRows = supplyRows.map(function(r){
+      if(r.name&&(r.name.indexOf('PVC')>-1||r.name.indexOf('مسارات كابلات')>-1)){
+        r.name=isAr?'مواسير PVC مصمتة مقاومة للشمس والرطوبة (خارجي)':'Sun-Resistant Solid PVC Conduit (Outdoor Grade)';
+      }
+      return r;
+    });
+  }
+
+  /* ── ENVIRONMENT: INDUSTRIAL ── */
+  if(envSpec.flexConduit){
+    supplyRows.push({name:isAr?'مواسير مرنة معزولة Flexible Conduits (صناعي)':'Insulated Flexible Conduits (Industrial)', qty:Math.ceil(camCount*cableLen*0.4), unit:isAr?'متر':'m', up:6});
+    instRows = instRows.map(function(r){return{name:r.name,qty:r.qty,unit:r.unit,up:r.up*envSpec.instMult};});
+    instRows.push({name:isAr?'أعمال سقالات وعمل على الارتفاعات (صناعي)':'Scaffolding & High-Level Installation Labor', qty:1, unit:isAr?'مجموعة':'set', up:Math.round(camCount*85)});
+  }
+
+  /* ── IP vs ANALOG ── */
+  var isAnalog = (camSystem==='analog');
+  if(!isAnalog){
+    /* IP: Patch Panels, Organizers, Patch Cords */
+    var totalNetLines = camCount + calcSwitches(camCount).reduce(function(s,r){return s+r.count;},0);
+    var ppQty = Math.ceil(totalNetLines/24);
+    if(ppQty>0){
+      supplyRows.push({name:isAr?'لوحة توزيع شبكة Patch Panel 24-Port Cat6 D-Link':'Patch Panel 24-Port Cat6 D-Link', qty:ppQty, unit:isAr?'لوحة':'pcs', up:1200});
+      supplyRows.push({name:isAr?'منظم كابلات معدني Cable Organizer 1U':'Cable Organizer 1U Rack Mount', qty:ppQty, unit:isAr?'قطعة':'pcs', up:150});
+    }
+    var pcQty = camCount + calcSwitches(camCount).reduce(function(s,r){return s+r.count;},0);
+    if(pcQty>0) supplyRows.push({name:isAr?'Patch Cord UTP 1م نحاس خالص (Pure Copper)':'Patch Cord UTP 1m Pure Copper', qty:pcQty, unit:isAr?'قطعة':'pcs', up:25});
+  } else {
+    /* ANALOG: BNC + DC Connectors */
+    supplyRows.push({name:isAr?'أطراف توصيل BNC + DC Connectors (أنالوج)':'BNC + DC Signal & Power Connectors (Analog)', qty:(camCount*2+camCount), unit:isAr?'قطعة':'pcs', up:15});
+  }
+
+  /* ── MONITOR ── */
+  if(monSpec.price>0){
+    supplyRows.push({name:monSpec.name, qty:1, unit:isAr?'قطعة':'pcs', up:monSpec.price});
+    supplyRows.push({name:isAr?'حامل شاشة معدني حائطي مستورد عالي الجودة':'Premium Metal Wall-Mount Monitor Bracket', qty:1, unit:isAr?'قطعة':'pcs', up:150});
+  }
+  if(monSpec.instP>0) instRows.push({name:(isAr?'تركيب وضبط ':'Install & setup ')+monSpec.name, qty:1, unit:isAr?'مجموعة':'set', up:monSpec.instP});
+
+  /* ── RACK ── */
+  var swCountForRack = calcSwitches(camCount).reduce(function(s,r){return s+r.count;},0);
+  if(rackSpec.price>0) supplyRows.push({name:rackSpec.name, qty:swCountForRack, unit:isAr?'قطعة':'pcs', up:rackSpec.price});
+  if(rackSpec.instP>0) instRows.push({name:(isAr?'تركيب وتثبيت ':'Install & mount ')+rackSpec.name, qty:swCountForRack, unit:isAr?'قطعة':'pcs', up:rackSpec.instP});
+
+  /* ── UPS BACKUP POWER ── */
+  var upsCalc = calcUPS(
+    /* totalWatt already includes monitor watts from calculate() context —
+       rebuild it here from camCount for buildBOQ self-containment */
+    camCount * (isPTZ ? 15 : 7) + ((monSpec && monSpec.watt) ? monSpec.watt : 0),
+    supMult
+  );
+  upsCalc.rows.forEach(function(r){ supplyRows.push(r); });
+  upsCalc.instRows.forEach(function(r){ instRows.push(r); });
+
+  /* ── COMBINED MODE ── */
+  if(priceMode==='combined'){
+    var iT=instRows.reduce(function(s,r){return s+r.qty*r.up;},0);
+    var dist=iT/supplyRows.length;
+    supplyRows=supplyRows.map(function(r){return{name:r.name,qty:r.qty,unit:r.unit,up:r.up+dist/r.qty};});
+    instRows=instRows.map(function(r){return{name:r.name,qty:r.qty,unit:r.unit,up:0};});
+  }
+
+  /* ── FILTER ZEROS ── */
+  supplyRows=supplyRows.filter(function(r){return r.qty*r.up>0;});
+  instRows=instRows.filter(function(r){return r.qty*r.up>0;});
+
+  /* ── TOTALS ── */
+  var supTotal  = supplyRows.reduce(function(s,r){return s+r.qty*r.up;},0);
+  var instTotal = instRows.reduce(function(s,r){return s+r.qty*r.up;},0);
+  var insurance = insCheck?(instTotal*0.03):0;
+  var subBefore = supTotal+instTotal+insurance;
+  var slaCalc   = calcSLA(supTotal,subBefore);
+  var slaRows   = slaCalc.rows.filter(function(r){return r.qty*r.up>0;});
+  var slaTotal  = slaCalc.cost;
+  var sub       = subBefore+slaTotal;
+
+  /* ── TAX (with net-price mode) ── */
+  var tax=0;
+  if(taxMode==='vat_unified')   tax=sub*(VAT[cur]||0);
+  else if(taxMode==='egypt_adv') tax=supTotal*0.14+instTotal*0.05;
+  else                           tax=0; /* Net Price — no tax */
+  var grand=sub+tax;
+
+  boqData={supplyRows:supplyRows,instRows:instRows,slaRows:slaRows,
+    supTotal:supTotal,instTotal:instTotal,insurance:insurance,
+    slaTotal:slaTotal,tax:tax,grand:grand,
+    taxMode:taxMode,cur:cur,sym:sym,priceMode:priceMode,isAr:isAr,
+    insCheck:insCheck,camCount:camCount,
+    slaMode:document.getElementById('slaMode').value,
+    monSpec:monSpec,rackSpec:rackSpec,camSystem:camSystem,installEnv:envSpec.label};
+
+  renderBOQ();
+  renderSchedule(grand,sym);
+
+  /* ── MARKUP PROFIT DISPLAY (UI only, never in PDF) ── */
+  var profEl = document.getElementById('markupProfit');
+  if(profEl){
+    if(markupPct > 0){
+      var baseSupply = supTotal / mMult;         /* reverse: what supply would be at 0% markup */
+      var profit     = grand - (grand / mMult);  /* gross margin at current grand total */
+      /* More accurate: profit = (mMult-1) * supTotal */
+      profit = (mMult - 1) * supTotal;
+      profEl.style.display = 'block';
+      profEl.textContent   = '💰 صافي ربحك الصافي المتوقع من هذا المشروع هو: '
+        + fmtN(profit) + ' ' + sym + ' (هامش '+markupPct+'%)';
+    } else {
+      profEl.style.display = 'none';
+    }
+  }
+}
+
+/* ═══════════════════════════════
+   RENDER BOQ
+═══════════════════════════════ */
+function renderBOQ(){
+  var d=boqData; if(!d||!d.supplyRows) return;
+  var sym=d.sym, isAr=d.isAr;
+  var tbody=document.getElementById('boqBody');
+  tbody.innerHTML='';
+  var idx=1;
+
+  function mkRow(r){
+    var tr=document.createElement('tr');
+    var tot=r.qty*r.up;
+    tr.innerHTML='<td>'+idx+'</td>'+
+      '<td contenteditable="true" data-col="name">'+escH(r.name)+'</td>'+
+      '<td contenteditable="true" data-col="qty" data-num="1">'+r.qty+'</td>'+
+      '<td>'+r.unit+'</td>'+
+      '<td contenteditable="true" data-col="up" data-num="1">'+fmtN(r.up)+'</td>'+
+      '<td class="tot-cell">'+fmtN(tot)+' '+sym+'</td>';
+    idx++; return tr;
+  }
+  function secHdr(label,type){
+    var tr=document.createElement('tr');
+    var bg  = type==='inst'?'#0A1E2A': type==='sla'?'#1A1000':'#0A2016';
+    var col = type==='inst'?'#7CB9FF': type==='sla'?'#FFD95A':'#4EEAAA';
+    tr.innerHTML='<td colspan="6" style="background:'+bg+';font-weight:800;color:'+col+
+      ';padding:.52rem .8rem;border-right:3px solid '+col+'">'+label+'</td>';
+    return tr;
+  }
+  function totRow(label,val,id){
+    var tr=document.createElement('tr');tr.className='tot-row';
+    tr.innerHTML='<td colspan="5">'+label+'</td><td'+(id?' id="'+id+'"':'')+'>'+fmtN(val)+' '+sym+'</td>';
+    return tr;
+  }
+
+  tbody.appendChild(secHdr((isAr?'أولاً: بند التوريد (Supply)':'1. Supply Items'),'sup'));
+  d.supplyRows.forEach(function(r){tbody.appendChild(mkRow(r));});
+  tbody.appendChild(totRow(isAr?'مجموع التوريد':'Supply Subtotal',d.supTotal,'bqSupTot'));
+
+  tbody.appendChild(secHdr((isAr?'ثانياً: بند التركيبات والمصنعيات':'2. Installation & Labor'),'inst'));
+  d.instRows.forEach(function(r){tbody.appendChild(mkRow(r));});
+  tbody.appendChild(totRow(isAr?'مجموع التركيبات':'Installation Subtotal',d.instTotal,'bqInstTot'));
+
+  if(d.slaRows&&d.slaRows.length){
+    tbody.appendChild(secHdr((isAr?'ثالثاً: الضمان والصيانة (SLA)':'3. Warranty & SLA'),'sla'));
+    d.slaRows.forEach(function(r){tbody.appendChild(mkRow(r));});
+    tbody.appendChild(totRow(isAr?'مجموع الضمان':'SLA Subtotal',d.slaTotal,'bqSlaTot'));
+  }
+
+  if(d.insCheck&&d.insurance>0) tbody.appendChild(totRow(isAr?'تأمينات اجتماعية (3%)':'Social Insurance (3%)',d.insurance,'bqIns'));
+
+  /* Tax row — hide entirely if net-price mode */
+  if(d.taxMode !== 'none'){
+    var taxLabel=d.taxMode==='vat_unified'
+      ?(isAr?'ضريبة القيمة المضافة ('+(Math.round((VAT[d.cur]||0)*100))+'%)':'VAT ('+(Math.round((VAT[d.cur]||0)*100))+'%)')
+      :(isAr?'الضرائب: 14% VAT توريد + 5% تركيبات':'Tax: 14% VAT Supply + 5% Installation');
+    tbody.appendChild(totRow(taxLabel,d.tax,'bqTax'));
+  }
+
+  var gRow=document.createElement('tr'); gRow.className='grand-row';
+  gRow.innerHTML='<td colspan="5">'+(isAr?'🏆 الإجمالي الكلي الشامل':'🏆 GRAND TOTAL')+'</td>'+
+    '<td id="bqGrand" style="font-size:.9rem">'+fmtN(d.grand)+' '+sym+'</td>';
+  tbody.appendChild(gRow);
+
+  document.getElementById('tafqeetTxt').textContent=tafqeet(d.grand,sym);
+  attachCellListeners();
+}
+
+/* ═══════════════════════════════
+   PAYMENT SCHEDULE
+═══════════════════════════════ */
+function renderSchedule(grand,sym){
+  /* ── HARD SYM FALLBACK ── */
+  if(typeof sym==='undefined'||sym===null||sym===''){
+    sym = CSYM[document.getElementById('currency').value] || 'ج.م';
+  }
+  grand = parseFloat(grand)||0;
+  var sched=document.getElementById('paySchedule').value;
+  var isAr=(document.getElementById('pdfLang').value==='ar');
+  var percs=sched==='std'
+    ?[[isAr?'دفعة أولى — عند التوقيع':'1st — Upon signing',0.50],
+      [isAr?'دفعة ثانية — عند التوريد':'2nd — Upon delivery',0.40],
+      [isAr?'دفعة ثالثة — عند التسليم':'3rd — Upon handover',0.10]]
+    :[[isAr?'دفعة أولى — عند التوقيع':'1st — Upon signing',0.30],
+      [isAr?'دفعة ثانية — عند التوريد':'2nd — Upon delivery',0.40],
+      [isAr?'دفعة ثالثة — عند التشغيل':'3rd — Upon commissioning',0.20],
+      [isAr?'دفعة رابعة — عند التسليم':'4th — Upon handover',0.10]];
+  var tbl=document.getElementById('schedTable');
+  tbl.innerHTML='<thead><tr>'+
+    '<th>'+(isAr?'الدفعة':'Payment Stage')+'</th>'+
+    '<th style="text-align:center">'+(isAr?'النسبة':'%')+'</th>'+
+    '<th>'+(isAr?'المبلغ المستحق':'Amount Due')+'</th>'+
+    '<th>'+(isAr?'التفقيط':'In Words')+'</th></tr></thead><tbody>'+
+    percs.map(function(row){
+      var amt=grand*row[1];
+      return '<tr><td>'+row[0]+'</td>'+
+        '<td style="text-align:center;font-weight:700;color:var(--em-b)">'+(row[1]*100)+'%</td>'+
+        '<td class="amt-cell">'+fmtN(amt)+' '+sym+'</td>'+
+        '<td class="tafq-cell">'+tafqeet(amt,sym)+'</td></tr>';
+    }).join('')+'</tbody>';
+  document.getElementById('schedDisplay').style.display='block';
+}
+
+/* ═══════════════════════════════
+   LIVE EDIT — CELL LISTENERS
+   (Fully re-engineered recalcBOQ)
+═══════════════════════════════ */
+function attachCellListeners(){
+  /* Clone cells to remove stale listeners */
+  document.querySelectorAll('#boqBody td[contenteditable=true]').forEach(function(cell){
+    var fresh=cell.cloneNode(true);
+    cell.parentNode.replaceChild(fresh,cell);
+  });
+  document.querySelectorAll('#boqBody td[contenteditable=true]').forEach(function(cell){
+    cell.addEventListener('input',function(){
+      if(this.dataset.num){
+        var raw=this.innerText.replace(/[^0-9.]/g,'');
+        var di=raw.indexOf('.');
+        if(di!==-1) raw=raw.slice(0,di+1)+raw.slice(di+1).replace(/\./g,'');
+        if(this.innerText!==raw){this.innerText=raw;placeCaretEnd(this);}
+      }
+      recalcBOQ();
+    });
+    cell.addEventListener('paste',function(e){
+      e.preventDefault();
+      var txt=(e.clipboardData||window.clipboardData).getData('text/plain');
+      if(this.dataset.num) txt=txt.replace(/[^0-9.]/g,'');
+      document.execCommand('insertText',false,txt);
+    });
+  });
+}
+
+function placeCaretEnd(el){
+  var r=document.createRange(),s=window.getSelection();
+  r.selectNodeContents(el);r.collapse(false);s.removeAllRanges();s.addRange(r);
+}
+
+/* ═══════════════════════════════════════════════════
+   recalcBOQ — Dynamic Financial Engine (v8 final)
+   ─────────────────────────────────────────────────
+   STEP 1 — Scan DOM, bucket totals by section
+   STEP 2 — Recalculate insurance (3% of live instTotal)
+   STEP 3 — Recalculate SLA analytically from slaMode
+   STEP 4 — Recalculate tax (unified/egypt/none)
+   STEP 5 — Compute grand total
+   STEP 6 — Update boqData atomically
+   STEP 7 — Update DOM summary cells
+   STEP 8 — Cascade to schedule + tafqeet
+═══════════════════════════════════════════════════ */
+function recalcBOQ(){
+  if(!boqData) return;
+  var cur      = document.getElementById('currency').value;
+  /* ── HARD SYM FALLBACK: never allow undefined/empty symbol ── */
+  var sym      = (boqData.sym && boqData.sym.length>0)
+                   ? boqData.sym
+                   : (CSYM[cur] || 'ج.م');
+  var taxMode  = document.getElementById('taxMode').value;
+  var insEnabled = document.getElementById('insCheck').checked;
+  var slaMode  = boqData.slaMode || document.getElementById('slaMode').value || 'standard';
+
+  /* STEP 1 */
+  var supTotal=0, instTotal=0, slaTotal=0;
+  var section='';
+  document.querySelectorAll('#boqBody tr').forEach(function(tr){
+    var hdr=tr.querySelector('td[colspan="6"]');
+    if(hdr){
+      var t=hdr.textContent;
+      if(t.indexOf('التوريد')>-1||t.indexOf('Supply')>-1){section='sup';}
+      else if((t.indexOf('التركيبات')>-1||t.indexOf('Installation')>-1)&&section!=='sup'){section='inst';}
+      else if(t.indexOf('SLA')>-1||t.indexOf('الضمان')>-1||t.indexOf('Warranty')>-1){section='sla';}
+      else{section='';}
+      return;
+    }
+    var qcEl=tr.querySelector('[data-col=qty]'),ucEl=tr.querySelector('[data-col=up]'),tcEl=tr.querySelector('.tot-cell');
+    if(!qcEl||!ucEl||!tcEl) return;
+    /* ── STRICT SANITIZE: strip everything except digits and first dot ── */
+    var rawQ = qcEl.innerText.replace(/[^0-9.]/g,'');
+    var rawU = ucEl.innerText.replace(/[^0-9.]/g,'');
+    /* prevent double-dot */
+    var dq=rawQ.indexOf('.');if(dq!==-1)rawQ=rawQ.slice(0,dq+1)+rawQ.slice(dq+1).replace(/\./g,'');
+    var du=rawU.indexOf('.');if(du!==-1)rawU=rawU.slice(0,du+1)+rawU.slice(du+1).replace(/\./g,'');
+    var qty = parseFloat(rawQ)||0;
+    var up  = parseFloat(rawU)||0;
+    var tot = qty * up;
+    tcEl.textContent = fmtN(tot)+' '+sym;
+    if(section==='sup') supTotal+=tot;
+    else if(section==='inst') instTotal+=tot;
+    /* SLA recalculated analytically below */
+  });
+
+  /* STEP 2 */
+  var insurance = insEnabled?(instTotal*0.03):0;
+
+  /* STEP 3 */
+  var subBefore = supTotal+instTotal+insurance;
+  if(slaMode==='extended') slaTotal=supTotal*0.07;
+  else if(slaMode==='gold') slaTotal=subBefore*0.15;
+  else slaTotal=0;
+  /* Update SLA row */
+  var slaTotEl=document.getElementById('bqSlaTot');
+  if(slaTotEl) slaTotEl.textContent=fmtN(slaTotal)+' '+sym;
+  /* Update SLA data row unit price */
+  var inSlaSec=false;
+  document.querySelectorAll('#boqBody tr').forEach(function(tr){
+    var hdr=tr.querySelector('td[colspan="6"]');
+    if(hdr){inSlaSec=(hdr.textContent.indexOf('SLA')>-1||hdr.textContent.indexOf('الضمان')>-1||hdr.textContent.indexOf('Warranty')>-1);return;}
+    if(!inSlaSec) return;
+    var qcEl=tr.querySelector('[data-col=qty]'),ucEl=tr.querySelector('[data-col=up]'),tcEl=tr.querySelector('.tot-cell');
+    if(!qcEl||!ucEl||!tcEl) return;
+    var qRaw=qcEl.innerText.replace(/[^0-9.]/g,'');
+    var qty=parseFloat(qRaw)||1;
+    if(slaTotal>0){
+      ucEl.textContent=fmtN(slaTotal/Math.max(1,qty));
+      tcEl.textContent=fmtN(slaTotal)+' '+sym;
+    }
+  });
+
+  /* STEP 4 */
+  var taxableBase=supTotal+instTotal+insurance+slaTotal;
+  var tax=0;
+  if(taxMode==='vat_unified') tax=taxableBase*(VAT[cur]||0);
+  else if(taxMode==='egypt_adv') tax=supTotal*0.14+instTotal*0.05;
+  else tax=0; /* Net Price */
+
+  /* STEP 5 */
+  var grand=taxableBase+tax;
+
+  /* STEP 6 */
+  boqData.supTotal=supTotal; boqData.instTotal=instTotal;
+  boqData.insurance=insurance; boqData.slaTotal=slaTotal;
+  boqData.tax=tax; boqData.grand=grand;
+  boqData.sym=sym; boqData.cur=cur; boqData.taxMode=taxMode; boqData.insCheck=insEnabled; boqData.slaMode=slaMode;
+
+  /* STEP 7 */
+  function setCell(id,v){var e=document.getElementById(id);if(e)e.textContent=fmtN(v)+' '+sym;}
+  setCell('bqSupTot',supTotal); setCell('bqInstTot',instTotal);
+  var insEl=document.getElementById('bqIns'); if(insEl) insEl.textContent=fmtN(insurance)+' '+sym;
+  setCell('bqTax',tax); setCell('bqGrand',grand);
+
+  /* STEP 8 */
+  document.getElementById('tafqeetTxt').textContent=tafqeet(grand,sym);
+  renderSchedule(grand,sym);
+}
+
+/* ═══════════════════════════════
+   MAIN CALCULATOR
+═══════════════════════════════ */
+function calculate(){
+  var cams = Math.max(1,parseInt(document.getElementById('camCount').value)||1);
+  var res  = parseInt(document.getElementById('res').value)||5;
+  var comp = document.getElementById('comp').value||'h265';
+  var hpd  = Math.min(24,Math.max(1,parseFloat(document.getElementById('hpd').value)||24));
+  var days = Math.max(1,parseInt(document.getElementById('days').value)||31);
+  var proj = document.getElementById('projName').value||'مشروع';
+  var res_ = document.getElementById('res').options[document.getElementById('res').selectedIndex].text;
+  var comp_= document.getElementById('comp').options[document.getElementById('comp').selectedIndex].text;
+
+  /* Storage */
+  var bpc     = (BR[res]||BR[5])[comp]||4;
+  var totalTB = ((bpc*1e6/8)*cams*hpd*3600*days/1e9)/1000;
+
+  /* HDD */
+  var need=totalTB*1.10;
+  var single=HDD_SZ.find(function(s){return s>=need;});
+  var half  =HDD_SZ.find(function(s){return s>=need/2;});
+  var cfgs=[];
+  if(single) cfgs.push({l:'واحد '+single+' TB'});
+  if(half&&half!==single) cfgs.push({l:'اثنان × '+half+' TB'});
+  var th=HDD_SZ.find(function(s){return s>=need/3&&s!==half&&s!==single;});
+  if(th) cfgs.push({l:Math.ceil(need/th)+' × '+th+' TB'});
+  var hddCount=single?1:Math.ceil(need/HDD_SZ[HDD_SZ.length-1]);
+
+  /* Power */
+  var totalW=cams*(isPTZ?15:7);
+  var mKWH=(totalW*24*30)/1000;
+
+  /* Camera system & install env — declared EARLY (used in sumBox and buildBOQ) */
+  var camSysEl  = document.getElementById('camSystem');
+  var envEl     = document.getElementById('installEnv');
+  var camSystem = camSysEl ? camSysEl.value  : 'ip';
+  var installEnvVal = envEl ? envEl.value    : 'indoor';
+  var envSpec   = ENV_SPECS[installEnvVal] || ENV_SPECS.indoor;
+
+  /* Analog hint */
+  var analogHintEl=document.getElementById('analogHint');
+  if(analogHintEl) analogHintEl.style.display=(camSystem==='analog')?'block':'none';
+
+  /* Switches */
+  var swData  = calcSwitches(cams);
+  var swCount = swData.reduce(function(s,r){return s+r.count;},0);
+  var brand   = document.getElementById('swBrand').value;
+
+  /* Monitor / Rack */
+  var monKey  = document.getElementById('monitorSel')?document.getElementById('monitorSel').value:'none';
+  var rackKey = document.getElementById('rackSel')?document.getElementById('rackSel').value:'none';
+  var monSpec = MONITORS[monKey]||MONITORS.none;
+  var rackSpec= RACKS[rackKey]||RACKS.none;
+  totalW += monSpec.watt;
+
+  /* Tips */
+  var tip   = cfgs.map(function(c,i){return'<span class="hbadge">'+(i===0?'⭐':'🔄')+' '+c.l+'</span>';}).join(' ');
+  var swTip = swData.map(function(r){return'<span class="hbadge">🔀 '+r.count+'× '+r.label+'</span>';}).join(' ');
+  if(document.getElementById('fiberCheck').checked){swTip+='<span class="hbadge">🔵 فايبر '+document.getElementById('fiberLen').value+'م</span>';}
+  document.getElementById('hddTip').innerHTML=(tip+' '+swTip)||'—';
+
+  anim('vTB',totalTB.toFixed(2)); anim('vHDD',hddCount); anim('vW',totalW); anim('vSW',swCount);
+  document.getElementById('bFill').style.width=Math.min(100,(totalTB/100)*100)+'%';
+  document.getElementById('bPct').textContent=totalTB.toFixed(1)+' TB';
+
+  document.getElementById('sumBox').innerHTML=
+    '<strong>ملخص:</strong> <strong>'+escH(proj)+'</strong><br/>'+
+    '📷 '+cams+' كاميرا '+(isPTZ?'PTZ':'ثابتة')+' — '+res_+' — '+comp_+'<br/>'+
+    '💾 '+totalTB.toFixed(2)+' TB × '+days+' يوم × '+hpd+'h/يوم<br/>'+
+    '⚡ '+totalW+'W — '+mKWH.toFixed(1)+' kWh/شهر<br/>'+
+    '🔀 '+swCount+' سويتش '+brand+' — '+(document.getElementById('fiberCheck').checked?'+ فايبر':'بدون فايبر')+'<br/>'+
+    '🏗️ البيئة: '+envSpec.label+(camSystem==='analog'?' · أنالوج HD':' · IP Network');
+
+  /* ── GOVERNMENT COMPLIANCE AUDIT ── */
+  var compOk  = document.getElementById('complianceOk');
+  var compWarn= document.getElementById('complianceWarn');
+  var meetsCompliance = (parseInt(res) >= 5) && (days >= 31);
+  if(compOk){
+    compOk.style.display  = meetsCompliance ? 'block' : 'none';
+    compWarn.style.display= meetsCompliance ? 'none'  : 'block';
+  }
+
+  /* ── Sync brand field if empty ── */
+  syncBrandField();
+
+  /* ── UPS display ── */
+  var upsDisplay = calcUPS(totalW, 1); /* use base watts for display */
+  var upsEl = document.getElementById('vUPS');
+  if(upsEl) upsEl.textContent = upsDisplay.vaStr || '—';
+
+  buildBOQ(cams,hddCount,totalTB,monSpec,rackSpec,camSystem,envSpec);
+}
+
+function anim(id,v){var el=document.getElementById(id);el.classList.remove('pa');void el.offsetWidth;el.textContent=v;el.classList.add('pa');}
+
+/* ═══════════════════════════════
+   PDF GENERATOR — PREMIUM
+═══════════════════════════════ */
+function generatePDF(){
+  var lang=document.getElementById('pdfLang').value, isAr=(lang==='ar');
+  var proj=document.getElementById('projName').value||(isAr?'مشروع بدون اسم':'Untitled');
+  var co  =document.getElementById('coName').value||(isAr?'شركة غير محددة':'Company');
+  var cur =document.getElementById('currency').value, sym=CSYM[cur];
+  var d   =boqData; if(!d||!d.supplyRows){alert(isAr?'يرجى الحساب أولاً':'Please calculate first');return;}
+  var dateStr=new Date().toLocaleDateString(isAr?'ar-EG':'en-GB',{year:'numeric',month:'long',day:'numeric'});
+  var themes={
+    classic:{hBg:'#1a1a1a',hFg:'#fff',aBg:'#333',aFg:'#fff',tBg:'#444',tFg:'#fff',totBg:'#f0f0f0',gBg:'#1a1a1a',gFg:'#fff',bd:'#ccc',bg:'#fff',fg:'#1a1a1a'},
+    navy:   {hBg:'#0B1A2E',hFg:'#60A5FA',aBg:'#132340',aFg:'#93C5FD',tBg:'#1E3A5F',tFg:'#E0F2FE',totBg:'#EFF6FF',gBg:'#0B1A2E',gFg:'#FCD34D',bd:'#BFDBFE',bg:'#F8FAFF',fg:'#0B1A2E'},
+    emerald:{hBg:'#064E3B',hFg:'#6EE7B7',aBg:'#065F46',aFg:'#A7F3D0',tBg:'#047857',tFg:'#D1FAE5',totBg:'#ECFDF5',gBg:'#064E3B',gFg:'#FCD34D',bd:'#A7F3D0',bg:'#F0FDF4',fg:'#064E3B'}
+  };
+  var t=themes[pdfTheme]||themes.classic;
+  var sched=document.getElementById('paySchedule').value;
+  var schedDefs=sched==='std'
+    ?[[isAr?'دفعة أولى — عند التوقيع':'1st — Signing',0.50],[isAr?'دفعة ثانية — عند التوريد':'2nd — Delivery',0.40],[isAr?'دفعة ثالثة — عند التسليم':'3rd — Handover',0.10]]
+    :[[isAr?'دفعة أولى — عند التوقيع':'1st — Signing',0.30],[isAr?'دفعة ثانية — عند التوريد':'2nd — Delivery',0.40],[isAr?'دفعة ثالثة — عند التشغيل':'3rd — Commissioning',0.20],[isAr?'دفعة رابعة — عند التسليم':'4th — Handover',0.10]];
+  var schedHtml=schedDefs.map(function(r){
+    var amt=d.grand*r[1];
+    return'<tr><td>'+r[0]+'</td><td style="text-align:center;font-weight:700">'+(r[1]*100)+'%</td><td style="text-align:left;direction:ltr;font-weight:700">'+fmtN(amt)+' '+sym+'</td><td style="font-size:7.5pt;color:#666;font-style:italic">'+tafqeet(amt,sym)+'</td></tr>';
+  }).join('');
+
+  function rowsHtml(rows){
+    return rows.filter(function(r){return r.qty*r.up>0;}).map(function(r){
+      var tot=r.qty*r.up;
+      return'<tr><td>'+r.name+'</td><td style="text-align:center">'+r.qty+'</td><td style="text-align:center">'+r.unit+'</td><td style="text-align:left;direction:ltr">'+fmtN(r.up)+'</td><td style="text-align:left;direction:ltr;font-weight:600">'+fmtN(tot)+' '+sym+'</td></tr>';
+    }).join('');
+  }
+
+  var logoHtml=logoB64?'<img src="'+logoB64+'" style="max-height:55px;max-width:160px;object-fit:contain"/>':'<div style="font-size:1.3rem;font-weight:900">'+co+'</div>';
+  var stampHtml=stampB64?'<div style="text-align:center;margin-bottom:.4rem"><img src="'+stampB64+'" style="max-height:68px;max-width:115px;opacity:.88"/></div>':'';
+
+  var taxLabel='';
+  if(d.taxMode==='vat_unified') taxLabel=(isAr?'ضريبة القيمة المضافة ('+(Math.round((VAT[d.cur]||0)*100))+'%)':'VAT ('+(Math.round((VAT[d.cur]||0)*100))+'%)');
+  else if(d.taxMode==='egypt_adv') taxLabel=(isAr?'الضرائب: 14% VAT توريد + 5% تركيبات':'Tax: 14% Supply + 5% Installation');
+
+  var taxRowHtml=d.taxMode!=='none'&&d.tax>0
+    ?'<tr class="tot-r"><td colspan="4">'+taxLabel+'</td><td style="text-align:left;direction:ltr">'+fmtN(d.tax)+' '+sym+'</td></tr>':'';
+  var insRowHtml=d.insCheck&&d.insurance>0
+    ?'<tr class="tot-r"><td colspan="4">'+(isAr?'تأمينات اجتماعية (3%)':'Social Insurance (3%)')+'</td><td style="text-align:left;direction:ltr">'+fmtN(d.insurance)+' '+sym+'</td></tr>':'';
+  var slaSection=d.slaRows&&d.slaRows.length
+    ?'<h3>'+(isAr?'ثالثاً: الضمان والصيانة (SLA)':'3. Warranty & SLA')+'</h3>'+
+     '<table><thead><tr><th>'+(isAr?'البند':'Item')+'</th><th>'+(isAr?'الكمية':'Qty')+'</th><th>'+(isAr?'الوحدة':'Unit')+'</th><th>'+(isAr?'السعر':'Price')+'</th><th>'+(isAr?'الإجمالي':'Total')+'</th></tr></thead><tbody>'+
+     rowsHtml(d.slaRows)+'<tr class="tot-r"><td colspan="4">'+(isAr?'مجموع SLA':'SLA Subtotal')+'</td><td style="text-align:left;direction:ltr">'+fmtN(d.slaTotal)+' '+sym+'</td></tr></tbody></table>':'';
+
+  var css='*{box-sizing:border-box;margin:0;padding:0}body{font-family:Cairo,sans-serif;background:'+t.bg+';color:'+t.fg+';padding:1.4cm;font-size:10pt;line-height:1.55}'+
+    '.page-hdr{background:'+t.hBg+';color:'+t.hFg+';padding:.9cm 1.1cm;border-radius:4px;display:flex;justify-content:space-between;align-items:center;margin-bottom:.7cm}'+
+    '.hdr-left h2{font-size:10pt;opacity:.8;margin-bottom:.15cm}.hdr-left h1{font-size:15pt;font-weight:900}'+
+    '.meta{background:rgba(0,0,0,.04);border:1px solid '+t.bd+';border-radius:4px;padding:.45cm .75cm;margin-bottom:.55cm;display:grid;grid-template-columns:1fr 1fr;gap:.28cm;font-size:9pt}'+
+    '.meta-item strong{color:'+t.hBg+';font-size:8pt;display:block;margin-bottom:.08cm}'+
+    'h3{font-size:10pt;font-weight:800;background:'+t.aBg+';color:'+t.aFg+';padding:.25cm .55cm;border-radius:3px;margin:.45cm 0 .28cm}'+
+    'table{width:100%;border-collapse:collapse;margin-bottom:.35cm}'+
+    'th{background:'+t.tBg+';color:'+t.tFg+';padding:.28cm .45cm;font-size:9pt;font-weight:700;text-align:right}'+
+    'td{padding:.25cm .45cm;border-bottom:1px solid '+t.bd+';font-size:9pt}'+
+    'tr:nth-child(even) td{background:rgba(0,0,0,.022)}'+
+    '.tot-r td{background:'+t.totBg+';font-weight:700}'+
+    '.grand-r td{background:'+t.gBg+';color:'+t.gFg+';font-weight:900;font-size:10.5pt}'+
+    '.tafq{text-align:center;font-size:8.5pt;font-style:italic;margin:-.15cm 0 .35cm;padding:.22cm;border:1px dashed '+t.bd+';border-radius:3px}'+
+    '.terms{background:rgba(0,0,0,.035);border:1px solid '+t.bd+';border-radius:4px;padding:.45cm .75cm;font-size:8pt;opacity:.75;margin-top:.35cm}'+
+    '.terms ul{margin-right:.45cm;margin-top:.18cm}.terms li{margin-bottom:.12cm}'+
+    '.footer{margin-top:.55cm;display:flex;justify-content:space-between;align-items:flex-end;border-top:1px solid '+t.bd+';padding-top:.38cm}'+
+    '.sig-box{border:1px solid '+t.bd+';border-radius:3px;padding:.38cm .75cm;min-width:4.8cm;text-align:center;font-size:8pt}'+
+    '@media print{body{padding:0}@page{size:A4;margin:1.1cm}}';
+
+  var html='<!DOCTYPE html><html dir="'+(isAr?'rtl':'ltr')+'" lang="'+(isAr?'ar':'en')+'">'+
+    '<head><meta charset="UTF-8"><title>'+(isAr?'مقايسة — ':'Quotation — ')+proj+'</title>'+
+    '<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet"/>'+
+    '<style>'+css+'</style></head><body>'+
+    '<div class="page-hdr"><div class="hdr-left"><h2>'+(isAr?'مقايسة وعرض سعر فني':'Technical Quotation')+'</h2><h1>'+(isAr?'منظومة كاميرات المراقبة الأمنية':'Security CCTV System')+'</h1></div>'+logoHtml+'</div>'+
+    '<div class="meta">'+
+    '<div class="meta-item"><strong>'+(isAr?'اسم المشروع':'Project Name')+'</strong>'+proj+'</div>'+
+    '<div class="meta-item"><strong>'+(isAr?'اسم الشركة':'Company')+'</strong>'+co+'</div>'+
+    '<div class="meta-item"><strong>'+(isAr?'تاريخ العرض':'Issue Date')+'</strong>'+dateStr+'</div>'+
+    '<div class="meta-item"><strong>'+(isAr?'صلاحية العرض':'Valid Until')+'</strong>'+(isAr?'7 أيام من تاريخ الإصدار':'7 days from issue')+'</div>'+
+    '<div class="meta-item"><strong>'+(isAr?'عملة العرض':'Currency')+'</strong>'+cur+' — '+sym+'</div>'+
+    '<div class="meta-item"><strong>'+(isAr?'رقم العرض':'Quote No')+'</strong>CMRA-'+Date.now().toString().slice(-6)+'</div>'+
+    '</div>'+
+    '<h3>'+(isAr?'أولاً: بند التوريد (Supply)':'1. Supply Items')+'</h3>'+
+    '<table><thead><tr><th>'+(isAr?'البند':'Item')+'</th><th>'+(isAr?'الكمية':'Qty')+'</th><th>'+(isAr?'الوحدة':'Unit')+'</th><th>'+(isAr?'سعر الوحدة':'Unit Price')+'</th><th>'+(isAr?'الإجمالي':'Total')+'</th></tr></thead><tbody>'+
+    rowsHtml(d.supplyRows)+'<tr class="tot-r"><td colspan="4">'+(isAr?'مجموع التوريد':'Supply Subtotal')+'</td><td style="text-align:left;direction:ltr">'+fmtN(d.supTotal)+' '+sym+'</td></tr></tbody></table>'+
+    '<h3>'+(isAr?'ثانياً: بند التركيبات والمصنعيات':'2. Installation & Labor')+'</h3>'+
+    '<table><thead><tr><th>'+(isAr?'البند':'Item')+'</th><th>'+(isAr?'الكمية':'Qty')+'</th><th>'+(isAr?'الوحدة':'Unit')+'</th><th>'+(isAr?'سعر الوحدة':'Unit Price')+'</th><th>'+(isAr?'الإجمالي':'Total')+'</th></tr></thead><tbody>'+
+    rowsHtml(d.instRows)+'<tr class="tot-r"><td colspan="4">'+(isAr?'مجموع التركيبات':'Installation Subtotal')+'</td><td style="text-align:left;direction:ltr">'+fmtN(d.instTotal)+' '+sym+'</td></tr></tbody></table>'+
+    slaSection+
+    '<table><tbody>'+insRowHtml+taxRowHtml+
+    '<tr class="grand-r"><td colspan="4">'+(isAr?'🏆 الإجمالي الكلي الشامل':'🏆 GRAND TOTAL')+'</td><td style="text-align:left;direction:ltr">'+fmtN(d.grand)+' '+sym+'</td></tr></tbody></table>'+
+    '<div class="tafq">'+tafqeet(d.grand,sym)+'</div>'+
+    '<div style="display:grid;grid-template-columns:1fr 1fr;gap:.4cm;margin-top:.4cm">'+
+    '<div><h3 style="font-size:9pt">'+(isAr?'جدول الدفعات المالية':'Payment Schedule')+'</h3>'+
+    '<table><thead><tr><th>'+(isAr?'المرحلة':'Stage')+'</th><th>'+(isAr?'النسبة':'%')+'</th><th>'+(isAr?'المبلغ':'Amount')+'</th><th>'+(isAr?'التفقيط':'In Words')+'</th></tr></thead><tbody>'+schedHtml+'</tbody></table></div>'+
+    '<div><h3 style="font-size:9pt">'+(isAr?'ملاحظات فنية':'Technical Notes')+'</h3>'+
+    '<div style="font-size:8pt;line-height:1.8;opacity:.8">'+
+    '• '+(isAr?'الدقة:':'Resolution:')+' '+document.getElementById('res').options[document.getElementById('res').selectedIndex].text+'<br/>'+
+    '• '+(isAr?'الضغط:':'Codec:')+' '+document.getElementById('comp').options[document.getElementById('comp').selectedIndex].text+'<br/>'+
+    '• '+(isAr?'مدة التخزين:':'Retention:')+' '+document.getElementById('days').value+(isAr?' يوم':' days')+'<br/>'+
+    '• '+(isAr?'الطاقة:':'Power:')+' '+document.getElementById('vW').textContent+' W<br/>'+
+    '• '+(isAr?'التخزين:':'Storage:')+' '+document.getElementById('vTB').textContent+' TB<br/>'+
+    '• '+(isAr?'البيئة:':'Environment:')+' '+(boqData.installEnv||'—')+'<br/>'+
+    '• '+(isAr?'النظام:':'System:')+' '+(boqData.camSystem==='analog'?'Analog HD':'IP Network')+'</div></div></div>'+
+    '<div class="terms"><strong>'+(isAr?'الشروط والأحكام العامة:':'Terms & Conditions:')+'</strong>'+
+    '<ul><li>'+(isAr?'صلاحية هذا العرض 7 أيام من تاريخ الإصدار فقط.':'Offer valid 7 days from issue date.')+'</li>'+
+    '<li>'+(isAr?'الحساب النهائي على الفعلي المنفّذ (As-Built).':'Final billing based on actual executed works.')+'</li>'+
+    '<li>'+(isAr?'هذا العرض خاضع لخصم 1% من المنبع وفق اللوائح الضريبية.':'Subject to 1% withholding tax per regulations.')+'</li>'+
+    '<li>'+(isAr?'أي تعديلات في نطاق العمل تستلزم ملحقاً عقدياً مكتوباً وموقعاً.':'Scope changes require written contract addendum.')+'</li>'+
+    '<li>'+(isAr?'ضمان المنظومة: سنة من تاريخ التسليم الفعلي.':'System warranty: 1 year from handover.')+'</li></ul></div>'+
+    '<div class="footer">'+
+    '<div class="sig-box">'+(isAr?'توقيع واعتماد صاحب الأعمال':'Client Approval')+'<br/><br/><br/>'+(isAr?'الاسم:....................':'Name:.................')+'</div>'+
+    '<div style="text-align:center">'+stampHtml+
+    '<div style="font-size:7.5pt;opacity:.6">'+co+'<br/>'+(isAr?'ختم وتوقيع الشركة':'Company Stamp & Signature')+'</div></div>'+
+    '<div class="sig-box">'+(isAr?'توقيع مدير المشروع':'Project Manager')+'<br/><br/><br/>'+(isAr?'الاسم:....................':'Name:.................')+'</div>'+
+    '</div>'+
+    '<script>window.onload=function(){window.print();}<\/script>'+
+    '</body></html>';
+
+  var w=window.open('','_blank');
+  if(w){w.document.write(html);w.document.close();}
+  else alert(isAr?'يرجى السماح بالنوافذ المنبثقة في المتصفح':'Please allow popups');
+}
+
+/* ═══════════════════════════════
+   SPEC SHEET COPY
+═══════════════════════════════ */
+function copySpecSheet(){
+  if(!boqData || !boqData.supplyRows){ alert('يرجى إجراء الحساب أولاً'); return; }
+  var cams  = parseInt(document.getElementById('camCount').value)||1;
+  var res   = parseInt(document.getElementById('res').value)||5;
+  var comp  = document.getElementById('comp').value||'h265';
+  var brand = (TIERS[activeTier]||TIERS.professional).camBrand;
+  var nvrBrand= brand;
+  var hddTB = Math.ceil((boqData.supplyRows.find(function(r){return r.name.indexOf('هارد')>-1||r.name.indexOf('HDD')>-1;})||{qty:1}).qty);
+  var swBrand = document.getElementById('swBrand').value||'TP-Link';
+  var cableM= cams*(parseFloat(document.getElementById('cableLen').value)||30);
+  var rackKey = document.getElementById('rackSel').value||'none';
+  var rackSpec = RACKS[rackKey]||RACKS.none;
+  var swData= calcSwitches(cams);
+  var swPorts= cams<=6?8:24;
+  var fiberEn= document.getElementById('fiberCheck').checked;
+  var fiberLen= parseFloat(document.getElementById('fiberLen').value)||200;
+  var poleCount= Math.ceil(cams/2);
+  var envKey= document.getElementById('installEnv').value||'indoor';
+
+  var lines=[];
+  lines.push('═══════════════════════════════════════════════════════════');
+  lines.push('         المواصفات الفنية التفصيلية للمناقصة — CAMORA PRO');
+  lines.push('═══════════════════════════════════════════════════════════');
+  lines.push('');
+  lines.push('أولاً: كاميرات المراقبة');
+  lines.push('───────────────────────');
+  lines.push(SPEC_TEMPLATES.camera_ip(res, comp, brand));
+  lines.push('  — الكمية: '+cams+' قطعة');
+  lines.push('');
+  lines.push('ثانياً: جهاز التسجيل');
+  lines.push('───────────────────────');
+  lines.push(SPEC_TEMPLATES.nvr(nvrBrand));
+  lines.push('  — الكمية: '+Math.ceil(cams/16)+' جهاز');
+  lines.push('');
+  lines.push('ثالثاً: وسائط التخزين');
+  lines.push('───────────────────────');
+  var hddEntry = boqData.supplyRows.find(function(r){return r.name.indexOf('هارد')>-1||r.name.indexOf('HDD')>-1;});
+  var tbPerDisk = hddEntry ? Math.ceil((parseFloat(document.getElementById('vTB').textContent)||4)/hddEntry.qty) : 4;
+  lines.push(SPEC_TEMPLATES.hdd(tbPerDisk));
+  lines.push('  — الكمية: '+(hddEntry?hddEntry.qty:1)+' قطعة');
+  lines.push('');
+  lines.push('رابعاً: البنية التحتية الشبكية');
+  lines.push('───────────────────────');
+  lines.push(SPEC_TEMPLATES.switch_poe(swPorts, swBrand));
+  lines.push('  — الكمية: '+swData.reduce(function(s,r){return s+r.count;},0)+' قطعة');
+  lines.push('');
+  lines.push(SPEC_TEMPLATES.cable_utp(cableM));
+  lines.push('  — الكمية: '+cableM+' متر');
+  if(rackSpec.price>0){
+    lines.push('');
+    lines.push('خامساً: كابينة التجميع');
+    lines.push('───────────────────────');
+    lines.push(SPEC_TEMPLATES.rack(rackKey.replace(/[^0-9]/g,''), rackSpec.name));
+    lines.push('  — الكمية: '+swData.reduce(function(s,r){return s+r.count;},0)+' قطعة');
+  }
+  if(fiberEn){
+    lines.push('');
+    lines.push('سادساً: شبكة الألياف البصرية');
+    lines.push('───────────────────────');
+    lines.push(SPEC_TEMPLATES.fiber(fiberLen));
+    lines.push('  — الكمية: '+fiberLen+' متر');
+  }
+  if(envKey==='outdoor'){
+    lines.push('');
+    lines.push('سابعاً: أعمدة المراقبة الخارجية');
+    lines.push('───────────────────────');
+    lines.push(SPEC_TEMPLATES.pole(poleCount));
+  }
+  lines.push('');
+  lines.push('═══════════════════════════════════════════════════════════');
+  lines.push('ملاحظة: تُعدّ هذه المواصفات الفنية حداً أدنى إلزامياً. يحق للجهة الطالبة');
+  lines.push('قبول المواد المعادلة أو الأعلى مواصفة مع تقديم كتالوج فني موثق للموافقة.');
+  lines.push('═══════════════════════════════════════════════════════════');
+
+  var text = lines.join('\n');
+  if(navigator.clipboard && navigator.clipboard.writeText){
+    navigator.clipboard.writeText(text).then(function(){
+      var btn = document.querySelector('.btn-spec-copy');
+      var orig = btn.innerHTML;
+      btn.innerHTML = '✅ تم النسخ! الصق المواصفات في عرضك الفني مباشرة';
+      btn.style.background = '#0A2E10'; btn.style.borderColor = '#10B981'; btn.style.color = '#4EEAAA';
+      setTimeout(function(){ btn.innerHTML = orig; btn.style.background=''; btn.style.borderColor=''; btn.style.color=''; }, 3000);
+    }).catch(function(){ alert(text); });
+  } else {
+    alert(text);
+  }
+}
+
+/* ═══════════════════════════════
+   UI HELPERS
+═══════════════════════════════ */
+function toggleAcc(){var h=document.getElementById('accHdr'),b=document.getElementById('accBody');h.classList.toggle('open');b.classList.toggle('open');}
+function toggleFiber(){var c=document.getElementById('fiberCheck').checked;document.getElementById('fiberFields').style.display=c?'block':'none';calculate();}
+function togglePTZ(){isPTZ=!isPTZ;var t=document.getElementById('ptzT');t.classList.toggle('on',isPTZ);t.setAttribute('aria-checked',isPTZ);document.getElementById('ptzL').textContent=isPTZ?'كاميرات PTZ متحركة (15W)':'كاميرات ثابتة Fixed (7W)';calculate();}
+function selectTheme(el){document.querySelectorAll('.tpill').forEach(function(p){p.classList.remove('on');});el.classList.add('on');pdfTheme=el.dataset.t;}
+function handleUpload(type,inp){
+  if(!inp.files||!inp.files[0])return;
+  var r=new FileReader();
+  r.onload=function(e){
+    var b64=e.target.result;
+    if(type==='logo'){logoB64=b64;localStorage.setItem('camora_logo',b64);var p=document.getElementById('logoPrev');p.src=b64;p.style.display='block';}
+    else{stampB64=b64;localStorage.setItem('camora_stamp',b64);var p=document.getElementById('stampPrev');p.src=b64;p.style.display='block';}
+  };
+  r.readAsDataURL(inp.files[0]);
+}
+
+/* ═══════════════════════════════
+   ACTIVATION CODE
+═══════════════════════════════ */
+function doActivate(){
+  var v=document.getElementById('actInp').value.trim(), m=document.getElementById('actMsg');
+  if(v===ACT_CODE){
+    localStorage.setItem(LS_KEY,'true'); setPremUI(false);
+    m.className='ok'; m.textContent='🎉 تم التفعيل بنجاح!';
+    setTimeout(function(){closeM();document.getElementById('pBanner').style.display='block';},1300);
+  }else{
+    m.className='err'; m.textContent='❌ الكود غير صحيح.';
+    var inp=document.getElementById('actInp'); inp.style.borderColor='#f87171';
+    setTimeout(function(){inp.style.borderColor='';m.textContent='';},2600);
+  }
+}
+
+/* ═══════════════════════════════
+   MODAL
+═══════════════════════════════ */
+function openM(){document.getElementById('mover').classList.add('open');document.getElementById('actInp').value='';document.getElementById('actMsg').textContent='';}
+function closeM(){document.getElementById('mover').classList.remove('open');}
+function closeOvr(e){if(e.target===document.getElementById('mover'))closeM();}
+
+/* ═══════════════════════════════
+   SHARE
+═══════════════════════════════ */
+function shareRes(){
+  var n=document.getElementById('projName').value||'مشروعي';
+  var t='📊 CAMORA PRO v8 — '+n+
+    '\n💾 '+document.getElementById('vTB').textContent+' TB'+
+    '\n⚡ '+document.getElementById('vW').textContent+'W'+
+    (boqData.grand?'\n💰 '+fmtN(boqData.grand)+' '+(boqData.sym||''):'');
+  if(navigator.share){navigator.share({title:'نتائج CAMORA PRO',text:t});}
+  else if(navigator.clipboard){navigator.clipboard.writeText(t);alert('✅ تم النسخ للحافظة!');}
+}
+
+/* ═══════════════════════════════
+   EVENTS
+═══════════════════════════════ */
+document.querySelectorAll('.chip').forEach(function(c){
+  c.addEventListener('click',function(){
+    document.querySelectorAll('.chip').forEach(function(x){x.classList.remove('on');});
+    c.classList.add('on'); document.getElementById('days').value=c.dataset.d; calculate();
+  });
+});
+document.getElementById('days').addEventListener('input',function(){
+  var v=parseInt(this.value);
+  document.querySelectorAll('.chip').forEach(function(c){c.classList.toggle('on',parseInt(c.dataset.d)===v);});
+  calculate();
+});
+['camCount','res','comp','hpd','currency','priceMode','cableTray','cableLen',
+ 'taxMode','pCam','pNvr','pHdd','pInst','swBrand','slaMode','paySchedule',
+ 'fiberLen','fiberPrice','monitorSel','rackSel','camSystem','installEnv','upsSel'].forEach(function(id){
+  var el=document.getElementById(id);
+  if(el){el.addEventListener('input',calculate);el.addEventListener('change',calculate);}
+});
+document.getElementById('actInp').addEventListener('keydown',function(e){if(e.key==='Enter')doActivate();});
+/* lead Enter-key listeners moved to window.onload */
+
+/* ── RESPONSIVE ── */
+function ckGrid(){
+  var m=window.innerWidth<760;
+  document.getElementById('mGrid').style.gridTemplateColumns=m?'1fr':'1fr 1fr';
+  document.getElementById('ctaRow').style.gridTemplateColumns=m?'1fr':(window.innerWidth<900?'1fr 1fr':'1fr 1fr 1fr');
+}
+window.addEventListener('resize',ckGrid); ckGrid();
+
+/* ── INIT ── */
+window.onload=function(){
+  /* ── Lead button & Enter-key wiring (safe: DOM fully loaded) ── */
+  var btnLead = document.getElementById('btnLead');
+  if(btnLead) btnLead.addEventListener('click', submitLead);
+
+  var ldName  = document.getElementById('ldName');
+  var ldPhone = document.getElementById('ldPhone');
+  var ldEmail = document.getElementById('ldEmail');
+  if(ldName)  ldName.addEventListener('keydown',  function(e){ if(e.key==='Enter'){ if(ldPhone) ldPhone.focus(); } });
+  if(ldPhone) ldPhone.addEventListener('keydown', function(e){ if(e.key==='Enter'){ if(ldEmail) ldEmail.focus(); } });
+  if(ldEmail) ldEmail.addEventListener('keydown', function(e){ if(e.key==='Enter') submitLead(); });
+
+  checkLead();
+  checkPrem();
+  renderArchive();
+  calculate();
+};
+</script>
+</body>
+</html>
