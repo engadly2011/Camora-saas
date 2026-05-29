@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>CAMORA Pro v13 | حاسبة المراقبة الذكية 2026</title>
+<title>CAMORA Pro v15 | حاسبة المراقبة الذكية 2026</title>
 <!-- ══ META PIXEL (Ready — replace YOUR_PIXEL_ID) ══ -->
 <script>
 !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -536,7 +536,7 @@ input[type=number]::-webkit-outer-spin-button{-webkit-appearance:none;margin:0}
 
 <!-- ══ HEADER ══ -->
 <header class="fu">
-  <div class="l-badge"><span class="l-brand">CAMORA PRO</span>&nbsp;·&nbsp;v13 · نظام مقايسات التيار الخفيف 2026</div>
+  <div class="l-badge"><span class="l-brand">CAMORA PRO</span>&nbsp;·&nbsp;v15 · نظام مقايسات التيار الخفيف 2026</div>
   <h1>حاسبة كاميرات المراقبة الذكية</h1>
   <p class="subtitle">احسب التخزين · الطاقة · السويتشات · الفايبر · BOQ كامل بمعايير ONVIF والشروط الحكومية للخليج ومصر</p>
   <div class="lock-ind" id="lockInd">🔒 ميزة PDF &amp; الأرشيف محمية — الباقة المجانية (2 مشاريع)</div>
@@ -1019,7 +1019,7 @@ input[type=number]::-webkit-outer-spin-button{-webkit-appearance:none;margin:0}
 </div><!-- /wrap -->
 
 <footer class="fu">
-  <p>© 2026 <em>CAMORA PRO</em> v13 — نظام مقايسات التيار الخفيف الذكي · مصمم للسوق العربي</p>
+  <p>© 2026 <em>CAMORA PRO</em> v15 — نظام مقايسات التيار الخفيف الذكي · مصمم للسوق العربي</p>
   <p style="margin-top:.28rem;opacity:.45">الأرقام تقديرية وتعتمد على معايير ONVIF الدولية ولا تُعدّ وثيقة قانونية ملزمة بدون توقيع رسمي</p>
 </footer>
 
@@ -2100,7 +2100,7 @@ function renderBOQ(){
     '<td id="bqGrand" style="font-size:.9rem">'+fmtN(d.grand)+' '+sym+'</td>';
   tbody.appendChild(gRow);
 
-  document.getElementById('tafqeetTxt').textContent=tafqeet(d.grand,sym);
+  document.getElementById('tafqeetTxt').textContent=tafqeet(Math.round(d.grand||0),sym);
   attachCellListeners();
 }
 
@@ -2135,7 +2135,7 @@ function renderSchedule(grand,sym){
     '<th>'+(isAr?'المبلغ المستحق':'Amount Due')+'</th>'+
     '<th>'+(isAr?'التفقيط':'In Words')+'</th></tr></thead><tbody>'+
     percs.map(function(row){
-      var amt=grand*row[1];
+      var amt=Math.round((grand*row[1]) || 0);
       return '<tr><td>'+row[0]+'</td>'+
         '<td style="text-align:center;font-weight:700;color:var(--em-b)">'+(row[1]*100)+'%</td>'+
         '<td class="amt-cell">'+fmtN(amt)+' '+sym+'</td>'+
@@ -2201,34 +2201,42 @@ function recalcBOQ(){
   var insEnabled = document.getElementById('insCheck').checked;
   var slaMode  = boqData.slaMode || document.getElementById('slaMode').value || 'standard';
 
-  /* STEP 1 */
+  /* STEP 1 — Pure DOM Scan with clean, unconditional section detection */
   var supTotal=0, instTotal=0, slaTotal=0;
   var section='';
   document.querySelectorAll('#boqBody tr').forEach(function(tr){
     var hdr=tr.querySelector('td[colspan="6"]');
     if(hdr){
       var t=hdr.textContent;
-      if(t.indexOf('التوريد')>-1||t.indexOf('Supply')>-1){section='sup';}
-      else if((t.indexOf('التركيبات')>-1||t.indexOf('Installation')>-1)&&section!=='sup'){section='inst';}
-      else if(t.indexOf('SLA')>-1||t.indexOf('الضمان')>-1||t.indexOf('Warranty')>-1){section='sla';}
-      else{section='';}
+      /* Unconditional switch — order matters: check SLA & Installation
+         BEFORE Supply so the lock-to-sup bug can never happen again */
+      if(t.indexOf('SLA')>-1 || t.indexOf('الضمان')>-1 || t.indexOf('Warranty')>-1){
+        section='sla';
+      } else if(t.indexOf('التركيبات')>-1 || t.indexOf('المصنعيات')>-1 || t.indexOf('Installation')>-1 || t.indexOf('Labor')>-1){
+        section='inst';
+      } else if(t.indexOf('التوريد')>-1 || t.indexOf('Supply')>-1){
+        section='sup';
+      } else {
+        section='';   /* totals / insurance / tax / grand rows */
+      }
       return;
     }
     var qcEl=tr.querySelector('[data-col=qty]'),ucEl=tr.querySelector('[data-col=up]'),tcEl=tr.querySelector('.tot-cell');
     if(!qcEl||!ucEl||!tcEl) return;
-    /* ── STRICT SANITIZE: strip everything except digits and first dot ── */
-    var rawQ = qcEl.innerText.replace(/[^0-9.]/g,'');
-    var rawU = ucEl.innerText.replace(/[^0-9.]/g,'');
-    /* prevent double-dot */
+    /* ── STRICT REGEX SANITIZE: strip currency text (ج.م/SAR/etc), keep digits+dot ── */
+    var rawQ = (qcEl.textContent||'').replace(/[^\d.]/g,'');
+    var rawU = (ucEl.textContent||'').replace(/[^\d.]/g,'');
+    /* collapse multiple dots to the first one */
     var dq=rawQ.indexOf('.');if(dq!==-1)rawQ=rawQ.slice(0,dq+1)+rawQ.slice(dq+1).replace(/\./g,'');
     var du=rawU.indexOf('.');if(du!==-1)rawU=rawU.slice(0,du+1)+rawU.slice(du+1).replace(/\./g,'');
-    var qty = parseFloat(rawQ)||0;
-    var up  = parseFloat(rawU)||0;
+    var qty = parseFloat(rawQ); if(isNaN(qty)) qty=0;
+    var up  = parseFloat(rawU); if(isNaN(up))  up=0;
     var tot = qty * up;
+    /* Update THIS row's total cell only — never touch other cells */
     tcEl.textContent = fmtN(tot)+' '+sym;
-    if(section==='sup') supTotal+=tot;
-    else if(section==='inst') instTotal+=tot;
-    /* SLA recalculated analytically below */
+    if(section==='sup')       supTotal  += tot;
+    else if(section==='inst') instTotal += tot;
+    /* SLA handled separately below */
   });
 
   /* STEP 2 */
@@ -2297,9 +2305,10 @@ function recalcBOQ(){
   var insEl=document.getElementById('bqIns'); if(insEl) insEl.textContent=fmtN(insurance)+' '+sym;
   setCell('bqTax',tax); setCell('bqGrand',grand);
 
-  /* STEP 8 */
-  document.getElementById('tafqeetTxt').textContent=tafqeet(grand,sym);
-  renderSchedule(grand,sym);
+  /* STEP 8 — round grand to integer before tafqeet & schedule (kill kahsh fractions) */
+  var grandRounded = Math.round(parseFloat(grand)||0);
+  document.getElementById('tafqeetTxt').textContent = tafqeet(grandRounded, sym);
+  renderSchedule(grandRounded, sym);
 }
 
 /* ═══════════════════════════════
@@ -2453,12 +2462,75 @@ function anim(id,v){var el=document.getElementById(id);el.classList.remove('pa')
 /* ═══════════════════════════════
    PDF GENERATOR — PREMIUM
 ═══════════════════════════════ */
+/* ═══════════════════════════════════════════════════════════
+   scrapeLiveBOQ — reads the CURRENT on-screen BOQ table row by row
+   so the PDF always matches exactly what the user edited live.
+   Returns a boqData-shaped object built purely from the DOM.
+═══════════════════════════════════════════════════════════ */
+function scrapeLiveBOQ(){
+  var cur = document.getElementById('currency').value;
+  var sym = CSYM[cur] || 'ج.م';
+  var supplyRows=[], instRows=[], slaRows=[];
+  var section='';
+  function num(el){ if(!el) return 0; var v=parseFloat((el.textContent||'').replace(/[^\d.]/g,'')); return isNaN(v)?0:v; }
+
+  document.querySelectorAll('#boqBody tr').forEach(function(tr){
+    var hdr=tr.querySelector('td[colspan="6"]');
+    if(hdr){
+      var t=hdr.textContent;
+      if(t.indexOf('SLA')>-1||t.indexOf('الضمان')>-1||t.indexOf('Warranty')>-1) section='sla';
+      else if(t.indexOf('التركيبات')>-1||t.indexOf('المصنعيات')>-1||t.indexOf('Installation')>-1||t.indexOf('Labor')>-1) section='inst';
+      else if(t.indexOf('التوريد')>-1||t.indexOf('Supply')>-1) section='sup';
+      else section='';
+      return;
+    }
+    var nmEl=tr.querySelector('[data-col=name]');
+    var qcEl=tr.querySelector('[data-col=qty]');
+    var ucEl=tr.querySelector('[data-col=up]');
+    var unEl=tr.querySelector('td:nth-child(4)');
+    if(!nmEl||!qcEl||!ucEl) return;
+    var row={ name:(nmEl.textContent||'بند').trim(), qty:num(qcEl), up:num(ucEl),
+              unit:(unEl?(unEl.textContent||'').trim():'—') };
+    if(section==='sup')       supplyRows.push(row);
+    else if(section==='inst') instRows.push(row);
+    else if(section==='sla')  slaRows.push(row);
+  });
+
+  /* Read live summary totals straight from the bottom cells */
+  function cellNum(id){ var e=document.getElementById(id); if(!e) return 0; var v=parseFloat((e.textContent||'').replace(/[^\d.]/g,'')); return isNaN(v)?0:v; }
+  var supTotal  = supplyRows.reduce(function(s,r){return s+r.qty*r.up;},0);
+  var instTotal = instRows.reduce(function(s,r){return s+r.qty*r.up;},0);
+  var slaTotal  = slaRows.reduce(function(s,r){return s+r.qty*r.up;},0);
+  /* Prefer the live summary cells when present (covers analytic SLA/insurance) */
+  var supCell=cellNum('bqSupTot'), instCell=cellNum('bqInstTot');
+  if(supCell>0)  supTotal=supCell;
+  if(instCell>0) instTotal=instCell;
+  var slaCell=cellNum('bqSlaTot'); if(slaCell>0) slaTotal=slaCell;
+  var insurance=cellNum('bqIns');
+  var tax=cellNum('bqTax');
+  var grand=cellNum('bqGrand');
+  if(grand===0) grand=supTotal+instTotal+slaTotal+insurance+tax;
+
+  return {
+    supplyRows:supplyRows, instRows:instRows, slaRows:slaRows,
+    supTotal:supTotal, instTotal:instTotal, slaTotal:slaTotal,
+    insurance:insurance, tax:tax, grand:grand,
+    sym:sym, cur:cur,
+    taxMode:(boqData.taxMode||document.getElementById('taxMode').value),
+    insCheck:(document.getElementById('insCheck')||{}).checked,
+    isAr:(document.getElementById('pdfLang').value==='ar')
+  };
+}
+
 function generatePDF(){
   var lang=document.getElementById('pdfLang').value, isAr=(lang==='ar');
   var proj=document.getElementById('projName').value||(isAr?'مشروع بدون اسم':'Untitled');
   var co  =document.getElementById('coName').value||(isAr?'شركة غير محددة':'Company');
-  var cur =document.getElementById('currency').value, sym=CSYM[cur];
-  var d   =boqData; if(!d||!d.supplyRows){alert(isAr?'يرجى الحساب أولاً':'Please calculate first');return;}
+  var cur =document.getElementById('currency').value, sym=CSYM[cur]||'ج.م';
+  /* ── LIVE DOM SCRAPE — overrides stale boqData so PDF matches the screen ── */
+  if(!boqData||!boqData.supplyRows){alert(isAr?'يرجى الحساب أولاً':'Please calculate first');return;}
+  var d = scrapeLiveBOQ();
+  if(!d.supplyRows.length && !d.instRows.length){ d = boqData; }
   var dateStr=new Date().toLocaleDateString(isAr?'ar-EG':'en-GB',{year:'numeric',month:'long',day:'numeric'});
   var themes={
     classic:{hBg:'#1a1a1a',hFg:'#fff',aBg:'#333',aFg:'#fff',tBg:'#444',tFg:'#fff',totBg:'#f0f0f0',gBg:'#1a1a1a',gFg:'#fff',bd:'#ccc',bg:'#fff',fg:'#1a1a1a'},
@@ -2476,7 +2548,7 @@ function generatePDF(){
     schedDefs=[[isAr?'دفعة أولى — عند التوقيع':'1st — Signing',0.50],[isAr?'دفعة ثانية — عند التوريد':'2nd — Delivery',0.40],[isAr?'دفعة ثالثة — عند التسليم':'3rd — Handover',0.10]];
   }
   var schedHtml=schedDefs.map(function(r){
-    var amt=d.grand*r[1];
+    var amt=Math.round((d.grand*r[1])||0);
     return'<tr><td>'+r[0]+'</td><td style="text-align:center;font-weight:700">'+(r[1]*100)+'%</td><td style="text-align:left;direction:ltr;font-weight:700">'+fmtN(amt)+' '+sym+'</td><td style="font-size:7.5pt;color:#666;font-style:italic">'+tafqeet(amt,sym)+'</td></tr>';
   }).join('');
 
@@ -2552,7 +2624,7 @@ function generatePDF(){
     slaSection+
     '<table><tbody>'+insRowHtml+taxRowHtml+
     '<tr class="grand-r"><td colspan="4">'+(isAr?'🏆 الإجمالي الكلي الشامل':'🏆 GRAND TOTAL')+'</td><td style="text-align:left;direction:ltr">'+fmtN(d.grand)+' '+sym+'</td></tr></tbody></table>'+
-    '<div class="tafq">'+tafqeet(d.grand,sym)+'</div>'+
+    '<div class="tafq">'+tafqeet(Math.round(d.grand||0),sym)+'</div>'+
     '<div style="display:grid;grid-template-columns:1fr 1fr;gap:.4cm;margin-top:.4cm">'+
     '<div><h3 style="font-size:9pt">'+(isAr?'جدول الدفعات المالية':'Payment Schedule')+'</h3>'+
     '<table><thead><tr><th>'+(isAr?'المرحلة':'Stage')+'</th><th>'+(isAr?'النسبة':'%')+'</th><th>'+(isAr?'المبلغ':'Amount')+'</th><th>'+(isAr?'التفقيط':'In Words')+'</th></tr></thead><tbody>'+schedHtml+'</tbody></table></div>'+
