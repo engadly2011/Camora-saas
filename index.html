@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>CAMORA Pro v11 | حاسبة المراقبة الذكية 2026</title>
+<title>CAMORA Pro v12 | حاسبة المراقبة الذكية 2026</title>
 <!-- ══ META PIXEL (Ready — replace YOUR_PIXEL_ID) ══ -->
 <script>
 !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -374,6 +374,59 @@ table.sched-tbl .tafq-cell{color:#9DBDAA;font-size:.73rem}
   -webkit-background-clip:text;background-clip:text}
 .rc.uc .ru{color:#CE93D8}
 
+/* ── TRIPLE CAMERA ROWS ── */
+.cam-type-row{display:flex;align-items:center;gap:.7rem;margin-bottom:.7rem;
+  background:#0C1A10;border:1px solid #1C3526;border-radius:.7rem;padding:.6rem .8rem}
+.cam-type-label{flex:1;font-size:.84rem;font-weight:700;color:#C8EDD9;min-width:120px}
+.cam-type-inputs{display:flex;gap:.5rem;flex:1.4}
+.cam-type-inputs .iw{flex:1}
+.cam-type-inputs input{padding:.5rem 2rem .5rem .6rem;font-size:.85rem}
+@media(max-width:560px){.cam-type-row{flex-direction:column;align-items:stretch}.cam-type-label{min-width:0}}
+
+/* ── DASHBOARD GRID (executive top panel) ── */
+.dash-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:.7rem;margin-bottom:1.35rem}
+.dash-cell{background:#142219;border:1px solid #1C3526;border-radius:.9rem;
+  padding:1rem .8rem;text-align:center;position:relative;overflow:hidden;
+  box-shadow:0 4px 16px rgba(0,0,0,.4)}
+.dash-cell::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,215,0,.04),transparent 60%);pointer-events:none}
+.dash-ic{font-size:1.3rem;display:block;margin-bottom:.3rem}
+.dash-val{font-size:1.5rem;font-weight:900;line-height:1;
+  background:linear-gradient(135deg,#fff,#FFD95A);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:.25rem}
+.dash-lbl{font-size:.7rem;color:#7EC89A;font-weight:600}
+
+/* ── RECOMMENDATION BAR ── */
+.rec-bar{border-radius:.85rem;padding:.85rem 1.1rem;margin-bottom:1.35rem;
+  font-size:.86rem;font-weight:700;display:flex;align-items:center;gap:.6rem;
+  border:1px solid;transition:all .3s}
+.rec-green{background:#0A2016;border-color:#10B981;color:#4EEAAA}
+.rec-yellow{background:#1A1500;border-color:#F59E0B;color:#FFD95A}
+.rec-red{background:#1A0A0A;border-color:#EF4444;color:#FCA5A5}
+
+/* ── TEMPLATES SECTION ── */
+.tmpl-hdr{display:flex;align-items:center;justify-content:space-between;
+  padding:.75rem 1.2rem;background:#0C1A10;border:1px solid #1C3526;
+  border-radius:.85rem;cursor:pointer;font-size:.88rem;font-weight:700;color:#FFD95A;
+  transition:all .2s;user-select:none;margin-bottom:.6rem}
+.tmpl-hdr:hover{background:#0E2014}
+.tmpl-body{overflow:hidden;max-height:0;transition:max-height .4s ease}
+.tmpl-body.open{max-height:600px}
+.tmpl-inner{background:#142219;border:1px solid #1C3526;border-radius:.85rem;padding:1rem;margin-bottom:.6rem}
+.btn-tmpl-save{display:flex;align-items:center;justify-content:center;gap:.5rem;width:100%;
+  padding:.7rem;background:#1A1500;border:1px dashed #F59E0B;border-radius:.7rem;
+  font-family:inherit;font-size:.85rem;font-weight:700;color:#FFD95A;cursor:pointer;transition:all .22s}
+.btn-tmpl-save:hover{background:#2A2000;border-color:#FCD34D}
+.tmpl-item{display:flex;align-items:center;justify-content:space-between;gap:.5rem;
+  background:#0C1A10;border:1px solid #1C3526;border-radius:.6rem;padding:.5rem .75rem;margin-top:.5rem;font-size:.82rem}
+.tmpl-item-name{flex:1;color:#C8EDD9;font-weight:600}
+.btn-tmpl-load{padding:.3rem .7rem;border-radius:.45rem;background:rgba(16,185,129,.12);border:1px solid rgba(16,185,129,.3);font-family:inherit;font-size:.74rem;font-weight:700;color:#4EEAAA;cursor:pointer}
+.btn-tmpl-del{padding:.3rem .6rem;border-radius:.45rem;background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.28);font-family:inherit;font-size:.74rem;font-weight:700;color:#fca5a5;cursor:pointer}
+
+/* ── TECH SCOPE BUTTON ── */
+.btn-scope{display:flex;align-items:center;justify-content:center;gap:.5rem;width:100%;
+  padding:.75rem;margin-top:.6rem;background:#0A1E30;border:1px dashed #3B82F6;
+  border-radius:.72rem;font-family:inherit;font-size:.86rem;font-weight:700;color:#7CB9FF;cursor:pointer;transition:all .22s}
+.btn-scope:hover{background:#0D2540;border-color:#60A5FA}
+
 /* ── SCROLLBAR ── */
 ::-webkit-scrollbar{width:5px}
 ::-webkit-scrollbar-track{background:var(--bg)}
@@ -483,7 +536,7 @@ input[type=number]::-webkit-outer-spin-button{-webkit-appearance:none;margin:0}
 
 <!-- ══ HEADER ══ -->
 <header class="fu">
-  <div class="l-badge"><span class="l-brand">CAMORA PRO</span>&nbsp;·&nbsp;v11 · نظام مقايسات التيار الخفيف 2026</div>
+  <div class="l-badge"><span class="l-brand">CAMORA PRO</span>&nbsp;·&nbsp;v12 · نظام مقايسات التيار الخفيف 2026</div>
   <h1>حاسبة كاميرات المراقبة الذكية</h1>
   <p class="subtitle">احسب التخزين · الطاقة · السويتشات · الفايبر · BOQ كامل بمعايير ONVIF والشروط الحكومية للخليج ومصر</p>
   <div class="lock-ind" id="lockInd">🔒 ميزة PDF &amp; الأرشيف محمية — الباقة المجانية (2 مشاريع)</div>
@@ -491,6 +544,20 @@ input[type=number]::-webkit-outer-spin-button{-webkit-appearance:none;margin:0}
 
 <!-- ══ MAIN GRID ══ -->
 <div class="wrap" style="padding-bottom:3rem">
+
+  <!-- EXECUTIVE DASHBOARD GRID -->
+  <div class="dash-grid fu" id="dashGrid">
+    <div class="dash-cell"><span class="dash-ic">📷</span><div class="dash-val" id="dashCams">0</div><div class="dash-lbl">إجمالي الكاميرات</div></div>
+    <div class="dash-cell"><span class="dash-ic">💾</span><div class="dash-val" id="dashTB">0</div><div class="dash-lbl">سعة التخزين TB</div></div>
+    <div class="dash-cell"><span class="dash-ic">📅</span><div class="dash-val" id="dashDays">0</div><div class="dash-lbl">أيام الاحتفاظ</div></div>
+    <div class="dash-cell"><span class="dash-ic">📹</span><div class="dash-val" id="dashNVR">0</div><div class="dash-lbl">قنوات NVR</div></div>
+    <div class="dash-cell"><span class="dash-ic">🔋</span><div class="dash-val" id="dashUPS">—</div><div class="dash-lbl">طاقة UPS</div></div>
+    <div class="dash-cell"><span class="dash-ic">🛡️</span><div class="dash-val" id="dashComp" style="font-size:1rem">—</div><div class="dash-lbl">حالة الامتثال</div></div>
+  </div>
+
+  <!-- ENGINEERING RECOMMENDATION BAR -->
+  <div class="rec-bar rec-green fu" id="recBar">✅ جاري تحليل التصميم الهندسي...</div>
+
   <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.35rem" id="mGrid">
 
     <!-- INPUTS COL -->
@@ -521,31 +588,78 @@ input[type=number]::-webkit-outer-spin-button{-webkit-appearance:none;margin:0}
           </select><span class="ii">🏗️</span></div>
           <span class="field-tip">📌 يحسب الأعمدة والعلب المقاومة للماء IP66 للخارجي، ويرفع مصنعيات الصناعي 25% تلقائياً</span>
         </div>
-        <div class="two-col">
-          <div class="fg">
-            <label>📷 عدد الكاميرات</label>
-            <div class="iw"><input type="number" id="camCount" value="16" min="1" max="9999"/><span class="ii">🎥</span></div>
-          </div>
-          <div class="fg">
-            <label>🕐 ساعات التسجيل/يوم</label>
-            <div class="iw"><input type="number" id="hpd" value="24" min="1" max="24"/><span class="ii">⏱️</span></div>
+        <!-- TRIPLE CAMERA STRUCTURE -->
+        <div class="s-title" style="font-size:.9rem;margin-bottom:.8rem">📷 تقسيم الكاميرات — أعداد وأسعار منفصلة</div>
+
+        <div class="cam-type-row">
+          <div class="cam-type-label">📹 كاميرات داخلية Dome</div>
+          <div class="cam-type-inputs">
+            <div class="iw"><input type="number" id="camDomeQty" value="8" min="0" placeholder="العدد"/><span class="ii">#</span></div>
+            <div class="iw"><input type="number" id="camDomePrice" value="600" min="0" placeholder="سعر التوريد"/><span class="ii">💵</span></div>
           </div>
         </div>
+        <div class="cam-type-row">
+          <div class="cam-type-label">📷 كاميرات خارجية Bullet</div>
+          <div class="cam-type-inputs">
+            <div class="iw"><input type="number" id="camBulletQty" value="8" min="0" placeholder="العدد"/><span class="ii">#</span></div>
+            <div class="iw"><input type="number" id="camBulletPrice" value="900" min="0" placeholder="سعر التوريد"/><span class="ii">💵</span></div>
+          </div>
+        </div>
+        <div class="cam-type-row">
+          <div class="cam-type-label">🚀 كاميرات PTZ Speed Dome</div>
+          <div class="cam-type-inputs">
+            <div class="iw"><input type="number" id="camPtzQty" value="0" min="0" placeholder="العدد"/><span class="ii">#</span></div>
+            <div class="iw"><input type="number" id="camPtzPrice" value="4500" min="0" placeholder="سعر التوريد"/><span class="ii">💵</span></div>
+          </div>
+        </div>
+        <span class="field-tip">📷 كل نوع له عدد وسعر مستقل — يُحقن كبند منفصل في الـ BOQ وتُحسب قناة الـ NVR من المجموع الكلي</span>
+
+        <div class="fg" style="margin-top:1rem">
+          <label>🕐 ساعات التسجيل/يوم</label>
+          <div class="iw"><input type="number" id="hpd" value="24" min="1" max="24"/><span class="ii">⏱️</span></div>
+          <span class="field-tip">⏱️ عدد ساعات التسجيل الفعلي يومياً — 24 ساعة للتسجيل المستمر</span>
+        </div>
+
         <div class="fg">
           <label>🖥️ دقة الكاميرا</label>
-          <div class="iw sw"><select id="res">
+          <div class="iw sw"><select id="res" onchange="var b=document.getElementById('bitrateManual');if(b)b.dataset.manualSet='';recalcBitrate();calculate()">
             <option value="2">2MP — Full HD 1080p</option>
+            <option value="4">4MP — Quad HD</option>
             <option value="5" selected>5MP — Super HD</option>
             <option value="8">8MP — 4K Ultra HD</option>
+            <option value="12">12MP — Ultra 4K+</option>
+            <option value="16">16MP — Cinematic Pro</option>
           </select><span class="ii">🔍</span></div>
-          <span class="field-tip">🔍 تؤثر مباشرة على سعة التخزين والضغط المطلوب — 5MP هي الحد الأدنى لاشتراطات الأمن العام 2026</span>
+          <span class="field-tip">🔍 تؤثر مباشرة على سعة التخزين والـ Bitrate — 5MP هي الحد الأدنى لاشتراطات الأمن العام 2026</span>
         </div>
+
         <div class="fg">
           <label>🗜️ ضغط الفيديو</label>
           <div class="iw sw"><select id="comp">
             <option value="h264">H.264 — القياسي</option>
             <option value="h265" selected>H.265+ — الذكي (توفير 50%)</option>
           </select><span class="ii">⚡</span></div>
+          <span class="field-tip">🗜️ H.265+ يوفر حتى 50% من سعة التخزين مقارنة بـ H.264</span>
+        </div>
+
+        <!-- FPS + BITRATE (commercial-hidden) -->
+        <div class="two-col">
+          <div class="fg">
+            <label>🎞️ معدل الإطارات (FPS)</label>
+            <div class="iw sw"><select id="fpsSel" onchange="var b=document.getElementById('bitrateManual');if(b)b.dataset.manualSet='';recalcBitrate();calculate()">
+              <option value="6">6 FPS — اقتصادي</option>
+              <option value="12">12 FPS — متوازن</option>
+              <option value="15" selected>15 FPS — الافتراضي</option>
+              <option value="20">20 FPS — انسيابي</option>
+              <option value="25">25/30 FPS — Real-Time</option>
+            </select><span class="ii">🎞️</span></div>
+            <span class="field-tip">🎞️ معدل الإطارات/ث — أعلى = سلاسة أكثر وسعة أكبر</span>
+          </div>
+          <div class="fg">
+            <label>📡 تدفق البيانات (Bitrate Kbps)</label>
+            <div class="iw"><input type="number" id="bitrateManual" value="3375" min="128" oninput="this.dataset.manualSet='1';calculate()"/><span class="ii">📡</span></div>
+            <span class="field-tip">📡 يُحسب تلقائياً (دقة×FPS×45) — امسحه واكتب أقل لتوفير الهاردات للعميل (أداة مخفية لا تظهر في الـ PDF)</span>
+          </div>
         </div>
         <div class="fg">
           <label>📅 مدة الاحتفاظ بالتسجيلات</label>
@@ -555,7 +669,8 @@ input[type=number]::-webkit-outer-spin-button{-webkit-appearance:none;margin:0}
             <span class="chip" data-d="60">60 يوم</span>
             <span class="chip" data-d="90">90 يوم</span>
           </div>
-          <div class="iw"><input type="number" id="days" value="31" min="1" max="365"/><span class="ii">📆</span></div>
+          <div class="iw"><input type="number" id="days" value="31" min="1" max="3650" placeholder="عدد أيام مخصص"/><span class="ii">📆</span></div>
+          <span class="field-tip">📅 اختر من الأزرار السريعة أو اكتب عدد أيام مخصص مانيوال للعميل لتحديث السعة فوراً</span>
         </div>
         <div class="fg">
           <label>💰 عملة المقايسة</label>
@@ -702,7 +817,9 @@ input[type=number]::-webkit-outer-spin-button{-webkit-appearance:none;margin:0}
                   <option value="standard">ضمان قياسي — سنة واحدة مجاناً</option>
                   <option value="extended">ضمان ممتد — عامان مع زيارات دورية (+7% من المواد)</option>
                   <option value="gold">باقة ذهبية SLA — استجابة 4 ساعات (+15% من المشروع)</option>
+                  <option value="custom">🛠️ عقد صيانة مخصص مانيوال (اكتب السعر بالجدول)</option>
                 </select><span class="ii">🏅</span></div>
+                <span class="field-tip">🛠️ المخصص: ينزل سطر SLA بصفر — اكتب سعر العقد السنوي يدوياً في الجدول وسيُدمج فوراً</span>
               </div>
 
               <!-- PAYMENT SCHEDULE -->
@@ -711,7 +828,9 @@ input[type=number]::-webkit-outer-spin-button{-webkit-appearance:none;margin:0}
                 <div class="iw sw"><select id="paySchedule" onchange="calculate()">
                   <option value="std">قياسي 50% / 40% / 10%</option>
                   <option value="corp">شركات 30% / 40% / 20% / 10%</option>
+                  <option value="cash">💵 كاش 100% بعد الانتهاء الكامل</option>
                 </select><span class="ii">📅</span></div>
+                <span class="field-tip">💳 يحدد توزيع الدفعات المالية على مراحل المشروع — الكاش دفعة ختامية واحدة</span>
               </div>
 
               <!-- SCREENS & RACKS -->
@@ -859,6 +978,21 @@ input[type=number]::-webkit-outer-spin-button{-webkit-appearance:none;margin:0}
     </div>
   </div>
 
+  <!-- USER TEMPLATES -->
+  <div class="fu" style="margin-top:1.35rem">
+    <div class="tmpl-hdr" onclick="toggleTmpl()">
+      <span>📌 قوالب التسعير الجاهزة الخاصة بي (My BOQ Templates)</span>
+      <span id="tmplArr" style="transition:transform .3s">▼</span>
+    </div>
+    <div class="tmpl-body" id="tmplBody">
+      <div class="tmpl-inner">
+        <button class="btn-tmpl-save" onclick="saveTemplate()">💾 حفظ الإعدادات الحالية كقالب جاهز</button>
+        <div id="tmplList"></div>
+        <button class="btn-scope" onclick="generateTechScope()">📋 توليد النطاق الفني للمناقصة (Technical Scope)</button>
+      </div>
+    </div>
+  </div>
+
   <!-- CTA -->
   <div class="fu d4" style="margin-top:1.35rem">
     <div class="card">
@@ -885,7 +1019,7 @@ input[type=number]::-webkit-outer-spin-button{-webkit-appearance:none;margin:0}
 </div><!-- /wrap -->
 
 <footer class="fu">
-  <p>© 2026 <em>CAMORA PRO</em> v11 — نظام مقايسات التيار الخفيف الذكي · مصمم للسوق العربي</p>
+  <p>© 2026 <em>CAMORA PRO</em> v12 — نظام مقايسات التيار الخفيف الذكي · مصمم للسوق العربي</p>
   <p style="margin-top:.28rem;opacity:.45">الأرقام تقديرية وتعتمد على معايير ONVIF الدولية ولا تُعدّ وثيقة قانونية ملزمة بدون توقيع رسمي</p>
 </footer>
 
@@ -953,7 +1087,8 @@ var FREE_LIMIT = 2;
 /* ── Webhook URL — replace with your Make / n8n endpoint ── */
 var webhookURL = 'https://script.google.com/macros/s/AKfycby3TulDwhE75rMyH7i88h2ehvZ6aSV4SLgjfWOJfliE-EU8kHD3pp39aaIXlLJ8TVXG/exec';
 
-var BR     = {2:{h264:4,h265:2}, 5:{h264:8,h265:4}, 8:{h264:16,h265:8}};
+var BR     = {2:{h264:4,h265:2}, 4:{h264:6,h265:3}, 5:{h264:8,h265:4}, 8:{h264:16,h265:8}, 12:{h264:24,h265:12}, 16:{h264:32,h265:16}};
+var TMPL_KEY = 'camora_user_templates';
 var HDD_SZ = [1,2,4,6,8,10,12,14,16,18,20];
 var VAT    = {EGP:0.14, SAR:0.15, AED:0.05, KWD:0.0, USD:0.0};
 var CSYM   = {EGP:'ج.م', SAR:'ر.س', AED:'د.إ', KWD:'د.ك', USD:'$'};
@@ -977,10 +1112,10 @@ var BASE_PRICES = {pCam:850, pNvr:3200, pHdd:1200, pInst:200};
 var UPS_SIZES = [650, 1000, 1500, 2000, 3000, 5000, 10000];
 
 /* ── UPS PRICE TABLE (VA → price per unit) ── */
-var UPS_PRICE = {650:900, 1000:1400, 1500:2100, 2000:2900, 3000:4500, 5000:7500, 10000:14000};
+var UPS_PRICE = {650:800, 1000:1300, 1500:2000, 2000:2800, 3000:4200, 5000:7500, 10000:14000};
 
 /* ── UPS AUTONOMY (backup minutes → load factor) ── */
-var UPS_RUNTIME = {none:0, '15min':0.25, '30min':0.50}; /* load-hours */
+var UPS_RUNTIME = {none:0, '15min':1.0, '30min':1.6}; /* VA depth multiplier */
 
 /* ══════════════════════════════════════════════════════════
    TECHNICAL SPECIFICATION TEMPLATES
@@ -1235,7 +1370,11 @@ function handleSave(){
   var snap={
     projName:g('projName',''),coName:g('coName',''),date:dateStr,
     grand:boqData.grand,sym:boqData.sym,cur:boqData.cur,
-    camCount:g('camCount',16),hpd:g('hpd',24),res:g('res',5),comp:g('comp','h265'),
+    camDomeQty:g('camDomeQty',8),camDomePrice:g('camDomePrice',600),
+    camBulletQty:g('camBulletQty',8),camBulletPrice:g('camBulletPrice',900),
+    camPtzQty:g('camPtzQty',0),camPtzPrice:g('camPtzPrice',4500),
+    fpsSel:g('fpsSel',15),bitrateManual:g('bitrateManual',3375),
+    hpd:g('hpd',24),res:g('res',5),comp:g('comp','h265'),
     days:g('days',31),currency:g('currency','EGP'),ptzState:isPTZ,
     pCam:g('pCam',850),pNvr:g('pNvr',3200),pHdd:g('pHdd',1200),pInst:g('pInst',200),
     taxMode:g('taxMode','vat_unified'),priceMode:g('priceMode','split'),
@@ -1273,7 +1412,12 @@ function loadFromArchive(idx){
   var arch=getArchive(); var s=arch[idx]; if(!s) return;
   var sv=function(id,v){var e=document.getElementById(id);if(e)e.value=v;};
   sv('projName',s.projName||''); sv('coName',s.coName||'');
-  sv('camCount',s.camCount||16); sv('hpd',s.hpd||24);
+  sv('camDomeQty',s.camDomeQty||8); sv('camDomePrice',s.camDomePrice||600);
+  sv('camBulletQty',s.camBulletQty||8); sv('camBulletPrice',s.camBulletPrice||900);
+  sv('camPtzQty',s.camPtzQty||0); sv('camPtzPrice',s.camPtzPrice||4500);
+  sv('fpsSel',s.fpsSel||15);
+  if(s.bitrateManual){var brL=document.getElementById('bitrateManual');if(brL){brL.value=s.bitrateManual;brL.dataset.manualSet='1';}}
+  sv('hpd',s.hpd||24);
   sv('res',s.res||5); sv('comp',s.comp||'h265');
   sv('days',s.days||31); sv('currency',s.currency||'EGP');
   sv('pCam',s.pCam||850); sv('pNvr',s.pNvr||3200);
@@ -1316,7 +1460,20 @@ function smartPaste(){
   /* Extract camera count */
   var camMatch = txt.match(/(\d+)\s*(كاميرا|camera|cam)/i);
   if(camMatch){
-    document.getElementById('camCount').value = parseInt(camMatch[1]);
+    /* Distribute extracted total across dome (default to dome indoor) */
+    var totalExtracted = parseInt(camMatch[1]);
+    var domeEl=document.getElementById('camDomeQty');
+    var bulletEl=document.getElementById('camBulletQty');
+    var ptzEl=document.getElementById('camPtzQty');
+    if(/خارج|outdoor|سور|fence/i.test(txt)){
+      /* outdoor: 80% bullet, 20% dome */
+      if(bulletEl) bulletEl.value=Math.round(totalExtracted*0.8);
+      if(domeEl) domeEl.value=totalExtracted-Math.round(totalExtracted*0.8);
+    } else {
+      if(domeEl) domeEl.value=totalExtracted;
+      if(bulletEl) bulletEl.value=0;
+    }
+    if(ptzEl) ptzEl.value=0;
   }
 
   /* Extract retention days */
@@ -1423,6 +1580,33 @@ function addCustomRow(){
 }
 
 /* ═══════════════════════════════
+   BITRATE AUTO-CALC (res MP × FPS × 45)
+═══════════════════════════════ */
+function recalcBitrate(){
+  var resEl = document.getElementById('res');
+  var fpsEl = document.getElementById('fpsSel');
+  var brEl  = document.getElementById('bitrateManual');
+  if(!resEl||!fpsEl||!brEl) return;
+  /* Only auto-fill if user hasn't manually overridden */
+  if(brEl.dataset.manualSet==='1') return;
+  var resMP = parseFloat(resEl.value)||5;
+  var fps   = parseFloat(fpsEl.value)||15;
+  var autoKbps = Math.round(resMP * fps * 45);
+  brEl.value = autoKbps;
+}
+
+/* ═══════════════════════════════
+   TRIPLE CAMERA TOTALS
+═══════════════════════════════ */
+function getCamCounts(){
+  var g=function(id){var e=document.getElementById(id);return e?(parseInt(e.value)||0):0;};
+  var dome   = g('camDomeQty');
+  var bullet = g('camBulletQty');
+  var ptz    = g('camPtzQty');
+  return {dome:dome, bullet:bullet, ptz:ptz, total:dome+bullet+ptz};
+}
+
+/* ═══════════════════════════════
    NVR CAPACITY LABEL
 ═══════════════════════════════ */
 function nvrCapacityLabel(camCount, isAr) {
@@ -1456,31 +1640,30 @@ function calcUPS(totalWatt, supMult) {
   var mode = sel ? sel.value : 'none';
   if(mode === 'none') return {rows:[], instRows:[], vaStr:'—', vaNum:0};
 
-  /* Required VA = totalWatt / PF(0.7) × runtime factor */
-  var runtimeH = UPS_RUNTIME[mode] || 0;
-  var requiredVA = Math.ceil(totalWatt / 0.7);
-  /* Bump up for runtime > 15min */
-  if(mode === '30min') requiredVA = Math.ceil(requiredVA * 1.5);
+  /* Required VA = totalWatt / 0.7 (safety factor) × depth multiplier */
+  var depthMult  = UPS_RUNTIME[mode] || 1.0;   /* 15min=1.0, 30min=1.6 */
+  var requiredVA = Math.ceil((totalWatt / 0.7) * depthMult);
 
-  /* Find nearest commercial size */
-  var chosenVA = UPS_SIZES[UPS_SIZES.length - 1];
-  for(var i=0; i<UPS_SIZES.length; i++){
-    if(UPS_SIZES[i] >= requiredVA){ chosenVA = UPS_SIZES[i]; break; }
+  /* Round up to nearest commercial size (cap at 3000 per spec list) */
+  var commercial = [650, 1000, 1500, 2000, 3000];
+  var chosenVA = commercial[commercial.length - 1];
+  for(var i=0; i<commercial.length; i++){
+    if(commercial[i] >= requiredVA){ chosenVA = commercial[i]; break; }
   }
 
-  var unitPrice = (UPS_PRICE[chosenVA] || 4500) * (supMult || 1);
-  var instPrice = Math.round(unitPrice * 0.15);
+  var unitPrice = (UPS_PRICE[chosenVA] || 4200) * (supMult || 1);
+  var instPrice = 200; /* fixed install per spec */
   var modeLabel = mode === '15min' ? '15 دقيقة' : '30 دقيقة';
 
   return {
     vaStr: chosenVA + ' VA',
     vaNum: chosenVA,
     rows: [{
-      name: 'جهاز UPS احتياطي طاقة ' + chosenVA + 'VA / ' + Math.round(chosenVA*0.8) + 'W (' + modeLabel + ' احتياطي)',
+      name: 'جهاز UPS احتياطي طاقة ' + chosenVA + 'VA / ' + Math.round(chosenVA*0.7) + 'W (تأمين تشغيل ' + modeLabel + ')',
       qty: 1, unit: 'جهاز', up: unitPrice
     }],
     instRows: [{
-      name: 'تركيب وتأريض UPS وتوصيل لوحة الطوارئ',
+      name: 'مصنعية تركيب وتثبيت UPS داخل الراك وتوصيل لوحة الطوارئ',
       qty: 1, unit: 'مجموعة', up: instPrice
     }]
   };
@@ -1536,9 +1719,14 @@ function calcSLA(supTotal,grandBeforeSLA){
   if(mode==='extended'){
     cost=supTotal*0.07;
     label=isAr?'ضمان ممتد عامان مع زيارات دورية (7% من المواد)':'Extended 2-Year Warranty (7% of Supply)';
-  } else {
+  } else if(mode==='gold'){
     cost=grandBeforeSLA*0.15;
     label=isAr?'باقة الدعم الذهبي SLA — استجابة 4 ساعات (15% من المشروع)':'Gold SLA Support — 4hr Response (15% of Project)';
+  } else {
+    /* custom — zero price, user edits in table */
+    cost=0;
+    label=isAr?'عقد صيانة سنوي مخصص (اكتب السعر يدوياً)':'Custom Annual Maintenance Contract (enter price)';
+    return {rows:[{name:label,qty:1,unit:isAr?'عقد':'contract',up:0}],cost:0,custom:true};
   }
   return {rows:[{name:label,qty:1,unit:isAr?'باقة':'pkg',up:cost}],cost:cost};
 }
@@ -1611,77 +1799,59 @@ function buildBOQ(camCount,hddCount,totalTB,monSpec,rackSpec,camSystem,envSpec){
   var insCheck = document.getElementById('insCheck').checked;
   var lang     = document.getElementById('pdfLang').value;
   var isAr     = (lang==='ar');
-  var nvrCount = Math.ceil(camCount/16);
-  var trayUP   = cableTray==='pvc'?8:(cableTray==='flex'?12:0);
-  var totalCableM = camCount*cableLen;
+  /* ── TRIPLE CAMERA COUNTS (explicit qty + price per type) ── */
+  var camG       = getCamCounts();
+  var totalCams  = camG.total > 0 ? camG.total : 1;
+  var nvrCount   = Math.ceil(totalCams/16);
+  var trayUP     = cableTray==='pvc'?8:(cableTray==='flex'?12:0);
+  var totalCableM= totalCams*cableLen;
 
-  /* ── BRAND + NVR CAPACITY ── */
-  var activeBrand   = getActiveBrand();
-  var nvrCapLabel   = nvrCapacityLabel(camCount, isAr);
-  var nvrFullName   = activeBrand + ' ' + nvrCapLabel + ' مع جميع الملحقات والبرمجيات';
-  var nvrEnName     = activeBrand + ' ' + nvrCapacityLabel(camCount, false) + ' with All Accessories';
+  /* Read explicit per-type supply prices (× supply multiplier ONCE) */
+  var gp = function(id, def){var e=document.getElementById(id);var v=parseFloat(e?e.value:NaN);return (isNaN(v)?def:v);};
+  var pDome   = gp('camDomePrice',  600)  * supMult;
+  var pBullet = gp('camBulletPrice',900)  * supMult;
+  var pPtz    = gp('camPtzPrice',  4500)  * supMult;
 
-  /* ── PTZ SPLIT LOGIC ── */
-  var ptzEnabled  = isPTZ;
-  var ptzCount    = ptzEnabled ? 2 : 0;               /* always 2 PTZ if enabled */
-  var fixedCount  = Math.max(0, camCount - ptzCount);
-  var envKey      = (document.getElementById('installEnv') || {value:'indoor'}).value;
-
-  /* Fixed camera sub-split by environment */
-  var domeCams, bulletCams, industrialCams;
-  if(envKey === 'outdoor'){
-    bulletCams     = Math.round(fixedCount * 0.80);
-    domeCams       = fixedCount - bulletCams;
-    industrialCams = 0;
-  } else if(envKey === 'industrial'){
-    industrialCams = fixedCount;
-    domeCams = bulletCams = 0;
-  } else {
-    domeCams = fixedCount; bulletCams = industrialCams = 0;
-  }
+  /* ── BRAND + NVR CAPACITY (from total of three types) ── */
+  var activeBrand = getActiveBrand();
+  var nvrCapLabel = nvrCapacityLabel(totalCams, isAr);
+  var nvrFullName = activeBrand + ' ' + nvrCapLabel + ' مع جميع الملحقات والبرمجيات';
+  var nvrEnName   = activeBrand + ' ' + nvrCapacityLabel(totalCams, false) + ' with All Accessories';
 
   /* ── SUPPLY ── */
   var supplyRows=[];
   var resText = document.getElementById('res').options[document.getElementById('res').selectedIndex].text;
 
-  /* PTZ cameras */
-  if(ptzCount > 0){
-    supplyRows.push({
-      name:(isAr ? 'كاميرا PTZ Speed Dome بمحرك زووم وتتبع تلقائي — '+activeBrand+' '+resText
-                 : 'PTZ Speed Dome Camera Auto-Tracking — '+activeBrand+' '+resText),
-      qty:ptzCount, unit:isAr?'قطعة':'pcs', up:pCam*2.5
-    });
-  }
-
-  /* Fixed cameras */
-  if(domeCams > 0){
+  /* Dome indoor cameras */
+  if(camG.dome > 0){
     supplyRows.push({
       name:(isAr ? 'كاميرا مراقبة Dome داخلية IP — '+activeBrand+' '+resText
                  : 'Indoor Dome IP Camera — '+activeBrand+' '+resText),
-      qty:domeCams, unit:isAr?'قطعة':'pcs', up:pCam
+      qty:camG.dome, unit:isAr?'قطعة':'pcs', up:pDome
     });
   }
-  if(bulletCams > 0){
+  /* Bullet outdoor cameras */
+  if(camG.bullet > 0){
     supplyRows.push({
       name:(isAr ? 'كاميرا مراقبة Bullet خارجية IP67 — '+activeBrand+' '+resText
                  : 'Outdoor Bullet IP67 Camera — '+activeBrand+' '+resText),
-      qty:bulletCams, unit:isAr?'قطعة':'pcs', up:pCam*1.05
+      qty:camG.bullet, unit:isAr?'قطعة':'pcs', up:pBullet
     });
   }
-  if(industrialCams > 0){
+  /* PTZ Speed Dome cameras */
+  if(camG.ptz > 0){
     supplyRows.push({
-      name:(isAr ? 'كاميرا صناعية IP ثقيلة مقاومة للرطوبة والحرارة — '+activeBrand+' '+resText
-                 : 'Heavy Industrial IP Camera Weatherproof — '+activeBrand+' '+resText),
-      qty:industrialCams, unit:isAr?'قطعة':'pcs', up:pCam*1.2
+      name:(isAr ? 'كاميرا PTZ Speed Dome بمحرك زووم وتتبع تلقائي — '+activeBrand+' '+resText
+                 : 'PTZ Speed Dome Auto-Tracking — '+activeBrand+' '+resText),
+      qty:camG.ptz, unit:isAr?'قطعة':'pcs', up:pPtz
     });
   }
-
-  /* If no split happened (edge case), add full count as regular */
-  if(!ptzCount && !domeCams && !bulletCams && !industrialCams){
-    supplyRows.push({name:(isAr?'كاميرا مراقبة IP — ':'IP Camera — ')+activeBrand+' '+resText, qty:camCount, unit:isAr?'قطعة':'pcs', up:pCam});
+  /* Edge case — no cameras at all */
+  if(camG.total === 0){
+    supplyRows.push({name:(isAr?'كاميرا مراقبة IP — ':'IP Camera — ')+activeBrand+' '+resText, qty:1, unit:isAr?'قطعة':'pcs', up:pDome});
   }
 
-  /* NVR with capacity label */
+  /* NVR with auto capacity label */
   supplyRows.push({name:isAr? nvrFullName : nvrEnName, qty:nvrCount, unit:isAr?'قطعة':'pcs', up:pNvr});
   supplyRows.push({name:isAr?'هارد ديسك للتسجيل ('+Math.ceil(totalTB/hddCount)+' TB)':'Storage HDD ('+Math.ceil(totalTB/hddCount)+' TB)', qty:hddCount, unit:isAr?'قطعة':'pcs', up:pHdd});
   /* Cable UTP — price includes accessories amortised inside unit price */
@@ -1710,9 +1880,15 @@ function buildBOQ(camCount,hddCount,totalTB,monSpec,rackSpec,camSystem,envSpec){
   var fiberCalc=calcFiber(camCount);
   fiberCalc.supplyRows.forEach(function(r){supplyRows.push(r);});
 
-  /* ── INSTALL ── */
+  /* ── INSTALL (per-type camera labor) ── */
   var instRows=[];
-  instRows.push({name:isAr?'تركيب وتشبيك الكاميرات وضبط الزوايا':'Camera installation, cabling & tuning', qty:camCount, unit:isAr?'كاميرا':'cam', up:pInst});
+  var instDome   = parseFloat(document.getElementById('pInst') ? document.getElementById('pInst').value : 200) || 200;
+  var instBullet = instDome;   /* same default 200 */
+  var instPtz    = 500;        /* PTZ install default 500 */
+  if(camG.dome > 0)   instRows.push({name:isAr?'تركيب وتشبيك كاميرات Dome الداخلية وضبط الزوايا':'Install & tune Indoor Dome cameras', qty:camG.dome, unit:isAr?'كاميرا':'cam', up:instDome});
+  if(camG.bullet > 0) instRows.push({name:isAr?'تركيب وتشبيك كاميرات Bullet الخارجية وضبط الزوايا':'Install & tune Outdoor Bullet cameras', qty:camG.bullet, unit:isAr?'كاميرا':'cam', up:instBullet});
+  if(camG.ptz > 0)    instRows.push({name:isAr?'تركيب وضبط كاميرات PTZ Speed Dome والتتبع':'Install & configure PTZ Speed Dome', qty:camG.ptz, unit:isAr?'كاميرا':'cam', up:instPtz});
+  if(camG.total === 0) instRows.push({name:isAr?'تركيب وتشبيك الكاميرات':'Camera installation', qty:1, unit:isAr?'كاميرا':'cam', up:instDome});
   instRows.push({name:isAr?'تركيب جهاز التسجيل وتهيئة الشبكة':'NVR installation & network setup', qty:nvrCount, unit:isAr?'جهاز':'unit', up:600});
   if(cableTray!=='none') instRows.push({name:isAr?'تركيب مسارات الكابلات والمصنعية':'Cable tray installation & labor', qty:totalCableM, unit:isAr?'متر':'m', up:3});
   swRows.forEach(function(r){ instRows.push({name:(isAr?'تركيب وتهيئة سويتش — ':'Switch config — ')+r.label, qty:r.count, unit:isAr?'جهاز':'unit', up:r.instUp}); });
@@ -1916,14 +2092,19 @@ function renderSchedule(grand,sym){
   grand = parseFloat(grand)||0;
   var sched=document.getElementById('paySchedule').value;
   var isAr=(document.getElementById('pdfLang').value==='ar');
-  var percs=sched==='std'
-    ?[[isAr?'دفعة أولى — عند التوقيع':'1st — Upon signing',0.50],
-      [isAr?'دفعة ثانية — عند التوريد':'2nd — Upon delivery',0.40],
-      [isAr?'دفعة ثالثة — عند التسليم':'3rd — Upon handover',0.10]]
-    :[[isAr?'دفعة أولى — عند التوقيع':'1st — Upon signing',0.30],
+  var percs;
+  if(sched==='cash'){
+    percs=[[isAr?'دفعة كاملة — بعد الانتهاء الكامل من التوريد والتركيب':'Full Payment — Upon complete delivery & installation',1.00]];
+  } else if(sched==='corp'){
+    percs=[[isAr?'دفعة أولى — عند التوقيع':'1st — Upon signing',0.30],
       [isAr?'دفعة ثانية — عند التوريد':'2nd — Upon delivery',0.40],
       [isAr?'دفعة ثالثة — عند التشغيل':'3rd — Upon commissioning',0.20],
       [isAr?'دفعة رابعة — عند التسليم':'4th — Upon handover',0.10]];
+  } else {
+    percs=[[isAr?'دفعة أولى — عند التوقيع':'1st — Upon signing',0.50],
+      [isAr?'دفعة ثانية — عند التوريد':'2nd — Upon delivery',0.40],
+      [isAr?'دفعة ثالثة — عند التسليم':'3rd — Upon handover',0.10]];
+  }
   var tbl=document.getElementById('schedTable');
   tbl.innerHTML='<thead><tr>'+
     '<th>'+(isAr?'الدفعة':'Payment Stage')+'</th>'+
@@ -2030,29 +2211,46 @@ function recalcBOQ(){
   /* STEP 2 */
   var insurance = insEnabled?(instTotal*0.03):0;
 
-  /* STEP 3 */
+  /* STEP 3 — SLA (custom mode reads live from table, never overrides) */
   var subBefore = supTotal+instTotal+insurance;
-  if(slaMode==='extended') slaTotal=supTotal*0.07;
-  else if(slaMode==='gold') slaTotal=subBefore*0.15;
-  else slaTotal=0;
-  /* Update SLA row */
+  var slaIsCustom = (slaMode==='custom');
+  if(slaIsCustom){
+    /* Read SLA total live from the table rows — user types price manually */
+    slaTotal = 0;
+    var inSlaSecR=false;
+    document.querySelectorAll('#boqBody tr').forEach(function(tr){
+      var hdr=tr.querySelector('td[colspan="6"]');
+      if(hdr){inSlaSecR=(hdr.textContent.indexOf('SLA')>-1||hdr.textContent.indexOf('الضمان')>-1||hdr.textContent.indexOf('Warranty')>-1);return;}
+      if(!inSlaSecR) return;
+      var qcEl=tr.querySelector('[data-col=qty]'),ucEl=tr.querySelector('[data-col=up]'),tcEl=tr.querySelector('.tot-cell');
+      if(!qcEl||!ucEl||!tcEl) return;
+      var q=parseFloat(qcEl.innerText.replace(/[^0-9.]/g,''))||0;
+      var u=parseFloat(ucEl.innerText.replace(/[^0-9.]/g,''))||0;
+      var t=q*u; slaTotal+=t;
+      tcEl.textContent=fmtN(t)+' '+sym;
+    });
+  } else {
+    if(slaMode==='extended') slaTotal=supTotal*0.07;
+    else if(slaMode==='gold') slaTotal=subBefore*0.15;
+    else slaTotal=0;
+    /* Update SLA analytic data row unit price */
+    var inSlaSec=false;
+    document.querySelectorAll('#boqBody tr').forEach(function(tr){
+      var hdr=tr.querySelector('td[colspan="6"]');
+      if(hdr){inSlaSec=(hdr.textContent.indexOf('SLA')>-1||hdr.textContent.indexOf('الضمان')>-1||hdr.textContent.indexOf('Warranty')>-1);return;}
+      if(!inSlaSec) return;
+      var qcEl=tr.querySelector('[data-col=qty]'),ucEl=tr.querySelector('[data-col=up]'),tcEl=tr.querySelector('.tot-cell');
+      if(!qcEl||!ucEl||!tcEl) return;
+      var qRaw=qcEl.innerText.replace(/[^0-9.]/g,'');
+      var qty=parseFloat(qRaw)||1;
+      if(slaTotal>0){
+        ucEl.textContent=fmtN(slaTotal/Math.max(1,qty));
+        tcEl.textContent=fmtN(slaTotal)+' '+sym;
+      }
+    });
+  }
   var slaTotEl=document.getElementById('bqSlaTot');
   if(slaTotEl) slaTotEl.textContent=fmtN(slaTotal)+' '+sym;
-  /* Update SLA data row unit price */
-  var inSlaSec=false;
-  document.querySelectorAll('#boqBody tr').forEach(function(tr){
-    var hdr=tr.querySelector('td[colspan="6"]');
-    if(hdr){inSlaSec=(hdr.textContent.indexOf('SLA')>-1||hdr.textContent.indexOf('الضمان')>-1||hdr.textContent.indexOf('Warranty')>-1);return;}
-    if(!inSlaSec) return;
-    var qcEl=tr.querySelector('[data-col=qty]'),ucEl=tr.querySelector('[data-col=up]'),tcEl=tr.querySelector('.tot-cell');
-    if(!qcEl||!ucEl||!tcEl) return;
-    var qRaw=qcEl.innerText.replace(/[^0-9.]/g,'');
-    var qty=parseFloat(qRaw)||1;
-    if(slaTotal>0){
-      ucEl.textContent=fmtN(slaTotal/Math.max(1,qty));
-      tcEl.textContent=fmtN(slaTotal)+' '+sym;
-    }
-  });
 
   /* STEP 4 */
   var taxableBase=supTotal+instTotal+insurance+slaTotal;
@@ -2085,7 +2283,9 @@ function recalcBOQ(){
    MAIN CALCULATOR
 ═══════════════════════════════ */
 function calculate(){
-  var cams = Math.max(1,parseInt(document.getElementById('camCount').value)||1);
+  /* Triple camera total */
+  var camG = getCamCounts();
+  var cams = Math.max(1, camG.total);
   var res  = parseInt(document.getElementById('res').value)||5;
   var comp = document.getElementById('comp').value||'h265';
   var hpd  = Math.min(24,Math.max(1,parseFloat(document.getElementById('hpd').value)||24));
@@ -2094,9 +2294,22 @@ function calculate(){
   var res_ = document.getElementById('res').options[document.getElementById('res').selectedIndex].text;
   var comp_= document.getElementById('comp').options[document.getElementById('comp').selectedIndex].text;
 
-  /* Storage */
-  var bpc     = (BR[res]||BR[5])[comp]||4;
-  var totalTB = ((bpc*1e6/8)*cams*hpd*3600*days/1e9)/1000;
+  /* Auto-fill bitrate (respects manual override) */
+  recalcBitrate();
+
+  /* ── STORAGE from manual Bitrate (Kbps) — overrides table when present ── */
+  var brEl    = document.getElementById('bitrateManual');
+  var kbps    = brEl ? (parseFloat(brEl.value)||0) : 0;
+  var totalTB;
+  if(kbps > 0){
+    /* TB = (kbps/8/1e6 GB-per-sec equivalent) ... compute properly:
+       bytes/sec = kbps*1000/8 ; ×3600×hpd×days ×cams ; /1e12 = TB */
+    var bytesPerSec = (kbps * 1000) / 8;
+    totalTB = (bytesPerSec * 3600 * hpd * days * cams) / 1e12;
+  } else {
+    var bpc = (BR[res]||BR[5])[comp]||4;
+    totalTB = ((bpc*1e6/8)*cams*hpd*3600*days/1e9)/1000;
+  }
 
   /* HDD */
   var need=totalTB*1.10;
@@ -2109,8 +2322,9 @@ function calculate(){
   if(th) cfgs.push({l:Math.ceil(need/th)+' × '+th+' TB'});
   var hddCount=single?1:Math.ceil(need/HDD_SZ[HDD_SZ.length-1]);
 
-  /* Power */
-  var totalW=cams*(isPTZ?15:7);
+  /* Power — PTZ cameras draw 15W, fixed draw 7W */
+  var totalW=(camG.dome+camG.bullet)*7 + camG.ptz*15;
+  if(camG.total===0) totalW = 7;
   var mKWH=(totalW*24*30)/1000;
 
   /* Camera system & install env — declared EARLY (used in sumBox and buildBOQ) */
@@ -2171,6 +2385,43 @@ function calculate(){
   var upsEl = document.getElementById('vUPS');
   if(upsEl) upsEl.textContent = upsDisplay.vaStr || '—';
 
+  /* ── EXECUTIVE DASHBOARD ── */
+  var nvrCh = cams<=16?16:cams<=32?32:cams<=64?64:128;
+  var setD=function(id,v){var e=document.getElementById(id);if(e)e.textContent=v;};
+  setD('dashCams', camG.total);
+  setD('dashTB', totalTB.toFixed(1));
+  setD('dashDays', days);
+  setD('dashNVR', nvrCh);
+  setD('dashUPS', upsDisplay.vaStr||'—');
+  var dComp=document.getElementById('dashComp');
+  if(dComp){
+    dComp.textContent = meetsCompliance ? '✅ ممتثل' : '⚠️ مراجعة';
+    dComp.style.background = meetsCompliance
+      ? 'linear-gradient(135deg,#fff,#4EEAAA)' : 'linear-gradient(135deg,#fff,#FFD95A)';
+    dComp.style.webkitBackgroundClip='text'; dComp.style.backgroundClip='text';
+  }
+
+  /* ── ENGINEERING RECOMMENDATION ENGINE ── */
+  var recBar=document.getElementById('recBar');
+  if(recBar){
+    var nvrCapacity = nvrCh;
+    var swPorts = swData.reduce(function(s,r){return s + (r.label.indexOf('8-Port')>-1?8:24)*r.count;},0);
+    var problems=[], warnings=[];
+    if(cams > nvrCapacity) problems.push('عدد الكاميرات ('+cams+') يتجاوز سعة قنوات الـ NVR ('+nvrCapacity+')');
+    if(cams > swPorts) problems.push('عدد الكاميرات يتجاوز منافذ السويتشات المتاحة ('+swPorts+')');
+    if(totalTB > 100) warnings.push('سعة التخزين ضخمة ('+totalTB.toFixed(0)+'TB) — راجع الـ Bitrate أو عدد الأيام');
+    if(!meetsCompliance) warnings.push('لا يستوفي اشتراطات الأمن العام (يلزم 5MP+ و31 يوم+)');
+
+    recBar.className = 'rec-bar fu ' + (problems.length?'rec-red':(warnings.length?'rec-yellow':'rec-green'));
+    if(problems.length){
+      recBar.innerHTML = '🔴 خلل هندسي: ' + problems.join(' · ');
+    } else if(warnings.length){
+      recBar.innerHTML = '🟡 مراجعة موصى بها: ' + warnings.join(' · ');
+    } else {
+      recBar.innerHTML = '🟢 التصميم سليم هندسياً وممتثل للمواصفات — جاهز للاعتماد والطباعة';
+    }
+  }
+
   buildBOQ(cams,hddCount,totalTB,monSpec,rackSpec,camSystem,envSpec);
 }
 
@@ -2193,9 +2444,14 @@ function generatePDF(){
   };
   var t=themes[pdfTheme]||themes.classic;
   var sched=document.getElementById('paySchedule').value;
-  var schedDefs=sched==='std'
-    ?[[isAr?'دفعة أولى — عند التوقيع':'1st — Signing',0.50],[isAr?'دفعة ثانية — عند التوريد':'2nd — Delivery',0.40],[isAr?'دفعة ثالثة — عند التسليم':'3rd — Handover',0.10]]
-    :[[isAr?'دفعة أولى — عند التوقيع':'1st — Signing',0.30],[isAr?'دفعة ثانية — عند التوريد':'2nd — Delivery',0.40],[isAr?'دفعة ثالثة — عند التشغيل':'3rd — Commissioning',0.20],[isAr?'دفعة رابعة — عند التسليم':'4th — Handover',0.10]];
+  var schedDefs;
+  if(sched==='cash'){
+    schedDefs=[[isAr?'دفعة كاملة — بعد الانتهاء الكامل':'Full Payment — Upon completion',1.00]];
+  } else if(sched==='corp'){
+    schedDefs=[[isAr?'دفعة أولى — عند التوقيع':'1st — Signing',0.30],[isAr?'دفعة ثانية — عند التوريد':'2nd — Delivery',0.40],[isAr?'دفعة ثالثة — عند التشغيل':'3rd — Commissioning',0.20],[isAr?'دفعة رابعة — عند التسليم':'4th — Handover',0.10]];
+  } else {
+    schedDefs=[[isAr?'دفعة أولى — عند التوقيع':'1st — Signing',0.50],[isAr?'دفعة ثانية — عند التوريد':'2nd — Delivery',0.40],[isAr?'دفعة ثالثة — عند التسليم':'3rd — Handover',0.10]];
+  }
   var schedHtml=schedDefs.map(function(r){
     var amt=d.grand*r[1];
     return'<tr><td>'+r[0]+'</td><td style="text-align:center;font-weight:700">'+(r[1]*100)+'%</td><td style="text-align:left;direction:ltr;font-weight:700">'+fmtN(amt)+' '+sym+'</td><td style="font-size:7.5pt;color:#666;font-style:italic">'+tafqeet(amt,sym)+'</td></tr>';
@@ -2241,7 +2497,7 @@ function generatePDF(){
     '.terms ul{margin-right:.45cm;margin-top:.18cm}.terms li{margin-bottom:.12cm}'+
     '.footer{margin-top:.55cm;display:flex;justify-content:space-between;align-items:flex-end;border-top:1px solid '+t.bd+';padding-top:.38cm}'+
     '.sig-box{border:1px solid '+t.bd+';border-radius:3px;padding:.38cm .75cm;min-width:4.8cm;text-align:center;font-size:8pt}'+
-    '@media print{body{padding:0}@page{size:A4;margin:1.1cm}}';
+    '@media print{body{padding:0;background:#fff!important;color:#000!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}@page{size:A4;margin:1.1cm}}';
 
   var html='<!DOCTYPE html><html dir="'+(isAr?'rtl':'ltr')+'" lang="'+(isAr?'ar':'en')+'">'+
     '<head><meta charset="UTF-8"><title>'+(isAr?'مقايسة — ':'Quotation — ')+proj+'</title>'+
@@ -2303,7 +2559,7 @@ function generatePDF(){
 ═══════════════════════════════ */
 function copySpecSheet(){
   if(!boqData || !boqData.supplyRows){ alert('يرجى إجراء الحساب أولاً'); return; }
-  var cams  = parseInt(document.getElementById('camCount').value)||1;
+  var cams  = getCamCounts().total||1;
   var res   = parseInt(document.getElementById('res').value)||5;
   var comp  = document.getElementById('comp').value||'h265';
   var brand = (TIERS[activeTier]||TIERS.professional).camBrand;
@@ -2390,6 +2646,133 @@ function copySpecSheet(){
 }
 
 /* ═══════════════════════════════
+   USER TEMPLATES ENGINE
+═══════════════════════════════ */
+function getTemplates(){ try{return JSON.parse(localStorage.getItem(TMPL_KEY))||[];}catch(e){return[];} }
+function saveTemplatesArr(a){ localStorage.setItem(TMPL_KEY, JSON.stringify(a)); }
+
+function toggleTmpl(){
+  var b=document.getElementById('tmplBody'), a=document.getElementById('tmplArr');
+  var open=b.classList.toggle('open');
+  a.style.transform=open?'rotate(180deg)':'rotate(0deg)';
+  renderTemplates();
+}
+
+function saveTemplate(){
+  var name=prompt('اسم القالب (مثال: فيلا سكنية 16 كاميرا):');
+  if(!name) return;
+  var g=function(id){var e=document.getElementById(id);return e?e.value:'';};
+  var tmpl={
+    name:name, savedAt:new Date().toLocaleDateString('ar-EG'),
+    fields:{
+      camDomeQty:g('camDomeQty'), camDomePrice:g('camDomePrice'),
+      camBulletQty:g('camBulletQty'), camBulletPrice:g('camBulletPrice'),
+      camPtzQty:g('camPtzQty'), camPtzPrice:g('camPtzPrice'),
+      res:g('res'), comp:g('comp'), hpd:g('hpd'), days:g('days'),
+      fpsSel:g('fpsSel'), currency:g('currency'),
+      pCam:g('pCam'), pNvr:g('pNvr'), pHdd:g('pHdd'), pInst:g('pInst'),
+      taxMode:g('taxMode'), priceMode:g('priceMode'),
+      cableTray:g('cableTray'), cableLen:g('cableLen'),
+      slaMode:g('slaMode'), paySchedule:g('paySchedule'),
+      swBrand:g('swBrand'), monitorSel:g('monitorSel'), rackSel:g('rackSel'),
+      camSystem:g('camSystem'), installEnv:g('installEnv'), upsSel:g('upsSel'),
+      brandManual:g('brandManual'), markupPct:g('markupPct')
+    }
+  };
+  var arr=getTemplates(); arr.push(tmpl); saveTemplatesArr(arr); renderTemplates();
+  var btn=document.querySelector('.btn-tmpl-save'),o=btn.innerHTML;
+  btn.innerHTML='✅ تم حفظ القالب بنجاح!';
+  setTimeout(function(){btn.innerHTML=o;},2000);
+}
+
+function renderTemplates(){
+  var arr=getTemplates(), cont=document.getElementById('tmplList');
+  if(!cont) return;
+  if(!arr.length){cont.innerHTML='<div style="text-align:center;color:var(--tx-d);font-size:.8rem;padding:.8rem">📋 لا توجد قوالب محفوظة بعد</div>';return;}
+  cont.innerHTML=arr.map(function(t,i){
+    return '<div class="tmpl-item"><span class="tmpl-item-name">📌 '+escH(t.name)+' <span style="color:var(--tx-d);font-size:.72rem">('+escH(t.savedAt||'')+')</span></span>'+
+      '<button class="btn-tmpl-load" onclick="loadTemplate('+i+')">⚡ فرش</button>'+
+      '<button class="btn-tmpl-del" onclick="delTemplate('+i+')">❌</button></div>';
+  }).join('');
+}
+
+function loadTemplate(i){
+  var arr=getTemplates(), t=arr[i]; if(!t||!t.fields) return;
+  var sv=function(id,v){var e=document.getElementById(id);if(e&&v!==undefined&&v!=='')e.value=v;};
+  Object.keys(t.fields).forEach(function(k){ sv(k, t.fields[k]); });
+  var bEl=document.getElementById('brandManual');
+  if(bEl&&t.fields.brandManual){bEl.dataset.manualSet='1';}
+  var brEl=document.getElementById('bitrateManual'); if(brEl) brEl.dataset.manualSet='';
+  calculate();
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function delTemplate(i){
+  if(!confirm('حذف هذا القالب؟')) return;
+  var arr=getTemplates(); arr.splice(i,1); saveTemplatesArr(arr); renderTemplates();
+}
+
+/* ═══════════════════════════════
+   TECHNICAL SCOPE GENERATOR
+═══════════════════════════════ */
+function generateTechScope(){
+  if(!boqData||!boqData.supplyRows){alert('يرجى إجراء الحساب أولاً');return;}
+  var camG=getCamCounts();
+  var brand=getActiveBrand();
+  var res=document.getElementById('res').value;
+  var days=document.getElementById('days').value;
+  var nvrCh=camG.total<=16?16:camG.total<=32?32:camG.total<=64?64:128;
+  var proj=document.getElementById('projName').value||'المشروع';
+  var co=document.getElementById('coName').value||'الشركة';
+  var envKey=document.getElementById('installEnv').value;
+  var envLabel=ENV_SPECS[envKey]?ENV_SPECS[envKey].label:'داخلي';
+
+  var L=[];
+  L.push('═══════════════════════════════════════════════════════');
+  L.push('  النطاق الفني لمنظومة المراقبة الأمنية — Technical Scope');
+  L.push('  مشروع: '+proj+'  |  '+co);
+  L.push('═══════════════════════════════════════════════════════');
+  L.push('');
+  L.push('1) معمارية النظام (System Architecture):');
+  L.push('   يتكون النظام من منظومة كاميرات مراقبة IP عددها '+camG.total+' كاميرا بدقة '+res+'MP،');
+  L.push('   موزعة على بيئة تركيب '+envLabel+'، مرتبطة بجهاز تسجيل شبكي NVR سعة '+nvrCh+' قناة');
+  L.push('   من ماركة '+brand+'، مع تخزين يحفظ التسجيلات لمدة '+days+' يوم وفق اشتراطات الأمن العام.');
+  L.push('   The system comprises '+camG.total+' IP cameras ('+res+'MP) connected to a '+nvrCh+'-channel');
+  L.push('   '+brand+' NVR with '+days+'-day retention per public security requirements.');
+  L.push('');
+  L.push('2) توزيع الكاميرات (Camera Distribution):');
+  if(camG.dome>0)   L.push('   • '+camG.dome+' كاميرا Dome داخلية للمناطق الإدارية والممرات.');
+  if(camG.bullet>0) L.push('   • '+camG.bullet+' كاميرا Bullet خارجية IP67 للأسوار والمحيط الخارجي.');
+  if(camG.ptz>0)    L.push('   • '+camG.ptz+' كاميرا PTZ Speed Dome بمحرك زووم وتتبع تلقائي للمساحات الواسعة.');
+  L.push('');
+  L.push('3) البنية الشبكية (Network Infrastructure):');
+  L.push('   سويتشات PoE+ معتمدة IEEE802.3af/at لتغذية ونقل بيانات الكاميرات،');
+  L.push('   كابلات UTP Cat6 نحاس خالص شاملة كافة إكسسوارات التثبيت والربط الهندسي.');
+  L.push('');
+  L.push('4) معايير الجودة والاعتماد (Standards):');
+  L.push('   • بروتوكول ONVIF Profile S/G لضمان التوافقية.');
+  L.push('   • ضغط H.265+ لتقليل سعة التخزين بكفاءة.');
+  L.push('   • مطابقة لاشتراطات الدفاع المدني والأمن العام لعام 2026.');
+  L.push('');
+  L.push('5) الضمان والصيانة (Warranty & SLA):');
+  L.push('   ضمان شامل على المنظومة لمدة سنة من تاريخ التسليم الفعلي مع توفير الدعم الفني.');
+  L.push('');
+  L.push('═══════════════════════════════════════════════════════');
+  L.push('  '+co+'  —  عرض فني صالح 7 أيام من تاريخ الإصدار');
+  L.push('═══════════════════════════════════════════════════════');
+
+  var text=L.join('\n');
+  if(navigator.clipboard&&navigator.clipboard.writeText){
+    navigator.clipboard.writeText(text).then(function(){
+      var btn=document.querySelector('.btn-scope'),o=btn.innerHTML;
+      btn.innerHTML='✅ تم نسخ النطاق الفني — الصقه في عرضك مباشرة';
+      btn.style.background='#0A2E10';btn.style.borderColor='#10B981';btn.style.color='#4EEAAA';
+      setTimeout(function(){btn.innerHTML=o;btn.style.background='';btn.style.borderColor='';btn.style.color='';},3000);
+    }).catch(function(){alert(text);});
+  } else { alert(text); }
+}
+
+/* ═══════════════════════════════
    UI HELPERS
 ═══════════════════════════════ */
 function toggleAcc(){var h=document.getElementById('accHdr'),b=document.getElementById('accBody');h.classList.toggle('open');b.classList.toggle('open');}
@@ -2457,7 +2840,8 @@ document.getElementById('days').addEventListener('input',function(){
   document.querySelectorAll('.chip').forEach(function(c){c.classList.toggle('on',parseInt(c.dataset.d)===v);});
   calculate();
 });
-['camCount','res','comp','hpd','currency','priceMode','cableTray','cableLen',
+['camDomeQty','camDomePrice','camBulletQty','camBulletPrice','camPtzQty','camPtzPrice',
+ 'res','comp','hpd','days','currency','priceMode','cableTray','cableLen','fpsSel','bitrateManual',
  'taxMode','pCam','pNvr','pHdd','pInst','swBrand','slaMode','paySchedule',
  'fiberLen','fiberPrice','monitorSel','rackSel','camSystem','installEnv','upsSel'].forEach(function(id){
   var el=document.getElementById(id);
@@ -2490,6 +2874,8 @@ window.onload=function(){
   checkLead();
   checkPrem();
   renderArchive();
+  renderTemplates();
+  recalcBitrate();
   calculate();
 };
 </script>
