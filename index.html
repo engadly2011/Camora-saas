@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>CAMORA Pro v15 | حاسبة المراقبة الذكية 2026</title>
+<title>CAMORA Pro v16 | حاسبة المراقبة الذكية 2026</title>
 <!-- ══ META PIXEL (Ready — replace YOUR_PIXEL_ID) ══ -->
 <script>
 !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -536,7 +536,7 @@ input[type=number]::-webkit-outer-spin-button{-webkit-appearance:none;margin:0}
 
 <!-- ══ HEADER ══ -->
 <header class="fu">
-  <div class="l-badge"><span class="l-brand">CAMORA PRO</span>&nbsp;·&nbsp;v15 · نظام مقايسات التيار الخفيف 2026</div>
+  <div class="l-badge"><span class="l-brand">CAMORA PRO</span>&nbsp;·&nbsp;v16 · نظام مقايسات التيار الخفيف 2026</div>
   <h1>حاسبة كاميرات المراقبة الذكية</h1>
   <p class="subtitle">احسب التخزين · الطاقة · السويتشات · الفايبر · BOQ كامل بمعايير ONVIF والشروط الحكومية للخليج ومصر</p>
   <div class="lock-ind" id="lockInd">🔒 ميزة PDF &amp; الأرشيف محمية — الباقة المجانية (2 مشاريع)</div>
@@ -622,7 +622,7 @@ input[type=number]::-webkit-outer-spin-button{-webkit-appearance:none;margin:0}
 
         <div class="fg">
           <label>🖥️ دقة الكاميرا</label>
-          <div class="iw sw"><select id="res" onchange="var b=document.getElementById('bitrateManual');if(b)b.dataset.manualSet='';recalcBitrate();calculate()">
+          <div class="iw sw"><select id="res" onchange="resChanged()">
             <option value="2">2MP — Full HD 1080p</option>
             <option value="4">4MP — Quad HD</option>
             <option value="5" selected>5MP — Super HD</option>
@@ -646,7 +646,7 @@ input[type=number]::-webkit-outer-spin-button{-webkit-appearance:none;margin:0}
         <div class="two-col">
           <div class="fg">
             <label>🎞️ معدل الإطارات (FPS)</label>
-            <div class="iw sw"><select id="fpsSel" onchange="var b=document.getElementById('bitrateManual');if(b)b.dataset.manualSet='';recalcBitrate();calculate()">
+            <div class="iw sw"><select id="fpsSel" onchange="resChanged()">
               <option value="6">6 FPS — اقتصادي</option>
               <option value="12">12 FPS — متوازن</option>
               <option value="15" selected>15 FPS — الافتراضي</option>
@@ -657,7 +657,7 @@ input[type=number]::-webkit-outer-spin-button{-webkit-appearance:none;margin:0}
           </div>
           <div class="fg">
             <label>📡 تدفق البيانات (Bitrate Kbps)</label>
-            <div class="iw"><input type="number" id="bitrateManual" value="3375" min="128" oninput="this.dataset.manualSet='1';calculate()"/><span class="ii">📡</span></div>
+            <div class="iw"><input type="number" id="bitrateManual" value="3375" min="128" oninput="bitrateEdited(this)"/><span class="ii">📡</span></div>
             <span class="field-tip">📡 يُحسب تلقائياً (دقة×FPS×45) — امسحه واكتب أقل لتوفير الهاردات للعميل (أداة مخفية لا تظهر في الـ PDF)</span>
           </div>
         </div>
@@ -859,7 +859,7 @@ input[type=number]::-webkit-outer-spin-button{-webkit-appearance:none;margin:0}
               <!-- BRAND MANUAL INPUT -->
               <div class="fg">
                 <label>🏷️ ماركة الأجهزة المقترحة (Manual Override)</label>
-                <div class="iw"><input type="text" id="brandManual" placeholder="مثال: Hikvision" oninput="this.dataset.manualSet=this.value?'1':'';calculate()"/><span class="ii">🏷️</span></div>
+                <div class="iw"><input type="text" id="brandManual" placeholder="مثال: Hikvision" oninput="brandEdited(this)"/><span class="ii">🏷️</span></div>
                 <span class="field-tip">🏷️ تُملأ تلقائياً حسب الباقة (Premium=Bosch, Professional=Hikvision, Economic=Dahua) — ويمكنك تعديلها يدوياً لتظهر في الـ PDF</span>
               </div>
 
@@ -1019,7 +1019,7 @@ input[type=number]::-webkit-outer-spin-button{-webkit-appearance:none;margin:0}
 </div><!-- /wrap -->
 
 <footer class="fu">
-  <p>© 2026 <em>CAMORA PRO</em> v15 — نظام مقايسات التيار الخفيف الذكي · مصمم للسوق العربي</p>
+  <p>© 2026 <em>CAMORA PRO</em> v16 — نظام مقايسات التيار الخفيف الذكي · مصمم للسوق العربي</p>
   <p style="margin-top:.28rem;opacity:.45">الأرقام تقديرية وتعتمد على معايير ONVIF الدولية ولا تُعدّ وثيقة قانونية ملزمة بدون توقيع رسمي</p>
 </footer>
 
@@ -1582,6 +1582,20 @@ function addCustomRow(){
 /* ═══════════════════════════════
    BITRATE AUTO-CALC (res MP × FPS × 45)
 ═══════════════════════════════ */
+function resChanged(){
+  var b=document.getElementById('bitrateManual');
+  if(b) b.dataset.manualSet='';
+  recalcBitrate();
+  calculate();
+}
+function bitrateEdited(el){
+  el.dataset.manualSet='1';
+  calculate();
+}
+function brandEdited(el){
+  el.dataset.manualSet = el.value ? '1' : '';
+  calculate();
+}
 function recalcBitrate(){
   var resEl = document.getElementById('res');
   var fpsEl = document.getElementById('fpsSel');
@@ -1740,27 +1754,57 @@ var ONES_AR=['','واحد','اثنان','ثلاثة','أربعة','خمسة','س
 var TENS_AR=['','عشرة','عشرون','ثلاثون','أربعون','خمسون','ستون','سبعون','ثمانون','تسعون'];
 
 function tafqeet(n,symStr){
-  /* ── FALLBACK: guard against undefined/null/empty symStr ── */
+  /* ── FALLBACK: guard against undefined/null/empty currency ── */
   if(typeof symStr==='undefined'||symStr===null||symStr==='') symStr='ج.م';
   n = Math.round(Math.abs(parseFloat(n)||0));
-  if(n===0) return 'صفر ' + symStr;
-  var parts=[];
-  function chunk(x,scale){
-    if(x===0)return;
-    var h=Math.floor(x/100),rem=x%100,s='';
-    if(h===1)s='مئة'; else if(h===2)s='مئتان'; else if(h>2)s=ONES_AR[h]+' مئة';
+  if(n===0) return 'صفر ' + symStr + ' لا غير';
+
+  /* Convert any 1-999 chunk to Arabic words (handles hundreds correctly) */
+  function triad(x){
+    x = x % 1000;
+    if(x===0) return '';
+    var h = Math.floor(x/100);
+    var rem = x % 100;
+    var out = '';
+    /* hundreds */
+    if(h===1) out='مئة';
+    else if(h===2) out='مئتان';
+    else if(h>=3) out=ONES_AR[h]+' مئة';
+    /* tens + ones */
     if(rem>0){
-      var w=rem<20?ONES_AR[rem]:(function(){var t=Math.floor(rem/10),o=rem%10;return(o>0?ONES_AR[o]+' و':'')+TENS_AR[t];})();
-      s=s?(s+' و'+w):w;
+      var w;
+      if(rem<20){ w=ONES_AR[rem]; }
+      else {
+        var t=Math.floor(rem/10), o=rem%10;
+        w=(o>0?ONES_AR[o]+' و':'')+TENS_AR[t];
+      }
+      out = out ? (out+' و'+w) : w;
     }
-    if(scale==='مليار')s+=' مليار'; else if(scale==='مليون')s+=' مليون';
-    else if(scale==='ألف')s+=(x===1?' ألف':x===2?' ألفان':' ألف');
-    if(s)parts.push(s);
+    return out;
   }
-  chunk(Math.floor(n/1e9),'مليار'); chunk(Math.floor((n%1e9)/1e6),'مليون');
-  chunk(Math.floor((n%1e6)/1e3),'ألف');
-  var rem=n%1e3;
-  if(rem>0){var w=rem<20?ONES_AR[rem]:(function(){var t=Math.floor(rem/10),o=rem%10;return(o>0?ONES_AR[o]+' و':'')+TENS_AR[t];})();parts.push(w);}
+
+  var parts=[];
+  var billions = Math.floor(n/1e9);
+  var millions = Math.floor((n%1e9)/1e6);
+  var thousands= Math.floor((n%1e6)/1e3);
+  var units    = n%1e3;
+
+  if(billions>0){
+    var b=triad(billions);
+    parts.push(billions===1?'مليار':billions===2?'ملياران':b+' مليار');
+  }
+  if(millions>0){
+    var m=triad(millions);
+    parts.push(millions===1?'مليون':millions===2?'مليونان':m+' مليون');
+  }
+  if(thousands>0){
+    var th=triad(thousands);
+    parts.push(thousands===1?'ألف':thousands===2?'ألفان':th+' ألف');
+  }
+  if(units>0){
+    parts.push(triad(units));
+  }
+
   return 'فقط وقدره '+parts.join(' و')+' '+symStr+' لا غير';
 }
 
