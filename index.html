@@ -20,6 +20,14 @@ new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-XXXXXXX');</script>
+<!-- ══ MICROSOFT CLARITY (Heatmaps & Session Recording) ══ -->
+<script type="text/javascript">
+(function(c,l,a,r,i,t,y){
+    c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+    t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+    y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+})(window, document, "clarity", "script", "wyxxxa7wv7");
+</script>
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet"/>
 <style>
 /* ═══════════════════════════════════════════════════
@@ -997,7 +1005,7 @@ input[type=number]::-webkit-outer-spin-button{-webkit-appearance:none;margin:0}
   <div class="fu d4" style="margin-top:1.35rem">
     <div class="card">
       <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:.9rem" id="ctaRow">
-        <button class="btn-pdf" id="pdfBtn" onclick="handlePdf(); trackEvent('pdf_download')">
+        <button class="btn-pdf" id="pdfBtn" onclick="handlePdf(); trackPdfDownload()">
           <span id="ldot">🔒</span><span>تحميل المقايسة الرسمية (PDF)</span><span>📄</span>
         </button>
         <button class="btn-save" onclick="handleSave()">
@@ -1197,9 +1205,18 @@ function trackEvent(name, params){
     if(typeof fbq === 'function'){
       fbq('track', name, params||{});
     }
-    /* Google dataLayer */
+    /* Google dataLayer (GTM) */
     if(window.dataLayer){
       window.dataLayer.push({event: 'camora_'+name});
+    }
+    /* Microsoft Clarity — custom tag + event for funnel analysis after ads */
+    if(typeof clarity === 'function'){
+      clarity('event', 'camora_'+name);
+      if(params){
+        Object.keys(params).forEach(function(k){
+          clarity('set', k, String(params[k]));
+        });
+      }
     }
   }catch(e){}
 }
@@ -2511,6 +2528,40 @@ function anim(id,v){var el=document.getElementById(id);el.classList.remove('pa')
    so the PDF always matches exactly what the user edited live.
    Returns a boqData-shaped object built purely from the DOM.
 ═══════════════════════════════════════════════════════════ */
+function trackPdfDownload(){
+  /* Identify WHO downloaded by reading their saved lead data */
+  var lead = {};
+  try{ lead = JSON.parse(localStorage.getItem(LEAD_KEY)) || {}; }catch(e){}
+
+  var g = function(id){ var e=document.getElementById(id); return e?e.value:''; };
+  var payload = {
+    action:    'PDF_DOWNLOAD',
+    name:      lead.name      || 'غير مسجل',
+    whatsapp:  lead.whatsapp  || '',
+    email:     lead.email     || '',
+    project:   g('projName'),
+    company:   g('coName'),
+    grandTotal:(boqData && boqData.grand) ? Math.round(boqData.grand) : 0,
+    currency:  g('currency'),
+    cameras:   (typeof getCamCounts==='function'? getCamCounts().total : ''),
+    source:    'CAMORA_PRO',
+    timestamp: new Date().toISOString()
+  };
+
+  /* Fire to Google Sheet (same webhook) — non-blocking */
+  try{
+    fetch(webhookURL, {
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body: JSON.stringify(payload),
+      mode:'no-cors'
+    }).catch(function(){});
+  }catch(e){}
+
+  /* Also tag the analytics platforms */
+  trackEvent('pdf_download', {name:payload.name, total:payload.grandTotal});
+}
+
 function scrapeLiveBOQ(){
   var cur = document.getElementById('currency').value;
   var sym = CSYM[cur] || 'ج.م';
